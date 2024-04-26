@@ -1,20 +1,17 @@
 import React from "react";
 import "./Card.css";
 import { Link } from "react-router-dom";
-import moviePoster from "../../assets/images/Avatar-The-Way-Of-Water.jpg";
 
-export default function Card() {
+export default function Card({ poster, title, id }) {
   return (
     <div className="Card">
-      <Link to="/movie:id" className="link">
+      <Link to={`/movie:${id}`} className="link">
         <div>
-          <img src={moviePoster} alt="Movie Poster"></img>
+          <img src={poster} alt="Movie Poster"></img>
+          <hr />
         </div>
-        <div>
-          <div className="line"></div>
-        </div>
-        <div>
-          <p>Avatar</p>
+        <div className="title-container">
+          <p>{title}</p>
         </div>
       </Link>
     </div>
