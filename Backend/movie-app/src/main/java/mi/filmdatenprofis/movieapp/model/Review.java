@@ -24,7 +24,7 @@ public class Review {
     // Body of the review
     private String body;
 
-    // 1 to 5 stars
+    // One to five stars
     private int rating;
 
     private LocalDateTime created;
