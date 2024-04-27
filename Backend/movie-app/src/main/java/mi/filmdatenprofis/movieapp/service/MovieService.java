@@ -25,5 +25,17 @@ public class MovieService {
     public Optional<Movie> singleMovie(String imdbId) {
         return movieRepository.findMovieByImdbId(imdbId);
     }
+
+    public List<Movie> findMoviesByTitle(String title) {
+        return movieRepository.findMovieByTitleContainingIgnoreCase(title);
+    }
+
+    public List<Movie> allMoviesSortedByReleaseDate() {
+        return movieRepository.findAllByOrderByReleaseDateDesc();
+    }
+
+    public List<Movie> findMoviesByGenre(String genre) {
+        return movieRepository.findByGenresIgnoreCase(genre);
+    }
 }
 
