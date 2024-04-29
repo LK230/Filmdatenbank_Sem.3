@@ -1,4 +1,4 @@
-package mi.filmdatenprofis.movieapp;
+package mi.filmdatenprofis.movieapp.model;
 
 
 import lombok.AllArgsConstructor;

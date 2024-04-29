@@ -1,5 +1,7 @@
-package mi.filmdatenprofis.movieapp;
+package mi.filmdatenprofis.movieapp.service;
 
+import mi.filmdatenprofis.movieapp.model.Movie;
+import mi.filmdatenprofis.movieapp.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
