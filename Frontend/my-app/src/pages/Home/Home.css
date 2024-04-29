@@ -1,0 +1,9 @@
+.Home .card {
+  display: flex;
+  max-width: 1173px;
+  overflow-x: auto;
+}
+
+.Home .card::-webkit-scrollbar {
+  display: none;
+}
