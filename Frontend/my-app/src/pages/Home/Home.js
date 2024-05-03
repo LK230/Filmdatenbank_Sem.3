@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "../../components/card/Card";
 import api from "../../assets/api/axiosConfig";
 import "./Home.css";
+import { Searchbar } from "../../components/searchbar/Searchbar";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <div className="Home">
       <h1>HOME</h1>
+      <div> <Searchbar></Searchbar></div>
       <button>
         <Link to="/genres">Go to Genres</Link>
       </button>
