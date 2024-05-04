@@ -2,6 +2,7 @@ package mi.filmdatenprofis.movieapp.controller;
 
 
 import mi.filmdatenprofis.movieapp.model.User;
+import mi.filmdatenprofis.movieapp.model.UserProfile;
 import mi.filmdatenprofis.movieapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,8 +53,8 @@ public class UserController {
 
     // Endpoint to get user profile by username
     @GetMapping("/{username}")
-    public ResponseEntity<Optional<User>> getUserProfile(@PathVariable String username) {
-        return new ResponseEntity<Optional<User>>(userService.userProfile(username), HttpStatus.OK);
+    public ResponseEntity<Optional<UserProfile>> getUserProfile(@PathVariable String username) {
+        return new ResponseEntity<Optional<UserProfile>>(userService.userProfile(username), HttpStatus.OK);
     }
 
     // Endpoint to add a movie to a users favorites

@@ -2,7 +2,9 @@ package mi.filmdatenprofis.movieapp.service;
 
 import mi.filmdatenprofis.movieapp.model.Movie;
 import mi.filmdatenprofis.movieapp.model.User;
+import mi.filmdatenprofis.movieapp.model.UserProfile;
 import mi.filmdatenprofis.movieapp.repository.MovieRepository;
+import mi.filmdatenprofis.movieapp.repository.UserProfileRepository;
 import mi.filmdatenprofis.movieapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class UserService {
     private UserRepository userRepository;
     @Autowired
     private MovieRepository movieRepository;
+    @Autowired
+    private UserProfileRepository userProfileRepository;
+
 
     public boolean isEmailAlreadyTaken(String email) {
         Optional<User> existingUser = userRepository.findByEmail(email);
@@ -28,6 +33,7 @@ public class UserService {
 
     public User createUser(User userRequest) {
         User user = new User(userRequest.getName(), userRequest.getSurname(), userRequest.getUsername(), userRequest.getPassword(), userRequest.getEmail());
+        userProfileRepository.save(user.getProfile());
         return userRepository.save(user);
     }
 
@@ -40,8 +46,8 @@ public class UserService {
         return false;
     }
 
-    public Optional<User> userProfile(String username) {
-        return userRepository.findByUsername(username);
+    public Optional<UserProfile> userProfile(String username) {
+        return userProfileRepository.findByUsername(username);
     }
 
     public boolean addFavorites (String username, String imdbId) {
@@ -50,8 +56,9 @@ public class UserService {
         Movie movie = movieRepository.findMovieByImdbId(imdbId).orElse(null);
 
         if(user != null && movie != null) {
-            user.getFavorites().add(movie);
+            user.getProfile().getFavorites().add(movie);
             userRepository.save(user);
+            userProfileRepository.save(user.getProfile());
             return true;
         }
         return false;
@@ -63,8 +70,9 @@ public class UserService {
         Movie movie = movieRepository.findMovieByImdbId(imdbId).orElse(null);
 
         if(user != null && movie != null) {
-            user.getFavorites().remove(movie);
+            user.getProfile().getFavorites().remove(movie);
             userRepository.save(user);
+            userProfileRepository.save(user.getProfile());
             return true;
         }
         return false;

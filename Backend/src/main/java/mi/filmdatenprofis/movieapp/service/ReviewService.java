@@ -4,6 +4,7 @@ import mi.filmdatenprofis.movieapp.model.Movie;
 import mi.filmdatenprofis.movieapp.model.Review;
 import mi.filmdatenprofis.movieapp.model.User;
 import mi.filmdatenprofis.movieapp.repository.ReviewRepository;
+import mi.filmdatenprofis.movieapp.repository.UserProfileRepository;
 import mi.filmdatenprofis.movieapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -24,6 +25,10 @@ public class ReviewService {
     private UserRepository userRepository;
 
     @Autowired
+    private UserProfileRepository userProfileRepository;
+
+
+    @Autowired
     private MongoTemplate mongoTemplate;
 
     public Review createReview(String reviewBody, String rating, String imdbId, String username) {
@@ -42,9 +47,10 @@ public class ReviewService {
                     .first();
 
             // Add the review to the current user's list of reviews and save the user
-            currentUser.get().addReview(review);
+            currentUser.get().getProfile().addReview(review);
             userRepository.save(currentUser.get());
-
+            userProfileRepository.save(currentUser.get().getProfile());
+            System.out.println(review.getBody());
             return review;
 
         } catch (NoSuchElementException e) {
