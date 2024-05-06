@@ -18,7 +18,7 @@ import java.util.Optional;
 @RestController
 
 // Mapping this controller to respond to "/api/v1/movies" endpoint
-@RequestMapping("/api/v1/movies")
+@RequestMapping("/movies")
 public class MovieController {
     // Autowiring the MovieService to use its methods
     @Autowired
@@ -34,5 +34,20 @@ public class MovieController {
     @GetMapping("/{imdbId}")
     public ResponseEntity<Optional<Movie>> getSingleMovie(@PathVariable String imdbId) {
         return new ResponseEntity<Optional<Movie>>(movieService.singleMovie(imdbId), HttpStatus.OK);
+    }
+
+    @GetMapping("/title/{title}")
+    public ResponseEntity<List<Movie>> findMoviesByTitle(@PathVariable String title) {
+        return new ResponseEntity<List<Movie>> (movieService.findMoviesByTitle(title), HttpStatus.OK);
+    }
+
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<Movie>> findMoviesByGenre(@PathVariable String genre) {
+        return new ResponseEntity<List<Movie>>(movieService.findMoviesByGenre(genre), HttpStatus.OK);
+    }
+
+    @GetMapping("/newest")
+    public ResponseEntity<List<Movie>> findNewestMovies() {
+        return new ResponseEntity<List<Movie>>(movieService.allMoviesSortedByReleaseDate(), HttpStatus.OK);
     }
 }
