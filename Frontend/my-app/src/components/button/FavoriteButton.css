@@ -1,0 +1,13 @@
+.FavoriteButtonContainer {
+    display: flex;
+    justify-content: center; 
+}
+.FavoriteButton {
+    padding: auto;
+    background: #242424
+}
+
+.img {
+width: 50px;
+height: 50px;
+}

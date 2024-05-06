@@ -5,6 +5,7 @@ import api from "../../assets/api/axiosConfig";
 import "./Home.css";
 import { Searchbar } from "../../components/searchbar/Searchbar";
 import GenreCard from "../../components/card/GenreCard";
+import FavoriteButton from "../../components/button/FavoriteButton";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -26,6 +27,7 @@ export default function Home() {
     <div className="Home">
       <h1>HOME</h1>
       <div> <Searchbar></Searchbar></div>
+      <div><FavoriteButton></FavoriteButton></div>
       <button>
         <Link to="/genres">Go to Genres</Link>
       </button>
