@@ -4,6 +4,7 @@ import Card from "../../components/card/Card";
 import api from "../../assets/api/axiosConfig";
 import "./Home.css";
 import { Searchbar } from "../../components/searchbar/Searchbar";
+import GenreCard from "../../components/card/GenreCard";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -35,6 +36,15 @@ export default function Home() {
           );
         })}
       </div>
+      <div>
+      {movies.map((obj, index) => {
+         return (<GenreCard
+       
+       
+         id="test id" title={obj.title}>
+         
+          </GenreCard> );})}</div>
+      
     </div>
   );
 }

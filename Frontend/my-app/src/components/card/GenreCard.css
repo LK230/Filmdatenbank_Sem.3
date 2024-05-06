@@ -1,0 +1,26 @@
+.GenreCard {
+    width: 271px;
+    height: 130px;
+    border-radius: 11px;
+    box-shadow: 0px 2px 10px 0px #353540;
+    background: #2d2c36;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .GenreCard .link {
+    text-decoration: none;
+  }
+
+  .GenreCard p {
+    color: #fff;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    text-align: center;
+  }
+  
