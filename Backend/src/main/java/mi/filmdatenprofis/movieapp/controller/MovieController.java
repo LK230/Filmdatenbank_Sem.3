@@ -36,16 +36,19 @@ public class MovieController {
         return new ResponseEntity<Optional<Movie>>(movieService.singleMovie(imdbId), HttpStatus.OK);
     }
 
+    // Method to handle GET requests at the endpoint "/{title}" and return a specific movie by its title
     @GetMapping("/title/{title}")
     public ResponseEntity<List<Movie>> findMoviesByTitle(@PathVariable String title) {
         return new ResponseEntity<List<Movie>> (movieService.findMoviesByTitle(title), HttpStatus.OK);
     }
 
+    // Method to handle GET requests at the endpoint "/{genre}" and return all movies by a specific genre
     @GetMapping("/genre/{genre}")
     public ResponseEntity<List<Movie>> findMoviesByGenre(@PathVariable String genre) {
         return new ResponseEntity<List<Movie>>(movieService.findMoviesByGenre(genre), HttpStatus.OK);
     }
 
+    // Method to handle GET requests at the endpoint "/{newest}" and return the latest movies
     @GetMapping("/newest")
     public ResponseEntity<List<Movie>> findNewestMovies() {
         return new ResponseEntity<List<Movie>>(movieService.allMoviesSortedByReleaseDate(), HttpStatus.OK);

@@ -27,10 +27,11 @@ public class ReviewService {
     @Autowired
     private UserProfileRepository userProfileRepository;
 
-
     @Autowired
     private MongoTemplate mongoTemplate;
 
+
+    //method to create a new review
     public Review createReview(String reviewBody, String rating, String imdbId, String username) {
 
         try {

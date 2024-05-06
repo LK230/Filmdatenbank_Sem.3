@@ -1,30 +1,38 @@
 package mi.filmdatenprofis.movieapp.model;
 
-import jakarta.annotation.PostConstruct;
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
-import org.springframework.context.annotation.Import;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Component;
 
 @Document(collection = "users")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Component
 public class User {
 
-    @Id
+    @Id @Schema(hidden = true)
     private ObjectId id;
+
+    @Schema(example ="John")
     private String name;
+
+    @Schema(example ="Doe")
     private String surname;
+
+    @Schema(example ="JohnDoe")
     private String username;
+
+    @Schema(example="1234")
     private String password;
+
+    @Schema(example="john@doe.net")
     private String email;
+
+    @Schema(hidden = true)
     private UserProfile profile;
 
 

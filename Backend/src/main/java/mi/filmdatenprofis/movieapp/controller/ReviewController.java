@@ -8,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 
 // Annotation to allow cross-origin requests
 @CrossOrigin(origins = "*")
@@ -19,9 +18,10 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
+    // Method to handle POST requests at the endpoint "/create" which creates a new review and returns it
     @PostMapping("/create")
-    public ResponseEntity<Review> createReview(@RequestBody Map<String, String> review) {
-        return new ResponseEntity<Review>(reviewService.createReview(review.get("reviewBody"), review.get("rating"), review.get("imdbId"), review.get("username")), HttpStatus.OK);
+    public ResponseEntity<Review> createReview(@RequestParam String reviewBody, @RequestParam String rating, @RequestParam String imdbId, @RequestParam String username) {
+        return new ResponseEntity<Review>(reviewService.createReview(reviewBody, rating, imdbId, username), HttpStatus.OK);
     }
 }
 

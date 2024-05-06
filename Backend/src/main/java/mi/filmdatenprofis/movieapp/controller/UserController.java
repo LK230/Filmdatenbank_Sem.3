@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -19,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // Endpoint to create a new user
+    // Endpoint to create a new user. JSON Body includes name, surname, username and email
     @PostMapping("/create")
     public ResponseEntity<String> createUser(@RequestBody User user) {
 
@@ -34,18 +32,16 @@ public class UserController {
 
     }
 
-    // Endpoint to login a user
+    // Endpoint to handle login
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody Map<String, String> userLogin) {
-        String email = userLogin.get("email");
-        String password = userLogin.get("password");
+    public ResponseEntity<String> loginUser(@RequestParam String email, @RequestParam String password) {
 
         // Authenticate user credentials
         boolean isAuthenticated = userService.authenticateUser(email, password);
 
         // Return response based on authentication result
         if (isAuthenticated) {
-            return new ResponseEntity<>("Login successfull!", HttpStatus.OK);
+            return new ResponseEntity<>("Login successfully!", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Wrong email or password", HttpStatus.UNAUTHORIZED);
         }
@@ -53,30 +49,32 @@ public class UserController {
 
     // Endpoint to get user profile by username
     @GetMapping("/{username}")
-    public ResponseEntity<Optional<UserProfile>> getUserProfile(@PathVariable String username) {
+    public ResponseEntity<Optional<UserProfile>> getUserProfile(@RequestParam String username) {
         return new ResponseEntity<Optional<UserProfile>>(userService.userProfile(username), HttpStatus.OK);
     }
 
     // Endpoint to add a movie to a users favorites
     @PostMapping("/favorites/add")
-    public ResponseEntity<?> addToFavorites(@RequestBody Map<String, String> userFavorite) {
+    public ResponseEntity<?> addToFavorites(@RequestParam String username, @RequestParam String imdbId) {
 
-        if (userService.addFavorites(userFavorite.get("username"), userFavorite.get("imdbId"))) {
+        //Adds the movie with the given imdbId to favorites list
+        if (userService.addFavorites(username, imdbId)) {
             return new ResponseEntity<>("Movie added to favorites successfully", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("An error ocurred adding Movie to favorites (Wrong user or Movie)", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error: Wrong username, movie or movie is already in favorites", HttpStatus.BAD_REQUEST);
         }
 
     }
 
     // Endpoint to remove a movie from a users favorites
     @DeleteMapping("/favorites/remove")
-    public ResponseEntity<?> removeFromFavorites(@RequestBody Map<String, String> userFavorite) {
+    public ResponseEntity<?> removeFromFavorites(@RequestParam String username, @RequestParam String imdbId) {
 
-        if (userService.removeFavorites(userFavorite.get("username"), userFavorite.get("imdbId"))) {
+        //Removes the movie with the given imdbId from favorites list
+        if (userService.removeFavorites(username, imdbId)) {
             return new ResponseEntity<>("Movie removed from favorites successfully", HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("An error ocurred removing Movie from favorites (Wrong user or Movie)", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Error: Wrong username, movie or movie is not in favorites", HttpStatus.BAD_REQUEST);
         }
 
     }

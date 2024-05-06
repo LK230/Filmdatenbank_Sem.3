@@ -1,13 +1,9 @@
 package mi.filmdatenprofis.movieapp.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +22,8 @@ public class UserProfile {
         reviews = new ArrayList<>();
     }
 
-
     public void addReview(Review review) {
         this.reviews.add(review);
     }
+
 }
