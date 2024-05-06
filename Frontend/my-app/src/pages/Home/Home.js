@@ -39,7 +39,7 @@ export default function Home() {
          return (<GenreCard
        
        
-         id="test id" title="test title">
+         id="test id" title={obj.title}>
          
           </GenreCard> );})}</div>
       
