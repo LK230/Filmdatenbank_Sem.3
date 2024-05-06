@@ -25,21 +25,24 @@ public class Review {
     private String body;
 
     // Rating of the review (can be null)
-    private Integer rating;
+    private String rating;
 
     // IMDB ID of the movie
     private String imdbId;
+
+    private String createdBy;
 
     private LocalDateTime created;
 
     private LocalDateTime updated;
 
     // Constructor to create a new Review with a body, optional rating, imdbId, and timestamps
-    public Review(String body, Integer rating, String imdbId, LocalDateTime created, LocalDateTime updated) {
-        this.body = body;
+    public Review(String reviewBody, String rating, String imdbId, LocalDateTime created, LocalDateTime updated, String username) {
+        this.body = reviewBody;
         this.rating = rating;
         this.imdbId = imdbId;
         this.created = created;
         this.updated = updated;
+        this.createdBy = username;
     }
 }
