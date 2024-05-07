@@ -2,11 +2,14 @@
     display: flex;
     justify-content: center; 
 }
-.FavoriteButton {
+
+.FavoriteButtonContainer button {
+    border: none;
+    background: none;
     padding: auto;
-    background: #242424
 }
 
+.FavoriteButtonContainer
 .img {
 width: 50px;
 height: 50px;
