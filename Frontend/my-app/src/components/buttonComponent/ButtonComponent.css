@@ -1,0 +1,31 @@
+.ButtonComponentContainer button{
+    border: none;
+    cursor: pointer;
+    background-color: #242424;
+}
+.ButtonComponentContainer .ButtonComponent {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+   
+}
+
+.ButtonComponentContainer button p {
+    margin: 0;
+    width: 128px; 
+    left: 10px; 
+    font-family: Inter;
+    font-size: 24px;
+    text-align: right; 
+    color: #FFFFFF;
+    line-height: 32.68px;
+}
+
+
+.ButtonComponentContainer button img {
+    margin-left: 5px;
+    width: 50px;
+    height: 50px;
+}
+
