@@ -39,5 +39,11 @@ public class MovieService {
     public List<Movie> findMoviesByGenre(String genre) {
         return movieRepository.findByGenresIgnoreCase(genre);
     }
+
+    //method to find movies by a specific director
+    public List<Movie> findMoviesByDirector(String director) { return movieRepository.findByDirectorIgnoreCase(director); }
+
+    //method to find movies sorted by rating
+    public List<Movie> allMoviesSortedByRating() { return movieRepository.findAllByOrderByRating(); }
 }
 
