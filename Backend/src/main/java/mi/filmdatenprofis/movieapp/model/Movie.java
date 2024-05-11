@@ -33,14 +33,32 @@ public class Movie {
     // Release date of the movie
     private String releaseDate;
 
+    //Director of the movie
+    private String director;
+
+    //Runtime in minutes of the movie
+    private String runtime;
+
+    //Actors in the movie
+    private List<String> actors;
+
+    //Short description of the plot
+    private String plot;
+
     // Link to the movie trailer
     private String trailerLink;
 
-    // Link to the movie poster image
-    private String poster;
+    //Total rating of the movie
+    private String rating;
+
+    //Amount of reviews from users
+    private String reviews;
 
     // List of genres the movie belongs to
     private List<String> genres;
+
+    // Link to the movie poster image
+    private String poster;
 
     // List of backdrop images for the movie
     private List<String> backdrops;
