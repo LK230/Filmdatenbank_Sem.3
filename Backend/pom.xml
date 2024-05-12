@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>mi.filmdatenprofis</groupId>
-	<artifactId>movie-app</artifactId>
+	<artifactId>filmdatenbank</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>movie-app</name>
-	<description>A simple APIs related to movies</description>
+	<name>filmdatenbank</name>
+	<description>APIs related to movies</description>
 	<properties>
 		<java.version>21</java.version>
 	</properties>
