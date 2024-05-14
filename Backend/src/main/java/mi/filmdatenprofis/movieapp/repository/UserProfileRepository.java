@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface UserProfileRepository extends MongoRepository<UserProfile, ObjectId> {
 
     //method to find a UserProfile by its username
-    Optional<UserProfile> findByUsername(String username);
+    Optional<UserProfile> findByUsernameIgnoreCase(String username);
 }
