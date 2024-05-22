@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import "./Sidebar.css";
 import { Link, useLocation } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
@@ -12,12 +12,17 @@ import LogoSmall from "../../assets/images/LogoSmall.svg";
 import ButtonSVG from "../../assets/images/ButtonSVG.svg";
 import ButtonSVGClose from "../../assets/images/ButtonSVGClose.svg";
 
-export default function Sidebar() {
-  const shouldBeOpen = () => window.innerWidth > 800;
-  const [showSidebar, setShowSidebar] = useState(shouldBeOpen);
-  console.log("showSidebar", showSidebar);
-
+export default function Sidebar({ showSidebar, setShowSidebar }) {
   const location = useLocation();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowSidebar(window.innerWidth > 800);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setShowSidebar]);
+
   return (
     <div className={`Sidebar ${showSidebar ? "open" : "close"}`}>
       {showSidebar ? (
