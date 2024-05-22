@@ -7,6 +7,10 @@ import BackdropCard from "../../components/card/BackdropCard";
 import LeftArrow from "../../assets/images/ButtonSVG.svg";
 import RightArrow from "../../assets/images/ButtonSVGClose.svg";
 import Tags from "../../components/tags/Tags";
+import {
+  SkeletonCard,
+  SkeletonTitle,
+} from "../../components/skeletonLoader/SkeletonLoader";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -18,9 +22,13 @@ export default function MovieView() {
     const fetchMovie = async () => {
       try {
         const movieData = await new MovieService().getMovie(imdbId);
+        console.log("movieData", movieData);
         setMovie(movieData);
+        if (movieData.backdrops && movieData.backdrops.length > 0) {
+          setBackgroundImage(movieData.backdrops[0]);
+        }
       } catch (error) {
-        console.error("Error fetching user me data:", error);
+        console.error("Error fetching movie data:", error);
       }
     };
     if (imdbId) {
@@ -48,17 +56,18 @@ export default function MovieView() {
     <div
       className="MovieContainer"
       style={{
-        backgroundImage: `linear-gradient(
+        backgroundImage: movie
+          ? `linear-gradient(
           to bottom,
           rgb(6 15 23 / 33%),
           rgb(6 14 22 / 82%)
-        ), url(${backgroundImage ? backgroundImage : movie.backdrops[0]})`,
+        ), url(${backgroundImage})`
+          : "none",
         width: "100%",
       }}>
       <div className="content-container">
         <div className="play-container">
-          <h1>{movie.title}</h1>
-
+          {movie ? <h1>{movie.title}</h1> : <SkeletonTitle />}
           <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
             <button className="play-icon">
               <p>Watch</p>
@@ -85,14 +94,22 @@ export default function MovieView() {
           )}
 
           <div className="backdrop-container" ref={scrollRef}>
-            {movie.backdrops?.map((obj, index) => (
-              <BackdropCard
-                key={index}
-                img={obj}
-                className="backdrop-card"
-                onClick={() => handleBackdropClick(obj)}
-              />
-            ))}
+            {movie
+              ? movie.backdrops?.map((img, index) => (
+                  <BackdropCard
+                    key={index}
+                    img={img}
+                    className="backdrop-card"
+                    onClick={() => handleBackdropClick(img)}
+                  />
+                ))
+              : Array(5)
+                  .fill(0)
+                  .map((_, index) => (
+                    <div key={index} className="backdrop-card">
+                      <SkeletonCard />
+                    </div>
+                  ))}
           </div>
           {movie.backdrops?.length > 3 && (
             <button className="arrow arrow-right" onClick={scrollRight}>
