@@ -74,6 +74,7 @@ export default function Home() {
           <div className="backdrop-container" ref={scrollRef}>
             {movies.map((obj, index) => (
               <Card
+                key={index}
                 id={obj.imdbId}
                 poster={obj.poster}
                 title={obj.title}></Card>

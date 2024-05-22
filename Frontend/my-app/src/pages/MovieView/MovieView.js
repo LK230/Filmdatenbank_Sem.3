@@ -69,8 +69,8 @@ export default function MovieView() {
         <div className="text-container">
           <hr />
           <div className="tags-container">
-            {movie.genres?.map((obj) => {
-              return <Tags name={obj} />;
+            {movie.genres?.map((obj, index) => {
+              return <Tags key={index} name={obj} />;
             })}
           </div>
 
