@@ -13,7 +13,6 @@ export class MovieService {
   async getMovie(imdbId) {
     try {
       const movie = await getMovieEndpoint(imdbId);
-      console.log("movie", movie);
       return movie;
     } catch (error) {
       console.error(error);

@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import "./MovieView.css";
 import FavoriteButton from "../../components/button/FavoriteButton";
 import BackdropCard from "../../components/card/BackdropCard";
-import { FaPlay } from "react-icons/fa";
 import LeftArrow from "../../assets/images/ButtonSVG.svg";
 import RightArrow from "../../assets/images/ButtonSVGClose.svg";
 import Tags from "../../components/tags/Tags";
@@ -19,7 +18,6 @@ export default function MovieView() {
     const fetchMovie = async () => {
       try {
         const movieData = await new MovieService().getMovie(imdbId);
-        console.log("movieData", movieData);
         setMovie(movieData);
       } catch (error) {
         console.error("Error fetching user me data:", error);
@@ -46,7 +44,6 @@ export default function MovieView() {
     }
   };
 
-  console.log("Movie", movie);
   return (
     <div
       className="MovieContainer"
@@ -61,14 +58,12 @@ export default function MovieView() {
       <div className="content-container">
         <div className="play-container">
           <h1>{movie.title}</h1>
-          <button className="play-icon">
-            <a
-              href={movie.trailerLink}
-              target="_blank"
-              rel="noopener noreferrer">
+
+          <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
+            <button className="play-icon">
               <p>Watch</p>
-            </a>
-          </button>
+            </button>
+          </a>
           <FavoriteButton></FavoriteButton>
         </div>
         <div className="text-container">
