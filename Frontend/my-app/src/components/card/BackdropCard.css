@@ -1,0 +1,11 @@
+.BackdropCard-container {
+  display: flex;
+  cursor: pointer;
+}
+
+.BackdropCard-container img {
+  width: 228px;
+  height: 140px;
+  border-radius: 7px;
+  margin: 0 5px;
+}
