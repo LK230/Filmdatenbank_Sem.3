@@ -9,6 +9,7 @@ import mi.filmdatenprofis.movieapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Service
 public class UserService {
@@ -29,6 +30,24 @@ public class UserService {
     public boolean isUsernameAlreadyTaken(String username) {
         Optional<User> existingUser = userRepository.findByUsernameIgnoreCase(username);
         return existingUser.isPresent();
+    }
+
+    // Method to validate email format
+    public boolean isValidEmail(String email) {
+
+        // If the email is null, it is not valid
+        if (email == null) {
+            return false;
+        }
+
+        // Regular expression to check email format
+        // ^[\\w._%+-]+        : Start with one or more word characters (letters, digits, underscores), dots, underscores, percent signs, plus signs, or hyphens.
+        // @[\\w.-]+           : Followed by the '@' symbol and one or more word characters, dots, or hyphens.
+        // \\.[a-zA-Z]{2,}$    : Ends with a dot and two or more alphabetic characters (the top-level domain).
+        String emailRegex = "^[\\w._%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+
+        // Return true if the email matches the regular expression, otherwise false
+        return Pattern.matches(emailRegex, email);
     }
 
     //method to create a new user and save it to database
