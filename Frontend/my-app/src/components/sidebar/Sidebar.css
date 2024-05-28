@@ -1,17 +1,21 @@
 .Sidebar {
-  background: #2b2b38;
+  background: #0d1015;
+
   color: #d0d0d0;
   transition: width 0.2s ease;
+  position: fixed;
+  float: left;
 }
 
 .Sidebar.open {
-  width: 350px;
+  width: 270px;
   height: 100vh;
 }
 
 .Sidebar.close {
-  width: 178px;
-  height: 100vh;
+  height: 100%;
+  width: 90px;
+  min-width: 80px;
 }
 
 .Sidebar.open .sidebar-container {
@@ -97,13 +101,13 @@
 .Sidebar.open .open-close-btn {
   position: absolute;
   top: 87vh;
-  left: 316px;
+  left: 246px;
 }
 
 .Sidebar.close .open-close-btn {
   position: absolute;
-  top: 87vh;
-  left: 145px;
+  top: 86vh;
+  left: 64px;
 }
 
 .Sidebar.close .open-close-btn img {
@@ -117,7 +121,7 @@
   width: 50px;
   height: 50px;
   border-radius: 60px;
-  background: #262630;
+  background: #0d1015;
   border: none;
 }
 

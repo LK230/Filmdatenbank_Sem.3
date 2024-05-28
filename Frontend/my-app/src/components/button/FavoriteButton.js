@@ -1,11 +1,9 @@
-import React, { useState }  from 'react'
+import React, { useState } from "react";
 import "./FavoriteButton.css";
 
-import FavoriteButtonClicked from "../../assets/images/Icons/FavoriteButtonClicked.svg";
+import FavoriteButtonClicked from "../../assets/images/icons/FavoriteButtonClicked.svg";
 
-import FavoriteButtonUnclicked from "../../assets/images/Icons/FavoriteButtonUnclicked.svg";
-
-
+import FavoriteButtonUnclicked from "../../assets/images/icons/FavoriteButtonUnclicked.svg";
 
 export default function FavoriteButton() {
   const [isFavored, setIsFavored] = useState(false);

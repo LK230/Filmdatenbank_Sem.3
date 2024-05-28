@@ -52,7 +52,7 @@ public class Movie {
     private String rating;
 
     //Amount of reviews from users
-    private String reviews;
+    private int reviews;
 
     // List of genres the movie belongs to
     private List<String> genres;
