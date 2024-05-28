@@ -1,0 +1,65 @@
+.RatingContainer{
+    font-family: Inter;
+    font-weight: 900;
+    font-size: 25px;
+    color: #f4f4f4;
+    margin: 20px;
+}
+
+.RatingContainer h1 {
+    margin-bottom: 25px;
+}
+
+.RatingContainer button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    
+}
+
+.RatingContainer button:hover {
+    transform: scale(1.2);
+}
+
+.CommentContainer {
+    background-color: transparent;
+    border: 1px solid #f4f4f4;
+    display: flex;
+    border-radius: 18px;
+    width: 469px; 
+    height: 231px;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.CommentContainer textarea {
+    background-color: transparent;
+    color: #bbbbbb;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-family: Inter;
+    font-size: 24px;
+    resize: none;
+    outline: none;
+}
+
+.CommentContainer textarea:focus {
+    border: none;
+    cursor: default;
+}
+
+.CharacterCountContainer{
+    color: #f4f4f4;
+    font-family: Inter;
+    font-size: 21px;
+    position: absolute;
+    text-align: right;
+    width: 500px;
+    margin-top: 5px;
+}
+
+.ButtonComponent{
+    margin-left: 330px;
+    margin-top: 30px;
+}
