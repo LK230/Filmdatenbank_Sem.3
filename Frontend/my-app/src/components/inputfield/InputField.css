@@ -1,24 +1,26 @@
 .InputFieldContainer {
-    width: 510px;
-    height: 59px;
-    display: inline-flex;
-    align-items: center;
-    color: #bbb;
-    font-family: Inter;
-    font-size: 13px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
+  color: #bbb;
+  font-family: Inter;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
 }
 
 .InputFieldContainer input {
-    background-color: #242424;
-    color: #fff;
-    border-radius: 5px;
-    border: 1px solid #FFF; 
-    outline: none;
-    box-sizing: border-box;
-    font-size: 12px;
-    padding: 6px;
-}
+  width: 100%;
+  background-color: transparent;
+  border-radius: 11px;
+  border: 1px solid #fff;
+  outline: none;
+  box-sizing: border-box;
+  padding: 13px 20px;
 
+  color: #bbb;
+
+  font-family: Inter;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
