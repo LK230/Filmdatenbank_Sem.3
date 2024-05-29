@@ -84,7 +84,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
                 <ul>
                   <li>
                     <div>
-                      <Link to="/logOut" className="link-btn">
+                      <Link to="/login" className="link-btn">
                         <GrLogout />
                         <p>Abmelden</p>
                       </Link>
@@ -150,7 +150,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
                 <ul>
                   <li>
                     <div>
-                      <Link to="/logOut" className="link-btn">
+                      <Link to="/login" className="link-btn">
                         <GrLogout />
                       </Link>
                     </div>

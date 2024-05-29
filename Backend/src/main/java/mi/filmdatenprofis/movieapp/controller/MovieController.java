@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 // Annotation to allow cross-origin requests
@@ -40,6 +41,12 @@ public class MovieController {
     @GetMapping("/title/{title}")
     public ResponseEntity<List<Movie>> findMoviesByTitle(@PathVariable String title) {
         return new ResponseEntity<List<Movie>> (movieService.findMoviesByTitle(title), HttpStatus.OK);
+    }
+
+    // Method to handle GET requests at the endpoint "/genre" and return a map which includes sorted movies by genre
+    @GetMapping("/genre")
+    public Map<String, List<Movie>> getMoviesByGenre() {
+        return movieService.getMoviesByGenre();
     }
 
     // Method to handle GET requests at the endpoint "/{genre}" and return all movies by a specific genre

@@ -16,6 +16,12 @@ export const Searchbar = () => {
         }
     };
 
+    const handleInputBlur = () =>{
+        if (inputValue=== ""){
+            setPlaceholder("Suche");
+        }
+    }
+
     return ( 
         <div className="SearchbarContainer">
             <div className="Searchbar">
@@ -25,6 +31,7 @@ export const Searchbar = () => {
                     value={inputValue}
                     onChange={handleInputChange}
                     onClick={handleInputClick}
+                    onBlur={handleInputBlur}
                 />
             </div>
         </div>

@@ -26,6 +26,11 @@ public class UserController {
             return new ResponseEntity<>("The entered e-mail address or username is already taken", HttpStatus.BAD_REQUEST);
         }
 
+        // Check if email is in valid format
+        if(!userService.isValidEmail(user.getEmail())) {
+            return new ResponseEntity<>("The entered e-mail address is not valid", HttpStatus.BAD_REQUEST);
+        }
+
         // Create the user if email and username are not already taken
         userService.createUser(user);
         return new ResponseEntity<>("User was created successfully!", HttpStatus.CREATED);
