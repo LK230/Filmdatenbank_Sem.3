@@ -8,7 +8,7 @@ import LeftArrow from "../../assets/images/ButtonSVG.svg";
 import RightArrow from "../../assets/images/ButtonSVGClose.svg";
 import Tags from "../../components/tags/Tags";
 import {
-  SkeletonCard,
+  SkeletonMovieCard,
   SkeletonTitle,
 } from "../../components/skeletonLoader/SkeletonLoader";
 
@@ -107,7 +107,7 @@ export default function MovieView() {
                   .fill(0)
                   .map((_, index) => (
                     <div key={index} className="backdrop-card">
-                      <SkeletonCard />
+                      <SkeletonMovieCard />
                     </div>
                   ))}
           </div>

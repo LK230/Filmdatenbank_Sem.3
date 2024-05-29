@@ -8,7 +8,8 @@ import { MovieService } from "../../assets/service/movie_service";
 import LeftArrow from "../../assets/images/ButtonSVG.svg";
 import RightArrow from "../../assets/images/ButtonSVGClose.svg";
 import {
-  SkeletonCard,
+  SkeletonGenreCard,
+  SkeletonMovieCard,
   SkeletonRandomMovie,
 } from "../../components/skeletonLoader/SkeletonLoader";
 
@@ -36,9 +37,9 @@ export default function Home() {
       if (movies.length > 0) {
         setRandomMovie(movies[Math.floor(Math.random() * movies.length)]);
       }
-    }, 20000); // 20 Sekunden Intervall
+    }, 20000);
 
-    return () => clearInterval(intervalId); // Cleanup Intervall beim Demontieren
+    return () => clearInterval(intervalId);
   }, [movies]);
 
   const scrollLeft = () => {
@@ -64,7 +65,9 @@ export default function Home() {
             <img src={randomMovie.poster} alt={randomMovie.title} />
           </div>
         ) : (
-          <SkeletonRandomMovie />
+          <div className="random-movie">
+            <SkeletonRandomMovie />
+          </div>
         )}
       </div>
 
@@ -88,7 +91,7 @@ export default function Home() {
                 ))
               : Array(5)
                   .fill(0)
-                  .map((_, index) => <SkeletonCard key={index} />)}
+                  .map((_, index) => <SkeletonMovieCard key={index} />)}
           </div>
           <button className="arrow arrow-right" onClick={scrollRight}>
             <img src={RightArrow} alt="Right Arrow" />
@@ -106,7 +109,7 @@ export default function Home() {
             ))
           : Array(5)
               .fill(0)
-              .map((_, index) => <SkeletonCard key={index} />)}
+              .map((_, index) => <SkeletonGenreCard key={index} />)}
       </div>
     </div>
   );
