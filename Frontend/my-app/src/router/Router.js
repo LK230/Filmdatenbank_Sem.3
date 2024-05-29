@@ -7,12 +7,11 @@ import Sidebar from "../components/sidebar/Sidebar";
 import Login from "../pages/Login/LoginSignup";
 
 export default function Router() {
-  const shouldBeOpen = () => window.innerWidth > 800;
+  const shouldBeOpen = () => window.innerWidth > 1200;
   const [showSidebar, setShowSidebar] = useState(shouldBeOpen);
   const path = useLocation();
 
   const contentStyle = {
-    padding: "10px 0",
     marginLeft: showSidebar ? "260px" : "90px",
     transition: "margin 0.2s ease",
     borderRadius: "30px",

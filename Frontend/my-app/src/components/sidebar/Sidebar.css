@@ -38,7 +38,7 @@
 
 .Sidebar ul {
   list-style: none;
-  margin: 60px 0;
+  margin: 40px 0;
 }
 
 .Sidebar.open ul {
@@ -100,13 +100,13 @@
 
 .Sidebar.open .open-close-btn {
   position: absolute;
-  top: 87vh;
+  top: 89vh;
   left: 246px;
 }
 
 .Sidebar.close .open-close-btn {
   position: absolute;
-  top: 86vh;
+  top: 88vh;
   left: 64px;
 }
 
@@ -123,6 +123,7 @@
   border-radius: 60px;
   background: #0d1015;
   border: none;
+  cursor: pointer;
 }
 
 .Sidebar .open-close-btn button img {
