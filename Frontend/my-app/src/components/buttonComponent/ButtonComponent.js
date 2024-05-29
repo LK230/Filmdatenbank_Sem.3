@@ -2,10 +2,10 @@ import React from "react";
 import ButtonSVGClose from "../../assets/images/ButtonSVGClose.svg";
 import "./ButtonComponent.css";
 
-export default function ButtonComponent({ label }) {
+export default function ButtonComponent({ label, onClick }) {
   return (
     <div className="ButtonComponentContainer">
-      <button>
+      <button onClick={onClick}>
         <div className="ButtonComponent">
           <p>{label}</p>
 
