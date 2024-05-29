@@ -20,7 +20,7 @@ export default function MovieView() {
         const movieData = await new MovieService().getMovie(imdbId);
         setMovie(movieData);
       } catch (error) {
-        console.error("Error fetching user me data:", error);
+        console.error("Error fetching data:", error);
       }
     };
     if (imdbId) {

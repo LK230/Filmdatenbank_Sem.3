@@ -2,9 +2,44 @@ import React, { useState } from "react";
 import "./LoginSignup.css";
 import InputField from "../../components/inputfield/InputField";
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
+import { UserService } from "../../assets/service/user_service";
+import { useNavigate } from "react-router-dom";
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const userService = new UserService();
+  const navigate = useNavigate();
+
+  const handleSubmit = async () => {
+    try {
+      if (isLogin) {
+        const login = await userService.getUsers(email, password);
+        if (login === "Login successfully!") {
+          navigate("/");
+        }
+      } else {
+        const newUser = {
+          name: name,
+          surname: surname,
+          username: username,
+          password: password,
+          email: email,
+        };
+        const signup = await userService.createUser(newUser);
+        console.log("Created User:", signup);
+        if (signup === "User was created successfully!") {
+          navigate("/");
+        }
+      }
+    } catch (error) {
+      console.error("Error during submission:", error);
+    }
+  };
 
   return (
     <div className="container">
@@ -27,34 +62,64 @@ const LoginSignup = () => {
               <h1 className="header">Melde dich an</h1>
               <div className="content-container">
                 <div className="form-group">
-                  <InputField label="Email" />
+                  <InputField
+                    label="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </div>
                 <div className="form-group">
-                  <InputField label="Passwort" type="password" />
+                  <InputField
+                    label="Passwort"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
               </div>
               <div className="form-button">
-                <ButtonComponent label="Anmelden" />
+                <ButtonComponent label="Anmelden" onClick={handleSubmit} />
               </div>
             </div>
           ) : (
             <div className="form-content">
               <h1 className="header">Registriere dich</h1>
               <div className="form-group name-fields">
-                <InputField label="Name" />
-                <InputField label="Nachname" />
+                <InputField
+                  label="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <InputField
+                  label="Nachname"
+                  value={surname}
+                  onChange={(e) => setSurname(e.target.value)}
+                />
               </div>
               <div className="form-group">
-                <InputField label="Email" />
+                <InputField
+                  label="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </div>
               <div className="form-group">
-                <InputField label="Passwort erstellen" />
+                <InputField
+                  label="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div className="form-group">
-                <InputField label="Passwort wiederholen" />
+                <InputField
+                  label="Passwort"
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <div className="form-button">
-                <ButtonComponent label="Abschicken" />
+                <ButtonComponent label="Abschicken" onClick={handleSubmit} />
               </div>
             </div>
           )}

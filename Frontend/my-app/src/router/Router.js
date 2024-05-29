@@ -11,8 +11,6 @@ export default function Router() {
   const [showSidebar, setShowSidebar] = useState(shouldBeOpen);
   const path = useLocation();
 
-  console.log("path", path);
-
   const contentStyle = {
     padding: "10px 0",
     marginLeft: showSidebar ? "260px" : "90px",
