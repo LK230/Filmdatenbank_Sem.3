@@ -14,6 +14,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
@@ -23,6 +25,7 @@ import java.util.stream.IntStream;
 
 @Service
 public class ReviewService {
+
     @Autowired
     private ReviewRepository reviewRepository;
 
@@ -38,105 +41,70 @@ public class ReviewService {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+    private static final Logger logger = LoggerFactory.getLogger(ReviewService.class);
 
-    //method to create a new review
     public Review createReview(String reviewBody, String rating, String imdbId, String username) {
-
+        logger.info("Creating review for movie with ID: " + imdbId + " by user: " + username);
         try {
-            // Find the current user by their username
             Optional<User> currentUser = userRepository.findByUsernameIgnoreCase(username);
-
-            // Create the review and insert it into the review repository
             Review review = reviewRepository.insert(new Review(reviewBody, rating, imdbId, LocalDateTime.now(), LocalDateTime.now(), currentUser.get().getUsername()));
-
-            // Update the movie document in the database to include the new review ID
             mongoTemplate.update(Movie.class)
                     .matching(Criteria.where("imdbId").is(imdbId))
                     .apply(new Update()
                             .push("reviewIds").value(review)
                             .inc("reviews", 1))
                     .first();
-
-            // Add the review to the current user's list of reviews and save the user
             currentUser.get().getProfile().addReview(review);
             userRepository.save(currentUser.get());
             userProfileRepository.save(currentUser.get().getProfile());
             return review;
-
         } catch (NoSuchElementException e) {
-            // Handle the case where no user is found with the given username
-            System.out.println("No user or movie found with given username or id");
+            logger.error("No user or movie found with given username or id");
             return null;
         }
     }
 
-    //method to delete a review
     public boolean deleteReview(String id) {
-
-            try {
-
-                //Convert string review id to an ObjectId and search review by ID
-                ObjectId reviewId = new ObjectId(id);
-                Review review = reviewRepository.findById(reviewId).orElse(null);
-
-                //If review found delete it
-                if(review != null) {
-
-                    //Delete review from user and userprofile collection and save changed files to database
-                    User user = userRepository.findByUsernameIgnoreCase(review.getCreatedBy()).orElse(null);
-                    user.getProfile().getReviews().removeIf(reviewToRemove -> review.getId().equals((reviewId)));
-                    userRepository.save(user);
-                    userProfileRepository.save(user.getProfile());
-
-                    //Delete review from movie collection and save changed files to database
-                    Movie movie = movieRepository.findMovieByImdbId(review.getImdbId()).orElse(null);
-                    mongoTemplate.update(Movie.class)
-                            .matching(Criteria.where("imdbId").is(movie.getImdbId()))
-                            .apply(new Update()
-                                    .pull("reviewIds", review.getId())
-                                    .inc("reviews", -1))
-                            .first();
-
-                    //Delete review from review collection in database
-                    reviewRepository.delete(review);
-
-                    return true;
-                }
-
-            //Handle exception when review was not found
-            }catch(NullPointerException e) {
-                System.out.println("Review not found");
-                return false;
+        logger.info("Deleting review with ID: " + id);
+        try {
+            ObjectId reviewId = new ObjectId(id);
+            Review review = reviewRepository.findById(reviewId).orElse(null);
+            if(review != null) {
+                User user = userRepository.findByUsernameIgnoreCase(review.getCreatedBy()).orElse(null);
+                user.getProfile().getReviews().removeIf(reviewToRemove -> review.getId().equals((reviewId)));
+                userRepository.save(user);
+                userProfileRepository.save(user.getProfile());
+                Movie movie = movieRepository.findMovieByImdbId(review.getImdbId()).orElse(null);
+                mongoTemplate.update(Movie.class)
+                        .matching(Criteria.where("imdbId").is(movie.getImdbId()))
+                        .apply(new Update()
+                                .pull("reviewIds", review.getId())
+                                .inc("reviews", -1))
+                        .first();
+                reviewRepository.delete(review);
+                return true;
             }
-            //Handle exception when given string id could not be converted into ObjectID
-            catch(IllegalArgumentException e) {
-                System.out.println("Could not convert given string to objectID");
-                return false;
-            }
-
+        }catch(NullPointerException e) {
+            logger.error("Review not found");
+            return false;
+        }
+        catch(IllegalArgumentException e) {
+            logger.error("Could not convert given string to objectID");
+            return false;
+        }
         return false;
     }
 
-    //method to update an existing review
     public boolean updateReview(String id, String body, String rating) {
-
+        logger.info("Updating review with ID: " + id);
         try {
-            //Convert string review id to an ObjectId
             ObjectId reviewId = new ObjectId(id);
-
-            //Find review with given id
             Review review = reviewRepository.findById(reviewId).orElse(null);
-
-            //If review found set body, rating and updated to new values
             if(review != null) {
-
-                //Update review in reviews
                 review.setBody(body);
                 review.setRating(rating);
                 review.setUpdated(LocalDateTime.now());
                 reviewRepository.save(review);
-
-                // Update review in user profile
                 User user = userRepository.findByUsernameIgnoreCase(review.getCreatedBy()).orElse(null);
                 if (user != null) {
                     List<Review> reviews = user.getProfile().getReviews();
@@ -150,8 +118,6 @@ public class ReviewService {
                     userProfileRepository.save(user.getProfile());
                     userRepository.save(user);
                 }
-
-                // Update review in movie
                 Movie movie = movieRepository.findMovieByImdbId(review.getImdbId()).orElse(null);
                 if (movie != null) {
                     List<Review> reviews = movie.getReviewIds();
@@ -169,17 +135,14 @@ public class ReviewService {
                                 .first();
                     }
                 }
-
                 return true;
             }
             else {
                 return false;
             }
-        //Catch exception if given id string could not be converted into an objectid
         } catch(IllegalArgumentException e) {
-            System.out.println("Could not convert given string to objectID");
+            logger.error("Could not convert given string to objectID");
             return false;
         }
-
     }
 }
