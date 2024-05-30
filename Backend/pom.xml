@@ -60,8 +60,13 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+		<!-- Logback is a dependency for logging when using Spring Boot -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</dependency>
 
-    </dependencies>
+	</dependencies>
 
 	<build>
 		<plugins>
