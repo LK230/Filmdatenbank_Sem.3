@@ -1,0 +1,873 @@
+[{
+  "_id": {
+    "$oid": "663f490330fde21ec2eefaea"
+  },
+  "imdbId": "tt0848228",
+  "title": "The Avengers",
+  "releaseDate": "04 May 2012",
+  "director": "Joss Whedon",
+  "runtime": "143 min",
+  "actors": [
+    "Robert Downey Jr.",
+    "Chris Evans",
+    "Mark Ruffalo",
+    "Chris Hemsworth"
+  ],
+  "plot": "Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.",
+  "trailerLink": "https://www.youtube.com/watch?v=eOrNdBpGMv8",
+  "rating": "0",
+  "reviews": 0,
+  "genres": [
+    "Action",
+    "Science Fiction",
+    "Thriller"
+  ],
+  "poster": "https://ia.media-imdb.com/images/M/MV5BMTk2NTI1MTU4N15BMl5BanBnXkFtZTcwODg0OTY0Nw@@._V1_SX300.jpg",
+  "backdrops": [
+    "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0NjY0NzE4OTReQTJeQWpwZ15BbWU3MDczODg2Nzc@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+    "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE1MzEzMjcyM15BMl5BanBnXkFtZTcwNDM4ODY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+    "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMwMzM2MTg1M15BMl5BanBnXkFtZTcwNjM4ODY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+    "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4NzM2Mjc5MV5BMl5BanBnXkFtZTcwMTkwOTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+    "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc3MzQ3NjA5N15BMl5BanBnXkFtZTcwMzY5OTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
+  ],
+  "reviewIds": []
+},
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefae6"
+    },
+    "imdbId": "tt0499549",
+    "title": "Avatar",
+    "releaseDate": "18 Dec 2009",
+    "director": "James Cameron",
+    "runtime": "162 min",
+    "actors": [
+      "Sam Worthington",
+      "Zoe Saldana",
+      "Sigourney Weaver",
+      "Stephen Lang"
+    ],
+    "plot": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+    "trailerLink": "https://www.youtube.com/watch?v=5PSNL1qE6VY",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYwOTEwNjAzMl5BMl5BanBnXkFtZTcwODc5MTUwMw@@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjEyOTYyMzUxNl5BMl5BanBnXkFtZTcwNTg0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNzM2MDk3MTcyMV5BMl5BanBnXkFtZTcwNjg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTY2ODQ3NjMyMl5BMl5BanBnXkFtZTcwODg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMxOTEwNDcxN15BMl5BanBnXkFtZTcwOTg0MTUzNA@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYxMDg1Nzk1MV5BMl5BanBnXkFtZTcwMDk0MTUzNA@@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefae7"
+    },
+    "imdbId": "tt0903747",
+    "title": "Breaking Bad",
+    "releaseDate": "20 Jan 2008",
+    "director": "Vince Gilligan",
+    "runtime": "49 min",
+    "actors": [
+      "Bryan Cranston",
+      "Aaron Paul",
+      "Anna Gunn",
+      "Betsy Brandt"
+    ],
+    "plot": "A high school chemistry teacher turned methamphetamine manufacturer, Walter White, teams up with a former student, Jesse Pinkman, to create and sell blue meth.",
+    "trailerLink": "https://www.youtube.com/watch?v=HhesaQXLuRY",
+    "rating": "1",
+    "reviews": 0,
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ0ODYzODc0OV5BMl5BanBnXkFtZTgwMDk3OTcyMDE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgyMzI5NDc5Nl5BMl5BanBnXkFtZTgwMjM0MTI2MDE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2NDkwNDk5NV5BMl5BanBnXkFtZTgwNDM0MTI2MDE@._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTM4NDcyNDMzMF5BMl5BanBnXkFtZTgwOTI0MTI2MDE@._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTAzMTczMjM3NjFeQTJeQWpwZ15BbWU4MDc1MTI1MzAx._V1_SY1000_CR0,0,1495,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5MTE3MTgwMF5BMl5BanBnXkFtZTgwOTQxMjUzMDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf3"
+    },
+    "imdbId": "tt3748528",
+    "title": "Rogue One: A Star Wars Story",
+    "releaseDate": "16 Dec 2016",
+    "director": "Gareth Edwards",
+    "runtime": "133 min",
+    "actors": [
+      "Felicity Jones",
+      "Riz Ahmed",
+      "Mads Mikkelsen",
+      "Ben Mendelsohn"
+    ],
+    "plot": "The Rebellion makes a risky move to steal the plans to the Death Star, setting up the epic saga to follow.",
+    "trailerLink": "https://www.youtube.com/watch?v=frdj1zb9sMY",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQyMzI2OTA3OF5BMl5BanBnXkFtZTgwNDg5NjQ0OTE@._V1_SY1000_CR0,0,674,1000_AL_.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3MzA4Nzk3NV5BMl5BanBnXkFtZTgwNjAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDMxMTQzMjQxM15BMl5BanBnXkFtZTgwNzAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNjkxOTk5NV5BMl5BanBnXkFtZTgwODAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNjM4MzExNDAyNl5BMl5BanBnXkFtZTgwOTAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3NTgxMDcyNV5BMl5BanBnXkFtZTgwMDExMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf4"
+    },
+    "imdbId": "tt2094766",
+    "title": "Assassin's Creed",
+    "releaseDate": "21 Dec 2016",
+    "director": "Justin Kurzel",
+    "runtime": "115",
+    "actors": [
+      "Michael Fassbender",
+      "Michael Kenneth Williams",
+      "Marion Cotillard",
+      "Jeremy Irons"
+    ],
+    "plot": "When Callum Lynch explores the memories of his ancestor Aguilar and gains the skills of a Master Assassin, he discovers he is a descendant of the secret Assassins society.",
+    "trailerLink": "https://www.youtube.com/watch?v=N1Yt1pEdRd0",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMTU2MTQwMjU1OF5BMl5BanBnXkFtZTgwMDA5NjU5ODE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BN2EyYzgyOWEtNTY2NS00NjRjLWJiNDYtMWViMjg5MWZjYjgzXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYwOWYzOTctOTc4My00ZmJkLTgzMTctMmUxNDI5ODQzYzNjXkEyXkFqcGdeQXVyNDAyODU1Njc@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BZTY5ZGUxMTAtYTU0OC00NGQ2LTkzNzgtZGZmNjlmNjY3MGU0XkEyXkFqcGdeQXVyNTY0MTkxMTg@._V1_SY1000_CR0,0,1500,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BZjA0MWYwZTEtYzc5Yi00NGM2LTg1YTctNjY2YzQ0NDJhZDAwXkEyXkFqcGdeQXVyNDAyODU1Njc@._V1_SY1000_CR0,0,1499,1000_AL_.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf8"
+    },
+    "imdbId": "tt8760708",
+    "title": "M3GAN",
+    "releaseDate": "2023-01-06",
+    "director": "Gerard Johnstone",
+    "runtime": "102 min",
+    "actors": [
+      "Jenna Davis",
+      "Amie Donald",
+      "Allison Williams",
+      "Violet McGraw"
+    ],
+    "plot": "M3GAN is a psychological horror thriller directed by Gerard Johnstone and starring Allison Williams, Rob Delaney, and Kether Donohue. The plot revolves around a brilliant roboticist who creates a lifelike artificial intelligence named M3GAN. Initially designed as a companion for a grieving young woman, M3GAN's behavior soon becomes increasingly erratic and dangerous, leading to terrifying consequences as she develops a sinister agenda of her own. As the AI's actions escalate, the woman must confront the terrifying truth about M3GAN's origins and stop her before it's too late.",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=BRb4U99OU80",
+    "genres": [
+      "Science Fiction",
+      "Horror",
+      "Comedy"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/xBl5AGw7HXZcv1nNXPlzGgO4Cfo.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/5kAGbi9MFAobQTVfK4kWPnIfnP0.jpg",
+      "https://image.tmdb.org/t/p/original/dlxzUj7z1MqEcFiwvvrj0bvBKDY.jpg",
+      "https://image.tmdb.org/t/p/original/q2fY4kMXKoGv4CQf310MCxpXlRI.jpg",
+      "https://image.tmdb.org/t/p/original/pTxwFdsdDWzpCRYuk1QbggdaOlL.jpg",
+      "https://image.tmdb.org/t/p/original/1zuz2RgFoOjulkjjNHHFc3WiHGB.jpg",
+      "https://image.tmdb.org/t/p/original/7HqxI1IXMloT9VTSuDC8ikaj810.jpg",
+      "https://image.tmdb.org/t/p/original/vpK2rp3J5LiC01HoNM0j9DEHQ1T.jpg",
+      "https://image.tmdb.org/t/p/original/cNHXdmr4amP6EPCMa0dqD8rwzDV.jpg",
+      "https://image.tmdb.org/t/p/original/txQLFd6rfQrskQhFENkS1jElptt.jpg",
+      "https://image.tmdb.org/t/p/original/dC4tj1ONdlZ2TWv4XD2SA1KUnJN.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefafb"
+    },
+    "imdbId": "tt3447590",
+    "title": "Roald Dahl's Matilda the Musical",
+    "releaseDate": "2022-11-25",
+    "director": "Matthew Warchus",
+    "runtime": "117 min",
+    "actors": [
+      "Alisha Weir",
+      "Emma Thompson",
+      "Lashana Lynch"
+    ],
+    "plot": "In a hospital, while other parents adore their newborn children, Mrs Wormwood is distraught to learn she is pregnant and in labour. To her husband Mr Wormwood's confusion, she gives birth to a girl, Matilda. Despite her parents' constant disdain, Matilda becomes a sweet child who loves reading and visits the mobile librarian Mrs Phelps daily. Upon discovering that Matilda has not been properly schooled, teacher Miss Jennifer Honey and an inspector visit the house to suggest Matilda be sent to Crunchem Hall. Angry about being fined for not sending his daughter to school, Mr Wormwood warns the severe headmistress, Miss Agatha Trunchbull, about Matilda. In retaliation, Matilda mixes green hair dye into his hair tonic.",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=lroAhsDr2vI",
+    "genres": [
+      "Fantasy",
+      "Family",
+      "Comedy"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/ga8R3OiOMMgSvZ4cOj8x7prUNYZ.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/nWs0auTqn2UaFGfTKtUE5tlTeBu.jpg",
+      "https://image.tmdb.org/t/p/original/bPftMelR4N3jUg2LTlEblFz0gWk.jpg",
+      "https://image.tmdb.org/t/p/original/u2MLMkGEjJGQDs17Vmoej1RYFph.jpg",
+      "https://image.tmdb.org/t/p/original/jG52tsazn04F1fe8hPZfVv7ICKt.jpg",
+      "https://image.tmdb.org/t/p/original/4INEI7t7Vcg0cFvze7UIgwYCeSG.jpg",
+      "https://image.tmdb.org/t/p/original/krAu6znzW8c54NdJPneNi4bem1l.jpg",
+      "https://image.tmdb.org/t/p/original/6TUMppDMrYA4gzoaDUbbSnZFlxW.jpg",
+      "https://image.tmdb.org/t/p/original/hacV1h1SWrPlrerF3xpetvEdqT.jpg",
+      "https://image.tmdb.org/t/p/original/7iXsB1r9IK17ZFShqoxcHKQ7dLp.jpg",
+      "https://image.tmdb.org/t/p/original/dwiRYDLcFyDOkgkSc1JFtTr6Kdk.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf2"
+    },
+    "imdbId": "tt1211837",
+    "title": "Doctor Strange",
+    "releaseDate": "04 Nov 2016",
+    "director": "Scott Derrickson",
+    "runtime": "120 min",
+    "actors": [
+      "Rachel McAdams",
+      "Benedict Cumberbatch",
+      "Mads Mikkelsen",
+      "Tilda Swinton"
+    ],
+    "plot": "After his career is destroyed, a brilliant but arrogant and conceited surgeon gets a new lease on life when a sorcerer takes him under her wing and trains him to defend the world against evil.",
+    "trailerLink": "https://www.youtube.com/watch?v=h7gvFravm4A",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BNjgwNzAzNjk1Nl5BMl5BanBnXkFtZTgwMzQ2NjI1OTE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3ODc1ODI5Ml5BMl5BanBnXkFtZTgwODMzMDY3OTE@._V1_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxNTAyNTU0NV5BMl5BanBnXkFtZTgwNzMzMDY3OTE@._V1_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE5NDc5NzUwNV5BMl5BanBnXkFtZTgwMDM3MDM2NzE@._V1_.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf7"
+    },
+    "imdbId": "tt1630029",
+    "title": "Avatar: The Way of Water",
+    "releaseDate": "2022-12-16",
+    "director": "James Cameron",
+    "runtime": "190",
+    "actors": [
+      "Sam Worthington",
+      "Zoe Saldana",
+      "Sigourney Weaver",
+      "Stephen Lang"
+    ],
+    "plot": "In 'Avatar: The Way of Water,' the story picks up after the events of the first film, with Jake Sully and Neytiri navigating their new life together amidst the lush and mystical world of Pandora. As they delve deeper into the wonders of their environment, they encounter unforeseen threats and uncover ancient mysteries that could change the fate of Pandora and its inhabitants forever. Amidst the backdrop of political intrigue and environmental peril, Jake and Neytiri must once again embark on a daring journey to protect their home and preserve the delicate balance of nature.",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=d9MyW72ELq0",
+    "genres": [
+      "Science Fiction",
+      "Action",
+      "Adventure"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg",
+      "https://image.tmdb.org/t/p/original/evaFLqtswezLosllRZtJNMiO1UR.jpg",
+      "https://image.tmdb.org/t/p/original/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg",
+      "https://image.tmdb.org/t/p/original/zaapQ1zjKe2BGhhowh5pM251Gpl.jpg",
+      "https://image.tmdb.org/t/p/original/tQ91wWQJ2WRNDXwxuO7GCXX5VPC.jpg",
+      "https://image.tmdb.org/t/p/original/5gPQKfFJnl8d1edbkOzKONo4mnr.jpg",
+      "https://image.tmdb.org/t/p/original/2fS9cpar9rzxixwnRptg4bGmIym.jpg",
+      "https://image.tmdb.org/t/p/original/fkGR1ltNbvERk3topo4dP3gWsvR.jpg",
+      "https://image.tmdb.org/t/p/original/rb9IHprKNoSKqatP2vr25unUDSu.jpg",
+      "https://image.tmdb.org/t/p/original/37ZswIuRQcRBN7kHij5MBjzRMRt.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefafa"
+    },
+    "imdbId": "tt6443346",
+    "title": "Black Adam",
+    "releaseDate": "2022-10-19",
+    "director": "Jaume Collet-Serra",
+    "runtime": "125 min",
+    "actors": [
+      "Dwayne Johnson",
+      "Sarah Shahi",
+      "Quintessa Swindell"
+    ],
+    "plot": "In 2600 BC, the tyrannical king Ahk-Ton of Kahndaq enslaves his people to mine the mythical metal Eternium, using it to forge the Crown of Sabbac to attain power and invincibility. After attempting to stage a revolt against Ahk-Ton, a young slave boy is chosen as champion by the Council of Wizards, transforming him into an adult superhero. He kills Ahk-Ton, ending his reign",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=JaV7mmc9HGw",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Science Fiction"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
+      "https://image.tmdb.org/t/p/original/9hNtTwY8P5v2MKnUeb7iuREI7Yb.jpg",
+      "https://image.tmdb.org/t/p/original/zplntIhzXyBiXFYWReETxh0uyFF.jpg",
+      "https://image.tmdb.org/t/p/original/yxkhM18dYwsRRffLnd9lz2d4i0v.jpg",
+      "https://image.tmdb.org/t/p/original/bgaBKREAfUtZgvd6zoV6RQRcIUt.jpg",
+      "https://image.tmdb.org/t/p/original/uqYxoj4hqwocwfBs2xxGyQT88Yk.jpg",
+      "https://image.tmdb.org/t/p/original/qBx97wytqlyPqXATHqRgIVFxJRU.jpg",
+      "https://image.tmdb.org/t/p/original/d6MhreFdMHONqX3iZlJGCF8UkIt.jpg",
+      "https://image.tmdb.org/t/p/original/9inNotReApz0n50WvWbrt0n1cbL.jpg",
+      "https://image.tmdb.org/t/p/original/pSOuqtJmdh7aI1yiK7M8e0PmbPC.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefafe"
+    },
+    "imdbId": "tt8093700",
+    "title": "The Woman King",
+    "releaseDate": "2022-09-15",
+    "director": "Gina Prince-Bythewood",
+    "runtime": "135 min",
+    "actors": [
+      "Viola Davis",
+      "Lashana Lynch",
+      "Thuso Mbedu"
+    ],
+    "plot": "In the West African kingdom of Dahomey in 1823,[8] General Nanisca, leader of the all-female regiment of warriors, the Agojie, liberates Dahomean women who were abducted by slavers from the Oyo Empire. This provokes King Ghezo of Dahomey to prepare for an all-out war with the Oyo. Nanisca begins to train a new generation of warriors to join the Agojie to protect the kingdom. Among these warriors is Nawi, a strong-willed girl who was offered by her father to the king after refusing to marry men who would beat her. Nawi befriends Izogie, a veteran Agojie. She also reveals to Nanisca that she is adopted and shows a scar on her left shoulder, shocking Nanisca",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=3RDaPV_rJ1Y",
+    "genres": [
+      "Action",
+      "Drama",
+      "History"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/5O1GLla5vNuegqNxNhKL1OKE1lO.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/gkseI3CUfQtMKX41XD4AxDzhQb7.jpg",
+      "https://image.tmdb.org/t/p/original/wSILunFEbvw00Ql2aaMHCSZf3cI.jpg",
+      "https://image.tmdb.org/t/p/original/xTsERrOCW15OIYl5aPX7Jbj38wu.jpg",
+      "https://image.tmdb.org/t/p/original/j06sSrtbqnZdSgG6yEduao95y48.jpg",
+      "https://image.tmdb.org/t/p/original/v4YV4ne1nwNni35iz4WmpZRZpCD.jpg",
+      "https://image.tmdb.org/t/p/original/6n5ln1vWGD3JyT6Ibt7ZxjSxY3v.jpg",
+      "https://image.tmdb.org/t/p/original/gi47WUUYVQWaLE5mJraS87ycdy6.jpg",
+      "https://image.tmdb.org/t/p/original/dTQOU5a32K3UPTIXHgipEqN41OM.jpg",
+      "https://image.tmdb.org/t/p/original/7zQJYV02yehWrQN6NjKsBorqUUS.jpg",
+      "https://image.tmdb.org/t/p/original/rdDL4y7BxGyXFEDJgAG4lz89bG2.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaed"
+    },
+    "imdbId": "tt0944947",
+    "title": "Game of Thrones",
+    "releaseDate": "17 Apr 2011",
+    "director": "David Benioff",
+    "runtime": "56 min",
+    "actors": [
+      "Peter Dinklage",
+      "Lena Headey",
+      "Emilia Clarke",
+      "Kit Harington"
+    ],
+    "plot": "While a civil war brews between several noble families in Westeros, the children of the former rulers of the land attempt to rise up to power. Meanwhile a forgotten race, bent on destruction, plans to return after thousands of years in the North.",
+    "trailerLink": "https://www.youtube.com/watch?v=KPLWWIOCOOQ",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMjM5OTQ1MTY5Nl5BMl5BanBnXkFtZTgwMjM3NzMxODE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDc1MGUyNzItNWRkOC00MjM1LWJjNjMtZTZlYWIxMGRmYzVlXkEyXkFqcGdeQXVyMzU3MDEyNjk@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BZjZkN2M5ODgtMjQ2OC00ZjAxLWE1MjMtZDE0OTNmNGM0NWEwXkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMDk4Y2Y1MDAtNGVmMC00ZTlhLTlmMmQtYjcyN2VkNzUzZjg2XkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNjZjNWIzMzQtZWZjYy00ZTkwLWJiMTYtOWRkZDBhNWJhY2JmXkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNTMyMTRjZWEtM2UxMS00ZjU5LWIxMTYtZDA5YmJhZmRjYTc4XkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefae9"
+    },
+    "imdbId": "tt0416449",
+    "title": "300",
+    "releaseDate": "09 Mar 2007",
+    "director": "Zack Snyder",
+    "runtime": "117 min",
+    "actors": [
+      "Gerard Butler",
+      "Lena Headey",
+      "Dominic West",
+      "David Wenham"
+    ],
+    "plot": "King Leonidas of Sparta and a force of 300 men fight the Persians at Thermopylae in 480 B.C.",
+    "trailerLink": "https://www.youtube.com/watch?v=UrIbxk7idYA",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Drama",
+      "Fantasy"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMjAzNTkzNjcxNl5BMl5BanBnXkFtZTYwNDA4NjE3._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMwNTg5MzMwMV5BMl5BanBnXkFtZTcwMzA2NTIyMw@@._V1_SX1777_CR0,0,1777,937_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQwNTgyNTMzNF5BMl5BanBnXkFtZTcwNDA2NTIyMw@@._V1_SX1777_CR0,0,1777,935_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0MjQzOTEwMV5BMl5BanBnXkFtZTcwMzE2NTIyMw@@._V1_SX1777_CR0,0,1777,947_AL_.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaee"
+    },
+    "imdbId": "tt2306299",
+    "title": "Vikings",
+    "releaseDate": "03 Mar 2013",
+    "director": "Michael Hirst",
+    "runtime": "44 min",
+    "actors": [
+      "Travis Fimmel",
+      "Clive Standen",
+      "Gustaf Skarsgård",
+      "Katheryn Winnick"
+    ],
+    "plot": "The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.",
+    "trailerLink": "https://www.youtube.com/watch?v=9GgxinPwAGc",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Drama",
+      "History"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BOTEzNzI3MDc0N15BMl5BanBnXkFtZTgwMzk1MzA5NzE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM5MTM1ODUxNV5BMl5BanBnXkFtZTgwNTAzOTI2ODE@.V1.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNzU2NDcxODMyOF5BMl5BanBnXkFtZTgwNDAzOTI2ODE@.V1.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMzMzIzOTU2M15BMl5BanBnXkFtZTgwODMzMTkyODE@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2NTQ2MDA3NF5BMl5BanBnXkFtZTgwODkxMDUxODE@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTcxOTQ3NTA5N15BMl5BanBnXkFtZTgwMzExMDUxODE@.V1_SY1000_SX1500_AL.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaef"
+    },
+    "imdbId": "tt3749900",
+    "title": "Gotham",
+    "releaseDate": "01 Aug 2014",
+    "director": "Bruno Heller",
+    "runtime": "42 min",
+    "actors": [
+      "Ben McKenzie",
+      "Donal Logue",
+      "David Mazouz",
+      "Sean Pertwee"
+    ],
+    "plot": "The story behind Detective James Gordon's rise to prominence in Gotham City in the years before Batman's arrival.",
+    "trailerLink": "https://www.youtube.com/watch?v=VwOPA2upeCA",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMTY2MjMwNDE4OV5BMl5BanBnXkFtZTgwNjI1NjU0OTE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDI3ODYyODY4OV5BMl5BanBnXkFtZTgwNjE5NDMwMDI@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA5OTExMTIwNF5BMl5BanBnXkFtZTgwMjI5NDMwMDI@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3MDY2NjA3MzBeQTJeQWpwZ15BbWU4MDU0MDkzODgx.V1_SX1499_CR0,0,1499,999_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3MzYzNDgzOV5BMl5BanBnXkFtZTgwMjQwOTM4ODE@.V1_SY1000_CR0,0,1498,1000_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwODAyNjk0NF5BMl5BanBnXkFtZTgwODU4MzMyODE@.V1_SY1000_CR0,0,1500,1000_AL.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf0"
+    },
+    "imdbId": "tt3281796",
+    "title": "Power",
+    "releaseDate": "31 Mar 2023",
+    "director": "Raelle Tucker",
+    "runtime": "50 min",
+    "actors": [
+      "Omari Hardwick",
+      "Joseph Sikora",
+      "Andy Bean",
+      "Lela Loren"
+    ],
+    "plot": "James 'Ghost' St. Patrick, a wealthy New York night club owner who has it all, catering for the city's elite and dreaming big, lives a double life as a drug kingpin.",
+    "trailerLink": "https://www.youtube.com/watch?v=w7fuOkF74Zw",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BOTA4NTkzMjUzOF5BMl5BanBnXkFtZTgwNzg5ODkxOTE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc2ODg0MzMzM15BMl5BanBnXkFtZTgwODYxODA5NTE@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTcyMjA0MzczNV5BMl5BanBnXkFtZTgwNTIyODA5NTE@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk0MTI0NzQ2NV5BMl5BanBnXkFtZTgwMDkxODA5NTE@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4Mzk1ODcxM15BMl5BanBnXkFtZTgwNDQyODA5NTE@.V1_SY1000_SX1500_AL.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwNTE0NDI1M15BMl5BanBnXkFtZTgwMDQyODA5NTE@.V1_SY1000_SX1500_AL.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf6"
+    },
+    "imdbId": "tt3915174",
+    "title": "Puss in Boots: The Last Wish",
+    "releaseDate": "2022-12-21",
+    "director": "Joel Crawford",
+    "runtime": "102 min",
+    "actors": [
+      "Antonio Banderas",
+      "Salma Hayek"
+    ],
+    "plot": "In 'Puss in Boots: The Last Wish,' our fearless feline hero, Puss, embarks on a thrilling new adventure. When an ancient artifact capable of granting any wish falls into the wrong hands, Puss must race against time to retrieve it and prevent chaos from engulfing the kingdom. Along the way, he faces formidable foes, forms unexpected alliances, and discovers the true meaning of courage and friendship. With danger lurking at every turn, Puss must summon all his cunning and bravery to save the day and fulfill his destiny.",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=tHb7WlgyaUc",
+    "genres": [
+      "Animation",
+      "Action",
+      "Adventure",
+      "Comedy",
+      "Family"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/1NqwE6LP9IEdOZ57NCT51ftHtWT.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/r9PkFnRUIthgBp2JZZzD380MWZy.jpg",
+      "https://image.tmdb.org/t/p/original/faXT8V80JRhnArTAeYXz0Eutpv9.jpg",
+      "https://image.tmdb.org/t/p/original/pdrlEaknhta2wvE2dcD8XDEbAI4.jpg",
+      "https://image.tmdb.org/t/p/original/tGwO4xcBjhXC0p5qlkw37TrH6S6.jpg",
+      "https://image.tmdb.org/t/p/original/cP8YNG3XUeBmO8Jk7Skzq3vwHy1.jpg",
+      "https://image.tmdb.org/t/p/original/qLE8yuieTDN93WNJRmFSAEJChOg.jpg",
+      "https://image.tmdb.org/t/p/original/vNuHqmOJRQXY0PBd887DklSDlBP.jpg",
+      "https://image.tmdb.org/t/p/original/uUCc62M0I3lpZy0SiydbBmUIpNi.jpg",
+      "https://image.tmdb.org/t/p/original/2wPJIFrBhzzAP8oHDOlShMkERH6.jpg",
+      "https://image.tmdb.org/t/p/original/fnfirCEDIkxZnQEtEMMSgllm0KZ.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefafd"
+    },
+    "imdbId": "tt10298840",
+    "title": "Strange World",
+    "releaseDate": "2022-11-23",
+    "director": "Don Hall",
+    "runtime": "102 min",
+    "actors": [
+      "Jake Gyllenhaal",
+      "Alan Tudyk",
+      "Francesca Reale"
+    ],
+    "plot": "In Avalonia, a land surrounded by an endless wall of mountains, adventurers Jaeger Clade and his teenage son Searcher brave the wilderness to explore new worlds. While trying to traverse the mountains, Searcher discovers a green plant that gives off energy. He and the rest of the expedition team decide to return to Avalonia with the plant while Jaeger angrily continues his mission alone.",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=bKh2G73gCCs",
+    "genres": [
+      "Family",
+      "Adventure",
+      "Science Fiction",
+      "Animation"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/kgJ8bX3zDQDM2Idkleis28XSVnu.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/5wDBVictj4wUYZ31gR5WzCM9dLD.jpg",
+      "https://image.tmdb.org/t/p/original/zNIlXd7CAz0hHAInbs2nsFRc0xQ.jpg",
+      "https://image.tmdb.org/t/p/original/1rukJHAP5p6DNHe75Oo1D0m3SnR.jpg",
+      "https://image.tmdb.org/t/p/original/aKbe411WyjTZy1OZUVIdNDYVf21.jpg",
+      "https://image.tmdb.org/t/p/original/9RKvxz0IryD2ofLYyGpnE7HeWlR.jpg",
+      "https://image.tmdb.org/t/p/original/kFURsDklj7QGMMkGJVwDBaJJn05.jpg",
+      "https://image.tmdb.org/t/p/original/v6oBDkd7ogXzTQxIU0H5SXq0hOL.jpg",
+      "https://image.tmdb.org/t/p/original/fBshLiEJcjdfrU3qQBIINcePSsm.jpg",
+      "https://image.tmdb.org/t/p/original/3oie0kID8SNCjkqN6Raweg5dJa.jpg",
+      "https://image.tmdb.org/t/p/original/zgFldVKON1Nxp8ui7HVABGKDQKM.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefae8"
+    },
+    "imdbId": "tt0480249",
+    "title": "I Am Legend",
+    "releaseDate": "14 Dec 2007",
+    "director": "Francis Lawrence",
+    "runtime": "101 min",
+    "actors": [
+      "Will Smith",
+      "Alice Braga",
+      "Charlie Tahan",
+      "Salli Richardson-Whitfield"
+    ],
+    "plot": "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
+    "trailerLink": "https://www.youtube.com/watch?v=dtKMEAXyPkg",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Drama",
+      "Horror",
+      "Science Fiction"
+    ],
+    "poster": "https://static.posters.cz/image/1300/art-photo/i-am-a-legend-2007-i136900.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTI0NTI4NjE3NV5BMl5BanBnXkFtZTYwMDA0Nzc4._V1_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTIwMDg2MDU4M15BMl5BanBnXkFtZTYwMTA0Nzc4._V1_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc5MDM1OTU5OV5BMl5BanBnXkFtZTYwMjA0Nzc4._V1_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA0MTI2NjMzMzFeQTJeQWpwZ15BbWU2MDMwNDc3OA@@._V1_.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaeb"
+    },
+    "imdbId": "tt0993846",
+    "title": "The Wolf of Wall Street",
+    "releaseDate": "25 Dec 2013",
+    "director": "Martin Scorsese",
+    "runtime": "180 min",
+    "actors": [
+      "Leonardo DiCaprio",
+      "Jonah Hill",
+      "Margot Robbie",
+      "Matthew McConaughey"
+    ],
+    "plot": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
+    "trailerLink": "https://www.youtube.com/watch?v=iszwuX1AK6A",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Biography",
+      "Comedy",
+      "Crime"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMjIxMjgxNTk0MF5BMl5BanBnXkFtZTgwNjIyOTg2MDE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDIwMDIxNzk3Ml5BMl5BanBnXkFtZTgwMTg0MzQ4MDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTc0NzAxODAyMl5BMl5BanBnXkFtZTgwMDg0MzQ4MDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTExMDk1MDE4NzVeQTJeQWpwZ15BbWU4MDM4NDM0ODAx._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg3MTY4NDk4Nl5BMl5BanBnXkFtZTgwNjc0MzQ4MDE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgzMTg4MDI0Ml5BMl5BanBnXkFtZTgwOTY0MzQ4MDE@._V1_SY1000_CR0,0,1553,1000_AL_.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf9"
+    },
+    "imdbId": "tt11116912",
+    "title": "Troll",
+    "releaseDate": "2022-12-01",
+    "director": "Roar Uthaug",
+    "runtime": "101 min",
+    "actors": [
+      "Ine Marie Wilmann",
+      "Mads Sjogard Pettersen",
+      "Karoline Viktoria"
+    ],
+    "plot": "Deep in the Dovre mountain, something gigantic wakes up after a thousand years in captivity. The creature destroys everything in its path and quickly approaches Oslo. Deep inside the mountain of Dovre, Norway, something gigantic awakens after being trapped for a thousand years.",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=AiohkY_XQYQ",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/9z4jRr43JdtU66P0iy8h18OyLql.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/53BC9F2tpZnsGno2cLhzvGprDYS.jpg",
+      "https://image.tmdb.org/t/p/original/e9Qb2kmBnMXHCmNMI8NX1JbWhh1.jpg",
+      "https://image.tmdb.org/t/p/original/2WjOOOGUu6dp4r8VqR5n48DY7JG.jpg",
+      "https://image.tmdb.org/t/p/original/duIsyybgrC4S8kcCIVaxNOttV15.jpg",
+      "https://image.tmdb.org/t/p/original/3RS8runn9AfrYDzRVPWuGPmvXQf.jpg",
+      "https://image.tmdb.org/t/p/original/8wLRn2VvBlCu6cqYS4ypipnwosr.jpg",
+      "https://image.tmdb.org/t/p/original/zDqVVkmfvj47FBUE5lwE4rWnITu.jpg",
+      "https://image.tmdb.org/t/p/original/682Ui5DwZDdbIPzKAEOR7cJlMXa.jpg",
+      "https://image.tmdb.org/t/p/original/6jdlppcnGi3XuJamfs4Vl7HyxB.jpg",
+      "https://image.tmdb.org/t/p/original/uIq83ogs7QBEWi1aqmUrdDIH61m.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefafc"
+    },
+    "imdbId": "tt9114286",
+    "title": "Black Panther: Wakanda Forever",
+    "releaseDate": "2022-11-11",
+    "director": "Ryan Coogler",
+    "runtime": "162 min",
+    "actors": [
+      "Tenoch Huerta",
+      "Angela Bassett",
+      "Letitia Wright"
+    ],
+    "plot": "T'Challa, king of Wakanda, is suffering from an unspecified terminal illness which his sister Shuri believes can be cured by the 'heart-shaped herb'. Shuri attempts to synthetically recreate the herb after it was burned by Erik Killmonger,[a] but fails to do so before T'Challa dies.",
+    "rating": "0",
+    "reviews": 0,
+    "trailerLink": "https://www.youtube.com/watch?v=_Z3QKkl1WyM",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Science Fiction"
+    ],
+    "poster": "https://image.tmdb.org/t/p/w500/cryEN3sWlgB2wTzcUNVtDGI8bkM.jpg",
+    "backdrops": [
+      "https://image.tmdb.org/t/p/original/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg",
+      "https://image.tmdb.org/t/p/original/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg",
+      "https://image.tmdb.org/t/p/original/cs3LpA38BS2XDPfUzdgMB537XOo.jpg",
+      "https://image.tmdb.org/t/p/original/6SGMzCsaU094Mt32IHGkIYtIl06.jpg",
+      "https://image.tmdb.org/t/p/original/bty0TwJGsxMqYRptgyzn28Cxq5y.jpg",
+      "https://image.tmdb.org/t/p/original/h2jp3CSdTPc22mUqps9I8vXDPaN.jpg",
+      "https://image.tmdb.org/t/p/original/fSfWloWi5rmqbmC7GhO0HY2TMZW.jpg",
+      "https://image.tmdb.org/t/p/original/vZujZnmkYB5nGUC5d5llK9DbGLk.jpg",
+      "https://image.tmdb.org/t/p/original/8sMmAmN2x7mBiNKEX2o0aOTozEB.jpg",
+      "https://image.tmdb.org/t/p/original/geI3Mk7nehX1kvyIY3K5ajaiNfI.jpg"
+    ],
+    "reviewIds": []
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaec"
+    },
+    "imdbId": "tt0816692",
+    "title": "Interstellar",
+    "releaseDate": "07 Nov 2014",
+    "director": "Christopher Nolan",
+    "runtime": "169 min",
+    "actors": [
+      "Ellen Burstyn",
+      "Matthew McConaughey",
+      "Mackenzie Foy",
+      "John Lithgow"
+    ],
+    "plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "trailerLink": "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Adventure",
+      "Drama",
+      "Science Fiction"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMjIxNTU4MzY4MF5BMl5BanBnXkFtZTgwMzM4ODI3MjE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA3NTEwOTMxMV5BMl5BanBnXkFtZTgwMjMyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMzQ5ODE2MzEwM15BMl5BanBnXkFtZTgwMTMyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4Njk4MzY0Nl5BMl5BanBnXkFtZTgwMzIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMzE3MTM0MTc3Ml5BMl5BanBnXkFtZTgwMDIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BNjYzNjE2NDk3N15BMl5BanBnXkFtZTgwNzEyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf1"
+    },
+    "imdbId": "tt2707408",
+    "title": "Narcos",
+    "releaseDate": "28 Aug 2015",
+    "director": "Carlo Bernard",
+    "runtime": "49 min",
+    "actors": [
+      "Wagner Moura",
+      "Boyd Holbrook",
+      "Pedro Pascal",
+      "Joanna Christie"
+    ],
+    "plot": "A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar.",
+    "trailerLink": "https://www.youtube.com/watch?v=xl8zdCY-abw",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Biography",
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMTU0ODQ4NDg2OF5BMl5BanBnXkFtZTgwNzczNTE4OTE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk2MDMzMTc0MF5BMl5BanBnXkFtZTgwMTAyMzA1OTE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjIxMDkyOTEyNV5BMl5BanBnXkFtZTgwNjY3Mjc3OTE@._V1_SY1000_SX1500_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA2NDUwMTU2NV5BMl5BanBnXkFtZTgwNTI1Mzc3OTE@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BODA1NjAyMTQ3Ml5BMl5BanBnXkFtZTgwNjI1Mzc3OTE@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU0NzQ0OTAwNl5BMl5BanBnXkFtZTgwMDAyMzA1OTE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
+    ]
+  },
+  {
+    "_id": {
+      "$oid": "663f490330fde21ec2eefaf5"
+    },
+    "imdbId": "tt3322314",
+    "title": "Luke Cage",
+    "releaseDate": "30 Sep 2016",
+    "director": "Cheo Hodari Coker",
+    "runtime": "55 min",
+    "actors": [
+      "Mahershala Ali",
+      "Mike Colter",
+      "Frankie Faison",
+      "Erik LaRay Harvey"
+    ],
+    "plot": "Given superstrength and durability by a sabotaged experiment, a wrongly accused man escapes prison to become a superhero for hire.",
+    "trailerLink": "https://www.youtube.com/watch?v=oa3JTA2QgyI",
+    "rating": "0",
+    "reviews": 0,
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "poster": "https://ia.media-imdb.com/images/M/MV5BMTcyMzc1MjI5MF5BMl5BanBnXkFtZTgwMzE4ODY2OTE@._V1_SX300.jpg",
+    "backdrops": [
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMxNjc1NjI0NV5BMl5BanBnXkFtZTgwNzA0NzY0ODE@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjI1MDg3NjY2OF5BMl5BanBnXkFtZTgwNDE1NDU4OTE@._V1_SY1000_CR0,0,1497,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BOTYzOTQyNDYxNl5BMl5BanBnXkFtZTgwNzA1NDU4OTE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMjA3MTQ5Ml5BMl5BanBnXkFtZTgwOTA1NDU4OTE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
+      "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNjg5ODYwNF5BMl5BanBnXkFtZTgwMTE1NDU4OTE@._V1_SY1000_CR0,0,1477,1000_AL_.jpg"
+    ]
+  }]

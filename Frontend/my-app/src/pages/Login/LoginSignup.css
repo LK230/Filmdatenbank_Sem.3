@@ -1,0 +1,94 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin: 70px 0 40px 0;
+}
+
+.tab {
+  font-family: Inter, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  color: #acacac;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.tab.active {
+  color: #fff;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 45vh;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-container {
+  border: 1px solid #fff;
+  border-radius: 23px;
+  box-shadow: 4px 6px 3px 0px rgba(34, 34, 34, 0.25);
+  padding: 20px;
+  width: 550px;
+  height: 70vh;
+}
+
+.form-content {
+  margin: 0 35px;
+}
+
+.header {
+  color: #fff;
+  font-family: Inter, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.form-group {
+  margin-bottom: 40px;
+}
+
+.name-fields {
+  display: flex;
+  justify-content: space-between;
+  gap: 13px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: none;
+  font-size: 16px;
+}
+
+.name-fields .input-field {
+  width: 48%;
+}
+
+.form-button {
+  display: flex;
+  justify-content: end;
+}

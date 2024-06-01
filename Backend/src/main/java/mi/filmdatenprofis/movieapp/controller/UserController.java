@@ -1,6 +1,5 @@
 package mi.filmdatenprofis.movieapp.controller;
 
-
 import mi.filmdatenprofis.movieapp.model.User;
 import mi.filmdatenprofis.movieapp.model.UserProfile;
 import mi.filmdatenprofis.movieapp.service.UserService;
@@ -8,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Optional;
 
 @RestController
@@ -17,29 +19,28 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // Endpoint to create a new user. JSON Body includes name, surname, username and email
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @PostMapping("/create")
     public ResponseEntity<String> createUser(@RequestBody User user) {
-
-        // Check if the provided email or username is already taken
+        logger.info("Creating user with email: " + user.getEmail());
         if (userService.isEmailAlreadyTaken(user.getEmail()) || userService.isUsernameAlreadyTaken(user.getUsername())) {
             return new ResponseEntity<>("The entered e-mail address or username is already taken", HttpStatus.BAD_REQUEST);
         }
 
-        // Create the user if email and username are not already taken
+        if(!userService.isValidEmail(user.getEmail())) {
+            return new ResponseEntity<>("The entered e-mail address is not valid", HttpStatus.BAD_REQUEST);
+        }
+
         userService.createUser(user);
         return new ResponseEntity<>("User was created successfully!", HttpStatus.CREATED);
-
     }
 
-    // Endpoint to handle login
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestParam String email, @RequestParam String password) {
-
-        // Authenticate user credentials
+        logger.info("User login attempt with email: " + email);
         boolean isAuthenticated = userService.authenticateUser(email, password);
 
-        // Return response based on authentication result
         if (isAuthenticated) {
             return new ResponseEntity<>("Login successfully!", HttpStatus.OK);
         } else {
@@ -47,35 +48,76 @@ public class UserController {
         }
     }
 
-    // Endpoint to get user profile by username
     @GetMapping("/{username}")
-    public ResponseEntity<Optional<UserProfile>> getUserProfile(@RequestParam String username) {
-        return new ResponseEntity<Optional<UserProfile>>(userService.userProfile(username), HttpStatus.OK);
+    public ResponseEntity<?> getUserProfile(@RequestParam String username,
+                                            @RequestParam String email,
+                                            @RequestParam String password) {
+        logger.info("Getting user profile for username: " + username);
+        if(userService.authenticateUser(email, password)) {
+            return new ResponseEntity<Optional<UserProfile>>(userService.userProfile(username), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<String>("Failed to load profile", HttpStatus.NOT_FOUND);
+        }
     }
 
-    // Endpoint to add a movie to a users favorites
     @PostMapping("/favorites/add")
     public ResponseEntity<?> addToFavorites(@RequestParam String username, @RequestParam String imdbId) {
-
-        //Adds the movie with the given imdbId to favorites list
+        logger.info("Adding movie with ID: " + imdbId + " to favorites for user: " + username);
         if (userService.addFavorites(username, imdbId)) {
             return new ResponseEntity<>("Movie added to favorites successfully", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Error: Wrong username, movie or movie is already in favorites", HttpStatus.BAD_REQUEST);
         }
-
     }
 
-    // Endpoint to remove a movie from a users favorites
     @DeleteMapping("/favorites/remove")
     public ResponseEntity<?> removeFromFavorites(@RequestParam String username, @RequestParam String imdbId) {
-
-        //Removes the movie with the given imdbId from favorites list
+        logger.info("Removing movie with ID: " + imdbId + " from favorites for user: " + username);
         if (userService.removeFavorites(username, imdbId)) {
             return new ResponseEntity<>("Movie removed from favorites successfully", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Error: Wrong username, movie or movie is not in favorites", HttpStatus.BAD_REQUEST);
         }
+    }
 
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteUser(@RequestParam String email, @RequestParam String password) {
+        logger.info("Deleting user with email: " + email);
+        boolean isAuthenticated = userService.authenticateUser(email, password);
+
+        if (isAuthenticated && userService.deleteUser(email)) {
+            return new ResponseEntity<>("User was deleted", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("An error occurred", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @PatchMapping("/update/password")
+    public ResponseEntity<String> updatePassword(@RequestParam String email,
+                                                 @RequestParam String password,
+                                                 @RequestParam String newPassword) {
+        logger.info("Updating password for user with email: " + email);
+        boolean isAuthenticated = userService.authenticateUser(email, password);
+
+        if (isAuthenticated && userService.changePassword(email, newPassword)) {
+            return new ResponseEntity<>("Password changed successfully!", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("An error occurred", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @PatchMapping("/update/email")
+    public ResponseEntity<String> updateEmail(@RequestParam String email,
+                                              @RequestParam String password,
+                                              @RequestParam String newEmail) {
+        logger.info("Updating email for user with email: " + email);
+        boolean isAuthenticated = userService.authenticateUser(email, password);
+
+        if (isAuthenticated && userService.changeEmail(email, newEmail)) {
+            return new ResponseEntity<>("Email changed successfully!", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("An error occurred", HttpStatus.UNAUTHORIZED);
+        }
     }
 }
