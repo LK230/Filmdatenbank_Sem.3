@@ -55,3 +55,21 @@ export async function getMovieEndpoint(imdbId) {
     throw error;
   }
 }
+
+export async function getCreateReviewEndpoint(
+  reviewBody,
+  rating,
+  imdbId,
+  username
+) {
+  try {
+    const response = await api.post(
+    `/reviews/create?reviewBody=${reviewBody}&rating=${rating}&imdbId=${imdbId}&username=${username}`);
+    
+    
+    return response.data;
+  } catch (error) {
+    console.error("Error:", error);
+    throw error;
+  }
+}

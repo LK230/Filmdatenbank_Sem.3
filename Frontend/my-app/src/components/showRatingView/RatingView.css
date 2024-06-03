@@ -5,6 +5,7 @@
     background: #2D2C36;
     display: flex;
     flex-direction: column;
+    margin: 20px;
 }
 
 .RatingView .top-container {
