@@ -122,7 +122,7 @@ export default function MovieView() {
         <div>
           <h2>Bewertungen</h2>
           {movie.reviewIds?.map((obj) => {
-            return <RatingView user={obj.createBy} comment={obj.body} rating={obj.rating}/>
+            return <RatingView user={obj.createdBy} comment={obj.body} rating={obj.rating}/>
           })}
         </div>
       </div>
