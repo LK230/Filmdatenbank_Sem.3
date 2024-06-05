@@ -16,13 +16,17 @@
 
 .RatingView .user-container {
     width: 280px;
+    padding: 10px 0 0 50px;
+}
+
+.RatingView .user-container p {
     color: #FFF;
     font-family: Inter, sans-serif;
     font-size: 27px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
-    padding: 6px 0 0 50px;
+    
 }
 
 .RatingView .rating-container {
@@ -30,8 +34,7 @@
     align-items: center;
     justify-content: center;
     color: #FFF;
-    font-size: 10px;
-    padding: 10px 26px 0 0;
+    padding: 6px 26px 0 0;
 }
 
 .RatingView .comment-container {
