@@ -119,7 +119,9 @@ export default function MovieView() {
             </button>
           )}
         </div>
-        <div>
+      </div>
+      <div className="review-container" >
+      <div>
           <h2>Bewertungen</h2>
           {movie.reviewIds?.map((obj) => {
             return <RatingView user={obj.createdBy} comment={obj.body} rating={obj.rating}/>
@@ -127,5 +129,6 @@ export default function MovieView() {
         </div>
       </div>
     </div>
+    
   );
 }

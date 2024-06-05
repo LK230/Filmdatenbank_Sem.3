@@ -1,5 +1,6 @@
 import React from 'react';
 import RatingStars from './RatingStars'; 
+import "./RatingView.css"
 
 export default function RatingView({ user, comment, rating }) {
     return (
@@ -9,7 +10,7 @@ export default function RatingView({ user, comment, rating }) {
                     <p>{user}</p>
                 </div>
                 <div className='rating-container'>
-                    <RatingStars rating={rating} />
+                    <p><RatingStars rating={rating} /></p>
                 </div>
             </div>
             <div className='comment-container'>
