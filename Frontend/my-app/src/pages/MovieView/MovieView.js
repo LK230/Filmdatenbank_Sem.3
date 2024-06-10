@@ -11,6 +11,7 @@ import {
   SkeletonMovieCard,
   SkeletonTitle,
 } from "../../components/skeletonLoader/SkeletonLoader";
+import RatingView from "../../components/showRatingView/RatingView";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -93,6 +94,7 @@ export default function MovieView() {
             </button>
           )}
 
+
           <div className="backdrop-container" ref={scrollRef}>
             {movie
               ? movie.backdrops?.map((img, index) => (
@@ -118,6 +120,15 @@ export default function MovieView() {
           )}
         </div>
       </div>
+      <div className="review-container" >
+      <div>
+          <h2>Bewertungen</h2>
+          {movie.reviewIds?.map((obj) => {
+            return <RatingView user={obj.createdBy} comment={obj.body} rating={obj.rating}/>
+          })}
+        </div>
+      </div>
     </div>
+    
   );
 }

@@ -1,0 +1,55 @@
+.RatingView {
+    width: 404px;
+    height: 184px;
+    border-radius: 16px;
+    background: #2D2C36;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.RatingView .top-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.RatingView .user-container {
+    width: 280px;
+    padding: 10px 0 0 50px;
+}
+
+.RatingView .user-container p {
+    color: #FFF;
+    font-family: Inter, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    
+}
+
+.RatingView .rating-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    padding: 6px 26px 0 0;
+}
+
+.RatingView .rating-container img{
+    width: 30px;
+    height: 29px;
+}
+
+.RatingView .comment-container {
+    width: 300px; 
+    color: #FFF;
+    font-family: Inter, initial;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 100;
+    padding: 0 0 40px 50px;
+    margin-top: -20px;
+}
+
