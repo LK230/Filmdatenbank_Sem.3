@@ -1,6 +1,6 @@
 .RatingView {
-    width: 560px;
-    height: 223px;
+    width: 404px;
+    height: 184px;
     border-radius: 16px;
     background: #2D2C36;
     display: flex;
@@ -22,7 +22,7 @@
 .RatingView .user-container p {
     color: #FFF;
     font-family: Inter, sans-serif;
-    font-size: 27px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -38,7 +38,8 @@
 }
 
 .RatingView .rating-container img{
-    size: 20px;
+    width: 30px;
+    height: 29px;
 }
 
 .RatingView .comment-container {
