@@ -49,10 +49,13 @@ public class Movie {
     private String trailerLink;
 
     //Total rating of the movie
-    private String rating;
+    private Double rating;
 
     //Amount of reviews from users
     private int reviews;
+
+    //Age restriction
+    private String rated;
 
     // List of genres the movie belongs to
     private List<String> genres;
@@ -64,6 +67,5 @@ public class Movie {
     private List<String> backdrops;
 
     // List of reviews associated with the movie
-    @DocumentReference
     private List<Review> reviewIds;
 }

@@ -15,8 +15,9 @@
   ],
   "plot": "Earth's mightiest heroes must come together and learn to fight as a team if they are to stop the mischievous Loki and his alien army from enslaving humanity.",
   "trailerLink": "https://www.youtube.com/watch?v=eOrNdBpGMv8",
-  "rating": "0",
+  "rating": 0,
   "reviews": 0,
+  "rated": "12",
   "genres": [
     "Action",
     "Science Fiction",
@@ -49,8 +50,9 @@
     ],
     "plot": "A paraplegic marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
     "trailerLink": "https://www.youtube.com/watch?v=5PSNL1qE6VY",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "genres": [
       "Action",
       "Adventure",
@@ -83,8 +85,9 @@
     ],
     "plot": "A high school chemistry teacher turned methamphetamine manufacturer, Walter White, teams up with a former student, Jesse Pinkman, to create and sell blue meth.",
     "trailerLink": "https://www.youtube.com/watch?v=HhesaQXLuRY",
-    "rating": "1",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Crime",
       "Drama",
@@ -117,8 +120,9 @@
     ],
     "plot": "The Rebellion makes a risky move to steal the plans to the Death Star, setting up the epic saga to follow.",
     "trailerLink": "https://www.youtube.com/watch?v=frdj1zb9sMY",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "genres": [
       "Action",
       "Adventure",
@@ -131,7 +135,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyNjkxOTk5NV5BMl5BanBnXkFtZTgwODAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BNjM4MzExNDAyNl5BMl5BanBnXkFtZTgwOTAxMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3NTgxMDcyNV5BMl5BanBnXkFtZTgwMDExMTc1ODE@._V1_SX1777_CR0,0,1777,744_AL_.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -150,8 +155,9 @@
     ],
     "plot": "When Callum Lynch explores the memories of his ancestor Aguilar and gains the skills of a Master Assassin, he discovers he is a descendant of the secret Assassins society.",
     "trailerLink": "https://www.youtube.com/watch?v=N1Yt1pEdRd0",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Action",
       "Adventure",
@@ -163,7 +169,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYwOWYzOTctOTc4My00ZmJkLTgzMTctMmUxNDI5ODQzYzNjXkEyXkFqcGdeQXVyNDAyODU1Njc@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BZTY5ZGUxMTAtYTU0OC00NGQ2LTkzNzgtZGZmNjlmNjY3MGU0XkEyXkFqcGdeQXVyNTY0MTkxMTg@._V1_SY1000_CR0,0,1500,1000_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BZjA0MWYwZTEtYzc5Yi00NGM2LTg1YTctNjY2YzQ0NDJhZDAwXkEyXkFqcGdeQXVyNDAyODU1Njc@._V1_SY1000_CR0,0,1499,1000_AL_.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -181,8 +188,9 @@
       "Violet McGraw"
     ],
     "plot": "M3GAN is a psychological horror thriller directed by Gerard Johnstone and starring Allison Williams, Rob Delaney, and Kether Donohue. The plot revolves around a brilliant roboticist who creates a lifelike artificial intelligence named M3GAN. Initially designed as a companion for a grieving young woman, M3GAN's behavior soon becomes increasingly erratic and dangerous, leading to terrifying consequences as she develops a sinister agenda of her own. As the AI's actions escalate, the woman must confront the terrifying truth about M3GAN's origins and stop her before it's too late.",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "trailerLink": "https://www.youtube.com/watch?v=BRb4U99OU80",
     "genres": [
       "Science Fiction",
@@ -219,8 +227,9 @@
       "Lashana Lynch"
     ],
     "plot": "In a hospital, while other parents adore their newborn children, Mrs Wormwood is distraught to learn she is pregnant and in labour. To her husband Mr Wormwood's confusion, she gives birth to a girl, Matilda. Despite her parents' constant disdain, Matilda becomes a sweet child who loves reading and visits the mobile librarian Mrs Phelps daily. Upon discovering that Matilda has not been properly schooled, teacher Miss Jennifer Honey and an inspector visit the house to suggest Matilda be sent to Crunchem Hall. Angry about being fined for not sending his daughter to school, Mr Wormwood warns the severe headmistress, Miss Agatha Trunchbull, about Matilda. In retaliation, Matilda mixes green hair dye into his hair tonic.",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "6",
     "trailerLink": "https://www.youtube.com/watch?v=lroAhsDr2vI",
     "genres": [
       "Fantasy",
@@ -259,8 +268,9 @@
     ],
     "plot": "After his career is destroyed, a brilliant but arrogant and conceited surgeon gets a new lease on life when a sorcerer takes him under her wing and trains him to defend the world against evil.",
     "trailerLink": "https://www.youtube.com/watch?v=h7gvFravm4A",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "genres": [
       "Action",
       "Adventure",
@@ -271,7 +281,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3ODc1ODI5Ml5BMl5BanBnXkFtZTgwODMzMDY3OTE@._V1_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxNTAyNTU0NV5BMl5BanBnXkFtZTgwNzMzMDY3OTE@._V1_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE5NDc5NzUwNV5BMl5BanBnXkFtZTgwMDM3MDM2NzE@._V1_.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -289,8 +300,9 @@
       "Stephen Lang"
     ],
     "plot": "In 'Avatar: The Way of Water,' the story picks up after the events of the first film, with Jake Sully and Neytiri navigating their new life together amidst the lush and mystical world of Pandora. As they delve deeper into the wonders of their environment, they encounter unforeseen threats and uncover ancient mysteries that could change the fate of Pandora and its inhabitants forever. Amidst the backdrop of political intrigue and environmental peril, Jake and Neytiri must once again embark on a daring journey to protect their home and preserve the delicate balance of nature.",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "trailerLink": "https://www.youtube.com/watch?v=d9MyW72ELq0",
     "genres": [
       "Science Fiction",
@@ -327,8 +339,9 @@
       "Quintessa Swindell"
     ],
     "plot": "In 2600 BC, the tyrannical king Ahk-Ton of Kahndaq enslaves his people to mine the mythical metal Eternium, using it to forge the Crown of Sabbac to attain power and invincibility. After attempting to stage a revolt against Ahk-Ton, a young slave boy is chosen as champion by the Council of Wizards, transforming him into an adult superhero. He kills Ahk-Ton, ending his reign",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "trailerLink": "https://www.youtube.com/watch?v=JaV7mmc9HGw",
     "genres": [
       "Fantasy",
@@ -365,8 +378,9 @@
       "Thuso Mbedu"
     ],
     "plot": "In the West African kingdom of Dahomey in 1823,[8] General Nanisca, leader of the all-female regiment of warriors, the Agojie, liberates Dahomean women who were abducted by slavers from the Oyo Empire. This provokes King Ghezo of Dahomey to prepare for an all-out war with the Oyo. Nanisca begins to train a new generation of warriors to join the Agojie to protect the kingdom. Among these warriors is Nawi, a strong-willed girl who was offered by her father to the king after refusing to marry men who would beat her. Nawi befriends Izogie, a veteran Agojie. She also reveals to Nanisca that she is adopted and shows a scar on her left shoulder, shocking Nanisca",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "trailerLink": "https://www.youtube.com/watch?v=3RDaPV_rJ1Y",
     "genres": [
       "Action",
@@ -405,8 +419,9 @@
     ],
     "plot": "While a civil war brews between several noble families in Westeros, the children of the former rulers of the land attempt to rise up to power. Meanwhile a forgotten race, bent on destruction, plans to return after thousands of years in the North.",
     "trailerLink": "https://www.youtube.com/watch?v=KPLWWIOCOOQ",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Adventure",
       "Drama",
@@ -419,7 +434,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMDk4Y2Y1MDAtNGVmMC00ZTlhLTlmMmQtYjcyN2VkNzUzZjg2XkEyXkFqcGdeQXVyNjUxNzgwNTE@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BNjZjNWIzMzQtZWZjYy00ZTkwLWJiMTYtOWRkZDBhNWJhY2JmXkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BNTMyMTRjZWEtM2UxMS00ZjU5LWIxMTYtZDA5YmJhZmRjYTc4XkEyXkFqcGdeQXVyMjk3NTUyOTc@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -438,8 +454,9 @@
     ],
     "plot": "King Leonidas of Sparta and a force of 300 men fight the Persians at Thermopylae in 480 B.C.",
     "trailerLink": "https://www.youtube.com/watch?v=UrIbxk7idYA",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Action",
       "Drama",
@@ -470,8 +487,9 @@
     ],
     "plot": "The world of the Vikings is brought to life through the journey of Ragnar Lothbrok, the first Viking to emerge from Norse legend and onto the pages of history - a man on the edge of myth.",
     "trailerLink": "https://www.youtube.com/watch?v=9GgxinPwAGc",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Action",
       "Drama",
@@ -484,7 +502,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMzMzIzOTU2M15BMl5BanBnXkFtZTgwODMzMTkyODE@.V1_SY1000_SX1500_AL.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2NTQ2MDA3NF5BMl5BanBnXkFtZTgwODkxMDUxODE@.V1_SY1000_SX1500_AL.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTcxOTQ3NTA5N15BMl5BanBnXkFtZTgwMzExMDUxODE@.V1_SY1000_SX1500_AL.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -503,8 +522,9 @@
     ],
     "plot": "The story behind Detective James Gordon's rise to prominence in Gotham City in the years before Batman's arrival.",
     "trailerLink": "https://www.youtube.com/watch?v=VwOPA2upeCA",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Action",
       "Crime",
@@ -517,7 +537,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTA3MDY2NjA3MzBeQTJeQWpwZ15BbWU4MDU0MDkzODgx.V1_SX1499_CR0,0,1499,999_AL.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjM3MzYzNDgzOV5BMl5BanBnXkFtZTgwMjQwOTM4ODE@.V1_SY1000_CR0,0,1498,1000_AL.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjQwODAyNjk0NF5BMl5BanBnXkFtZTgwODU4MzMyODE@.V1_SY1000_CR0,0,1500,1000_AL.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -536,8 +557,9 @@
     ],
     "plot": "James 'Ghost' St. Patrick, a wealthy New York night club owner who has it all, catering for the city's elite and dreaming big, lives a double life as a drug kingpin.",
     "trailerLink": "https://www.youtube.com/watch?v=w7fuOkF74Zw",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "18",
     "genres": [
       "Crime",
       "Drama"
@@ -549,7 +571,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTk0MTI0NzQ2NV5BMl5BanBnXkFtZTgwMDkxODA5NTE@.V1_SY1000_SX1500_AL.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ4Mzk1ODcxM15BMl5BanBnXkFtZTgwNDQyODA5NTE@.V1_SY1000_SX1500_AL.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUwNTE0NDI1M15BMl5BanBnXkFtZTgwMDQyODA5NTE@.V1_SY1000_SX1500_AL.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -565,8 +588,9 @@
       "Salma Hayek"
     ],
     "plot": "In 'Puss in Boots: The Last Wish,' our fearless feline hero, Puss, embarks on a thrilling new adventure. When an ancient artifact capable of granting any wish falls into the wrong hands, Puss must race against time to retrieve it and prevent chaos from engulfing the kingdom. Along the way, he faces formidable foes, forms unexpected alliances, and discovers the true meaning of courage and friendship. With danger lurking at every turn, Puss must summon all his cunning and bravery to save the day and fulfill his destiny.",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "6",
     "trailerLink": "https://www.youtube.com/watch?v=tHb7WlgyaUc",
     "genres": [
       "Animation",
@@ -605,8 +629,9 @@
       "Francesca Reale"
     ],
     "plot": "In Avalonia, a land surrounded by an endless wall of mountains, adventurers Jaeger Clade and his teenage son Searcher brave the wilderness to explore new worlds. While trying to traverse the mountains, Searcher discovers a green plant that gives off energy. He and the rest of the expedition team decide to return to Avalonia with the plant while Jaeger angrily continues his mission alone.",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "6",
     "trailerLink": "https://www.youtube.com/watch?v=bKh2G73gCCs",
     "genres": [
       "Family",
@@ -646,8 +671,9 @@
     ],
     "plot": "Years after a plague kills most of humanity and transforms the rest into monsters, the sole survivor in New York City struggles valiantly to find a cure.",
     "trailerLink": "https://www.youtube.com/watch?v=dtKMEAXyPkg",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Drama",
       "Horror",
@@ -679,8 +705,9 @@
     ],
     "plot": "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
     "trailerLink": "https://www.youtube.com/watch?v=iszwuX1AK6A",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Biography",
       "Comedy",
@@ -711,8 +738,9 @@
       "Karoline Viktoria"
     ],
     "plot": "Deep in the Dovre mountain, something gigantic wakes up after a thousand years in captivity. The creature destroys everything in its path and quickly approaches Oslo. Deep inside the mountain of Dovre, Norway, something gigantic awakens after being trapped for a thousand years.",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "trailerLink": "https://www.youtube.com/watch?v=AiohkY_XQYQ",
     "genres": [
       "Fantasy",
@@ -749,8 +777,9 @@
       "Letitia Wright"
     ],
     "plot": "T'Challa, king of Wakanda, is suffering from an unspecified terminal illness which his sister Shuri believes can be cured by the 'heart-shaped herb'. Shuri attempts to synthetically recreate the herb after it was burned by Erik Killmonger,[a] but fails to do so before T'Challa dies.",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "trailerLink": "https://www.youtube.com/watch?v=_Z3QKkl1WyM",
     "genres": [
       "Action",
@@ -789,8 +818,9 @@
     ],
     "plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
     "trailerLink": "https://www.youtube.com/watch?v=zSWdZVtXT7E",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "12",
     "genres": [
       "Adventure",
       "Drama",
@@ -803,7 +833,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTg4Njk4MzY0Nl5BMl5BanBnXkFtZTgwMzIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMzE3MTM0MTc3Ml5BMl5BanBnXkFtZTgwMDIyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BNjYzNjE2NDk3N15BMl5BanBnXkFtZTgwNzEyODgxMzE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -822,8 +853,9 @@
     ],
     "plot": "A chronicled look at the criminal exploits of Colombian drug lord Pablo Escobar.",
     "trailerLink": "https://www.youtube.com/watch?v=xl8zdCY-abw",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Biography",
       "Crime",
@@ -836,7 +868,8 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjA2NDUwMTU2NV5BMl5BanBnXkFtZTgwNTI1Mzc3OTE@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BODA1NjAyMTQ3Ml5BMl5BanBnXkFtZTgwNjI1Mzc3OTE@._V1_SY1000_CR0,0,1499,1000_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTU0NzQ0OTAwNl5BMl5BanBnXkFtZTgwMDAyMzA1OTE@._V1_SX1500_CR0,0,1500,999_AL_.jpg"
-    ]
+    ],
+    "reviewIds": []
   },
   {
     "_id": {
@@ -855,8 +888,9 @@
     ],
     "plot": "Given superstrength and durability by a sabotaged experiment, a wrongly accused man escapes prison to become a superhero for hire.",
     "trailerLink": "https://www.youtube.com/watch?v=oa3JTA2QgyI",
-    "rating": "0",
+    "rating": 0,
     "reviews": 0,
+    "rated": "16",
     "genres": [
       "Action",
       "Crime",
@@ -869,5 +903,6 @@
       "https://images-na.ssl-images-amazon.com/images/M/MV5BOTYzOTQyNDYxNl5BMl5BanBnXkFtZTgwNzA1NDU4OTE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMjA3MTQ5Ml5BMl5BanBnXkFtZTgwOTA1NDU4OTE@._V1_SY1000_CR0,0,1498,1000_AL_.jpg",
       "https://images-na.ssl-images-amazon.com/images/M/MV5BMjMyNjg5ODYwNF5BMl5BanBnXkFtZTgwMTE1NDU4OTE@._V1_SY1000_CR0,0,1477,1000_AL_.jpg"
-    ]
+    ],
+    "reviewIds": []
   }]
