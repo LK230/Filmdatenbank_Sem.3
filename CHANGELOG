@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.26.3] - 2024-06-11
+
+### Added
+
+  [Backend]
+
+- Added rating system to movie and review classes
+- Added rated attribute to movies.json for age restriction information
+
+### Changed
+- Changed attribute "rating" in class Review from String to Integer
+- Changed attribute "rating" in class Movie from String to Double
+
+## [1.25.3] - 2024-06-10
+
+### Added
+
+  [Frontend]
+
+- Added review endpoints and review services
+- Added rating stars and rating view
+
 ## [1.24.3] - 2024-05-30
 
 ### Added
