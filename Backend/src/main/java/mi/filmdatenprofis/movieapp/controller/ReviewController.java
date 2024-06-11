@@ -20,7 +20,13 @@ public class ReviewController {
     private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
     @PostMapping("/create")
-    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam String rating, @RequestParam String imdbId, @RequestParam String username) {
+    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam Integer rating, @RequestParam String imdbId, @RequestParam String username) {
+
+        if(rating < 1 || rating > 5) {
+            logger.error("Error occurred creating the review");
+            return new ResponseEntity<String>("An error occurred creating the review (Rating to high or to low)", HttpStatus.BAD_REQUEST);
+        }
+
         logger.info("Creating review for movie with ID: " + imdbId);
         Review review = reviewService.createReview(reviewBody, rating, imdbId, username);
 
@@ -44,7 +50,7 @@ public class ReviewController {
     }
 
     @PatchMapping("/update")
-    public ResponseEntity<String> updateReview(@RequestParam String reviewId, @RequestParam String body, @RequestParam String rating) {
+    public ResponseEntity<String> updateReview(@RequestParam String reviewId, @RequestParam String body, @RequestParam Integer rating) {
         logger.info("Updating review with ID: " + reviewId);
         if(reviewService.updateReview(reviewId, body, rating)) {
             return new ResponseEntity<String>("Review was updated successfully", HttpStatus.OK);
