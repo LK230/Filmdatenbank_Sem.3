@@ -15,6 +15,7 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
   const scrollRef = useRef(null);
 
@@ -23,6 +24,7 @@ export default function Home() {
       try {
         const movieData = await new MovieService().getMovies();
         setMovies(movieData);
+        setFilteredMovies(movieData);
         setRandomMovie(movieData[Math.floor(Math.random() * movieData.length)]);
       } catch (error) {
         console.error("Error fetching user me data:", error);
@@ -54,10 +56,15 @@ export default function Home() {
     }
   };
 
+  const handleSearch = (query) => {
+    const filtered = movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
+    setFilteredMovies(filtered);
+  };
+
   return (
     <div className="Home">
       <div>
-        <Searchbar></Searchbar>
+        <Searchbar movies={movies} onSearch={handleSearch} />
       </div>
       <div>
         {randomMovie ? (
@@ -70,7 +77,6 @@ export default function Home() {
           </div>
         )}
       </div>
-
       <div>
         <h2>
           Kategorien<span>.</span>
@@ -79,7 +85,6 @@ export default function Home() {
           <button className="arrow arrow-left" onClick={scrollLeft}>
             <img src={LeftArrow} alt="Left Arrow" />
           </button>
-
           <div className="backdrop-container" ref={scrollRef}>
             {movies.length > 0
               ? movies.map((obj, index) => (
@@ -98,7 +103,6 @@ export default function Home() {
           </button>
         </div>
       </div>
-
       <div>
         {movies.length > 0
           ? movies.map((obj, index) => (
