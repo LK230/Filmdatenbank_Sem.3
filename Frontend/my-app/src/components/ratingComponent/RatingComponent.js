@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import RatingStarUnclicked from "../../assets/images/Icons/RatingStarUnclicked.svg"
-import RatingStarClicked from "../../assets/images/Icons/RatingStarClicked.svg"
+import RatingStarUnclicked from "../../assets/images/icons/RatingStarUnclicked.svg"
+import RatingStarClicked from "../../assets/images/icons/RatingStarClicked.svg"
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent"
 import "./RatingComponent.css"
 
