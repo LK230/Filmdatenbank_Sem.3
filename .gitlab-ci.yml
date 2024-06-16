@@ -1,33 +1,31 @@
-# Define the image to use for running CI jobs
-image: maven:3.8.1-jdk-21
-
-# Define stages of the pipeline
-stages:
+stages:          # List of stages for jobs, and their order of execution
   - build
   - test
   - deploy
 
-# Define jobs for each stage
-build:
+build-job:       # This job runs in the build stage, which runs first.
   stage: build
   script:
-    - mvn clean package -B
+    - echo "Compiling the code..."
+    - echo "Compile complete."
 
-test:
-  stage: test
+unit-test-job:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
   script:
-    - mvn test -B
+    - echo "Running unit tests... This will take about 60 seconds."
+    - sleep 60
+    - echo "Code coverage is 90%"
 
-deploy:
-  stage: deploy
+lint-test-job:   # This job also runs in the test stage.
+  stage: test    # It can run at the same time as unit-test-job (in parallel).
   script:
-    - echo "Deploying your application here..."
-  # Add deployment steps specific to your environment (e.g., deploying to a server, cloud platform, etc.)
-  # Example deployment command for a Spring Boot application:
-  # - mvn spring-boot:run
+    - echo "Linting code... This will take about 10 seconds."
+    - sleep 10
+    - echo "No lint issues found."
 
-# Define branches to trigger the pipeline
-# By default, pipelines are triggered for all branches and tags
-# Uncomment the lines below to restrict pipeline triggers
-# only:
-#   - master  # Trigger pipeline only for changes on the 'master' branch
+deploy-job:      # This job runs in the deploy stage.
+  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
+  environment: production
+  script:
+    - echo "Deploying application..."
+    - echo "Application successfully deployed."
