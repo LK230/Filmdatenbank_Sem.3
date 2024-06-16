@@ -11,9 +11,11 @@ stages:
 build:
   stage: build
   script:
+    - cd Backend
     - mvn compile
 
 test:
   stage: test
   script:
+    - cd Backend
     - mvn test
