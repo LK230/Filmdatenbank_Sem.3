@@ -1,0 +1,33 @@
+# Define the image to use for running CI jobs
+image: maven:3.8.1-jdk-21
+
+# Define stages of the pipeline
+stages:
+  - build
+  - test
+  - deploy
+
+# Define jobs for each stage
+build:
+  stage: build
+  script:
+    - mvn clean package -B
+
+test:
+  stage: test
+  script:
+    - mvn test -B
+
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying your application here..."
+  # Add deployment steps specific to your environment (e.g., deploying to a server, cloud platform, etc.)
+  # Example deployment command for a Spring Boot application:
+  # - mvn spring-boot:run
+
+# Define branches to trigger the pipeline
+# By default, pipelines are triggered for all branches and tags
+# Uncomment the lines below to restrict pipeline triggers
+# only:
+#   - master  # Trigger pipeline only for changes on the 'master' branch
