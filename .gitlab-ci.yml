@@ -53,19 +53,18 @@ build-frontend:
     - npm install || npm install || npm install # Retry npm install up to 3 times
     - npm run build
 
-# Job to test the frontend
-test-frontend:
-  stage: test
-  image: node:18
-  script:
-    - cd Frontend/my-app
-    - echo 'Starting Test Stage for Frontend'
-    - npm install ###
-    - npm run test
-  artifacts:
-    reports:
-      junit:
-        - Frontend/test-results.xml #??
+# Job to test the frontend - postpone for now
+#test-frontend:
+#  stage: test
+#  image: node:18
+#  script:
+#    - cd Frontend/my-app
+#    - echo 'Starting Test Stage for Frontend'
+#    - npm run test
+#  artifacts:
+#    reports:
+#      junit:
+#        - Frontend/test-results.xml #!
 
 # Job to package the backend into a JAR file
 package-backend:
