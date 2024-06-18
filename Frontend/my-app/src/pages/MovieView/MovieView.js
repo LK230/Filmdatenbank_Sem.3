@@ -115,7 +115,7 @@ export default function MovieView() {
           </div>
           {movie.backdrops?.length > 3 && (
             <button className="arrow arrow-right" onClick={scrollRight}>
-              <img src={RightArrow} />
+              <img src={RightArrow} alt=''/>
             </button>
           )}
         </div>

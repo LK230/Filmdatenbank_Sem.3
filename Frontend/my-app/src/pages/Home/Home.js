@@ -14,7 +14,7 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [/*filteredMovies*/, setFilteredMovies] = useState([]); // filteredMovies is not being used. Please fix!
   const [randomMovie, setRandomMovie] = useState(null);
   const scrollRef = useRef(null);
 
