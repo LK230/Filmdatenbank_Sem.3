@@ -117,7 +117,7 @@ public class ReviewService {
             ObjectId reviewId = new ObjectId(id);
             Review review = reviewRepository.findById(reviewId).orElse(null);
 
-            if(review != null) {
+
                 User user = userRepository.findByUsernameIgnoreCase(review.getCreatedBy()).orElse(null);
                 user.getProfile().getReviews().removeIf(reviewToRemove -> review.getId().equals((reviewId)));
                 userRepository.save(user);
@@ -145,7 +145,7 @@ public class ReviewService {
 
                 reviewRepository.delete(review);
                 return true;
-            }
+
         }catch(NullPointerException e) {
             logger.error("Review not found");
             return false;
@@ -154,7 +154,6 @@ public class ReviewService {
             logger.error("Could not convert given string to objectID");
             return false;
         }
-        return false;
     }
 
     public boolean updateReview(String id, String body, Integer rating) {

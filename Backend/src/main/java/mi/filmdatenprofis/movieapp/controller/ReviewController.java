@@ -24,7 +24,7 @@ public class ReviewController {
 
         if(rating < 1 || rating > 5) {
             logger.error("Error occurred creating the review");
-            return new ResponseEntity<String>("An error occurred creating the review (Rating to high or to low)", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<String>("An error occurred creating the review (Rating too high or too low)", HttpStatus.BAD_REQUEST);
         }
 
         logger.info("Creating review for movie with ID: " + imdbId);
