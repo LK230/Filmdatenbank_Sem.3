@@ -60,6 +60,7 @@ test-frontend:
   script:
     - cd Frontend/my-app
     - echo 'Starting Test Stage for Frontend'
+    - npm install ###
     - npm run test
   artifacts:
     reports:
