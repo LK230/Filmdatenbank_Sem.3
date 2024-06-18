@@ -22,7 +22,7 @@ stages:
 # Job to build the backend
 build-backend:
   stage: build
-  image: maven:3.9-eclipse-temurin-20
+  image: maven:3.9-eclipse-temurin-21
   script:
     - cd Backend
     - echo 'Starting Build Stage for Backend'
@@ -31,7 +31,7 @@ build-backend:
 # Job to test the backend
 test-backend:
   stage: test
-  image: maven:3.9-eclipse-temurin-20
+  image: maven:3.9-eclipse-temurin-21
   script:
     - cd Backend
     - echo 'Starting Test Stage for Backend'
@@ -68,7 +68,7 @@ test-frontend:
 # Job to package the backend into a JAR file
 package-backend:
   stage: package
-  image: maven:3.9-eclipse-temurin-20
+  image: maven:3.9-eclipse-temurin-21
   script:
     - cd Backend
     - echo 'Starting Package Stage for Backend'
