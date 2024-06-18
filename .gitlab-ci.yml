@@ -1,21 +1,82 @@
-image: maven:3-jdk-11
+# Include the Static Application Security Testing (SAST) template
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
 
+# Cache the Maven repository and Node modules directory to speed up future builds
 cache:
   paths:
-    - .m2/repository/
+    - .m2/repository
+    - Frontend/my-app/node_modules/
 
+# Set a variable for Maven to use
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+# Define the stages of the pipeline
 stages:
   - build
   - test
+  - package
+  - release
 
-build:
+# Job to build the backend
+build-backend:
   stage: build
+  image: maven:3.9-eclipse-temurin-20
   script:
     - cd Backend
+    - echo 'Starting Build Stage for Backend'
     - mvn compile
 
-test:
+# Job to test the backend
+test-backend:
   stage: test
+  image: maven:3.9-eclipse-temurin-20
   script:
     - cd Backend
-    - mvn test
+    - echo 'Starting Test Stage for Backend'
+    - mvn test #-Dspring.data.mongodb.uri=$MONGODB_ATLAS_URI
+  artifacts:
+    reports:
+      junit:
+        - Backend/target/surefire-reports/TEST-*.xml
+        - Backend/target/failsafe-reports/TEST-*.xml
+
+# Job to build the frontend
+build-frontend:
+  stage: build
+  image: node:latest
+  script:
+    - cd Frontend/my-app
+    - echo 'Starting Build Stage for Frontend'
+    - npm install
+    - npm run build
+
+# Job to test the frontend
+test-frontend:
+  stage: test
+  image: node:latest
+  script:
+    - cd Frontend/my-app
+    - echo 'Starting Test Stage for Frontend'
+    - npm run test
+  artifacts:
+    reports:
+      junit:
+        - Frontend/test-results.xml #??
+
+# Job to package the backend into a JAR file
+package-backend:
+  stage: package
+  image: maven:3.9-eclipse-temurin-20
+  script:
+    - cd Backend
+    - echo 'Starting Package Stage for Backend'
+    - mvn package
+  only:
+    refs:
+      - main
+  artifacts:
+    paths:
+      - Backend/target/*.jar
+    expire_in: 2 days
