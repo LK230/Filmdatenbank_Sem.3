@@ -45,17 +45,18 @@ test-backend:
 # Job to build the frontend
 build-frontend:
   stage: build
-  image: node:latest
+  image: node:18
   script:
     - cd Frontend/my-app
     - echo 'Starting Build Stage for Frontend'
-    - npm install
+    - npm config set fetch-retry-maxtimeout 120000 # Increase network timeout
+    - npm install || npm install || npm install # Retry npm install up to 3 times
     - npm run build
 
 # Job to test the frontend
 test-frontend:
   stage: test
-  image: node:latest
+  image: node:18
   script:
     - cd Frontend/my-app
     - echo 'Starting Test Stage for Frontend'

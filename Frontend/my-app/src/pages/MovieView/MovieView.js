@@ -89,9 +89,9 @@ export default function MovieView() {
 
         <div className="img-view-container">
           {movie.backdrops?.length > 3 && (
-            <button className="arrow arrow-left" onClick={scrollLeft}>
-              <img src={LeftArrow} />
-            </button>
+              <button className="arrow arrow-left" onClick={scrollLeft}>
+                <img src={LeftArrow} alt=''/>
+              </button>
           )}
 
 
