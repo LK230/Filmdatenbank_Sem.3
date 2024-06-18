@@ -1,4 +1,4 @@
-import { getMovieEndpoint, getMoviesEndpoint } from "./api_endpoints";
+import { getGenreEndpoint, getGenreMoviesEndpoint, getMovieEndpoint, getMoviesEndpoint } from "./api_endpoints";
 
 export class MovieService {
   async getMovies() {
@@ -18,4 +18,24 @@ export class MovieService {
       console.error(error);
     }
   }
+
+  async getGenre(){
+    try{
+      const genre = await getGenreEndpoint();
+      return genre;
+    }catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getGenreMovies(genre){
+    try{
+      const genreMovies = await getGenreMoviesEndpoint();
+      return genreMovies;
+    }catch (error) {
+      console.error(error);
+    }
+  }
 }
+
+

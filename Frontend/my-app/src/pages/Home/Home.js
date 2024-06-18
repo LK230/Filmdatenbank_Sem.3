@@ -15,9 +15,11 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [genre, setGenre] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
   const scrollRef = useRef(null);
+  const genreScrollRef = useRef(null);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -30,8 +32,19 @@ export default function Home() {
         console.error("Error fetching user me data:", error);
       }
     };
+    const fetchGenres = async() =>{
+      try{
+        const genreData = await new MovieService().getGenre();
+        setGenre(genreData);
+      }catch (error) {
+        console.error("Fehler beim Abrufen der Genres:", error
+        
+        )
+      }
+    }
 
     fetchMovies();
+    fetchGenres();
   }, []);
 
   useEffect(() => {
@@ -56,11 +69,23 @@ export default function Home() {
     }
   };
 
+  const genreScrollRight = () => {
+    if (genreScrollRef.current){
+      genreScrollRef.current.scrollBy({ left: 300, behavior: "smooth"});
+    }
+  }
+
+  const genreScrollLeft = () => {
+    if (genreScrollRef.current){
+      genreScrollRef.current.scrollBy({left: -300, behavior: "smooth"});
+    }
+  }
+
   const handleSearch = (query) => {
     const filtered = movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
     setFilteredMovies(filtered);
   };
-
+  
   return (
     <div className="Home">
       <div>
@@ -80,6 +105,31 @@ export default function Home() {
       <div>
         <h2>
           Kategorien<span>.</span>
+        </h2>
+        <div className="img-view-container">
+          <button className="arrow arrow-left" onClick={genreScrollLeft}>
+            <img src={LeftArrow} alt="Left Arrow" />
+          </button>
+          <div className="backdrop-container" ref={genreScrollRef}>
+        {genre.length > 0
+          ? genre.map((obj, index) => (
+              <GenreCard
+                key={index}
+                id={obj.imdbId}
+                title={obj.title}></GenreCard>
+            ))
+          : Array(5)
+              .fill(0)
+              .map((_, index) => <SkeletonGenreCard key={index} />)}
+              </div>
+          <button className="arrow arrow-right" onClick={genreScrollRight}>
+            <img src={RightArrow} alt="Right Arrow" />
+          </button>
+        </div>
+      </div>
+      <div>
+        <h2>
+          Beliebte Filme<span>.</span>
         </h2>
         <div className="img-view-container">
           <button className="arrow arrow-left" onClick={scrollLeft}>
@@ -103,18 +153,7 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div>
-        {movies.length > 0
-          ? movies.map((obj, index) => (
-              <GenreCard
-                key={index}
-                id={obj.genre}
-                title={obj.title}></GenreCard>
-            ))
-          : Array(5)
-              .fill(0)
-              .map((_, index) => <SkeletonGenreCard key={index} />)}
-      </div>
+      
     </div>
   );
 }
