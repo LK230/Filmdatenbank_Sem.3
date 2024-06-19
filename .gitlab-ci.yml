@@ -4,11 +4,11 @@ include:
 
 # Cache the Maven repository and Node modules directory to speed up future builds
 cache:
-  untracked: true
-  key: ${CI_COMMIT_REF_SLUG}
+  key: ${CI_PIPELINE_ID}
   paths:
     - .m2/repository
-    - node_modules/
+    - Frontend/my-app/node_modules/
+  untracked: true
 
 # Set a variable for Maven to use
 variables:
@@ -50,28 +50,25 @@ build-frontend:
   script:
     - cd Frontend/my-app
     - echo 'Starting Build Stage for Frontend'
-    - npm config set fetch-retry-maxtimeout 120000 # Increase network timeout
-    - npm install || npm install || npm install # Retry npm install up to 3 times
+  #  - npm config set fetch-retry-maxtimeout 120000 # Increase network timeout
+  #  - npm install || npm install || npm install # Retry npm install up to 3 times
+    - npm install
     - npm run build
 
-# Job to test the frontend
+# Job to test the frontend - postpone for now
 test-frontend:
   stage: test
   image: node:18
   script:
     - cd Frontend/my-app
-    - echo 'Checking if react-scripts is installed'
-   # - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
+  #  - echo 'Checking if react-scripts is installed'
+  #  - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
     - echo 'Starting Test Stage for Frontend'
     - npm run test
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - node_modules/
   artifacts:
     reports:
       junit:
-        - Frontend/test-results.xml
+        - Frontend/my-app/test-results.xml
 
 # Job to package the backend into a JAR file
 package-backend:
