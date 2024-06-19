@@ -4,6 +4,7 @@ include:
 
 # Cache the Maven repository and Node modules directory to speed up future builds
 cache:
+  key: ${CI_PIPELINE_ID}
   paths:
     - .m2/repository
     - Frontend/my-app/node_modules/
@@ -58,6 +59,8 @@ test-frontend:
   image: node:18
   script:
     - cd Frontend/my-app
+    - echo 'Checking if react-scripts is installed'
+    - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
     - echo 'Starting Test Stage for Frontend'
     - npm run test
   artifacts:
