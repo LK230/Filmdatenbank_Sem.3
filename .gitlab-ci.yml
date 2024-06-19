@@ -8,6 +8,7 @@ cache:
   paths:
     - .m2/repository
     - Frontend/my-app/node_modules/
+  untracked: true
 
 # Set a variable for Maven to use
 variables:
