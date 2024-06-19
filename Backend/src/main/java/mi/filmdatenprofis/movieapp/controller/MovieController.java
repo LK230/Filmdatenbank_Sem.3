@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -24,9 +25,10 @@ public class MovieController {
     private static final Logger logger = LoggerFactory.getLogger(MovieController.class);
 
     @GetMapping
-    public ResponseEntity<List<Movie>> getAllMovies() {
+    public CompletableFuture<ResponseEntity<List<Movie>>> getAllMovies() {
         logger.info("Getting all movies");
-        return new ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
+        return movieService.allMovies().thenApply(ResponseEntity::ok)
+                .exceptionally(e -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
     }
 
     @GetMapping("/{imdbId}")
