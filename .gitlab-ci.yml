@@ -4,7 +4,6 @@ include:
 
 # Cache the Maven repository and Node modules directory to speed up future builds
 cache:
-  key: ${CI_PIPELINE_ID}
   paths:
     - .m2/repository
     - Frontend/my-app/node_modules/
@@ -50,8 +49,6 @@ build-frontend:
   script:
     - cd Frontend/my-app
     - echo 'Starting Build Stage for Frontend'
-  #  - npm config set fetch-retry-maxtimeout 120000 # Increase network timeout
-  #  - npm install || npm install || npm install # Retry npm install up to 3 times
     - npm install
     - npm run build
 
@@ -61,14 +58,14 @@ test-frontend:
   image: node:18
   script:
     - cd Frontend/my-app
-  #  - echo 'Checking if react-scripts is installed'
-  #  - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
+    - echo 'Checking if react-scripts is installed'
+    - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
     - echo 'Starting Test Stage for Frontend'
     - npm run test
   artifacts:
     reports:
       junit:
-        - Frontend/my-app/test-results.xml
+        - Frontend/test-results.xml
 
 # Job to package the backend into a JAR file
 package-backend:
