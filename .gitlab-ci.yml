@@ -4,11 +4,11 @@ include:
 
 # Cache the Maven repository and Node modules directory to speed up future builds
 cache:
-  key: ${CI_COMMIT_REF_SLUG}-${CI_PIPELINE_ID}
+  untracked: true
+  key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .m2/repository
-    - Frontend/my-app/node_modules/
-  untracked: true
+    - node_modules/
 
 # Set a variable for Maven to use
 variables:
@@ -61,13 +61,13 @@ test-frontend:
   script:
     - cd Frontend/my-app
     - echo 'Checking if react-scripts is installed'
-    - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
+   # - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
     - echo 'Starting Test Stage for Frontend'
     - npm run test
   cache:
-    key: ${CI_COMMIT_REF_SLUG}-${CI_PIPELINE_ID} # Use the same cache key as defined globally
+    key: ${CI_COMMIT_REF_SLUG}
     paths:
-      - Frontend/my-app/node_modules/
+      - node_modules/
   artifacts:
     reports:
       junit:
