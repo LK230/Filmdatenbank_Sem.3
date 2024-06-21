@@ -33,6 +33,6 @@
 | `DELETE` | `/users/favorites/remove?username={username}&imdbId={imdbId}`                                 | Removes a movie from a user´s favorites. | `/users/favorites/remove?username=user&imdbId=tt0499549`                                                   |
 | `DELETE` | `/users/delete?email={email}&password={password}`                                             | Deletes a user.                          | `/users/delete?email=user%40gmail.com&password=12345678`                                                   |
 | `PATCH`  | `/users/update/password?email={email}&password={current password}&newPassword={new Password}` | Update a user´s password.                | `/users/update/password?email=user%40mail.com&password=123456789&newPassword=12345678`                     |
-| `PATCH`  | `/users/update/email?email={current email}&password={password}&newEmail={new email}`          | Update a user´s email.                   | ``                                                                                                         |
+| `PATCH`  | `/users/update/email?email={current email}&password={password}&newEmail={new email}`          | Update a user´s email.                   | `/users/update/email?email=user%40mail.com&password=12345678&newEmail=user%40gmail.com`                    |
 
 

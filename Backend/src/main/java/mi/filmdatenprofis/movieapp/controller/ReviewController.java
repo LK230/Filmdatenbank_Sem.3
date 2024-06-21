@@ -20,10 +20,11 @@ public class ReviewController {
     private static final Logger logger = LoggerFactory.getLogger(ReviewController.class);
 
     @PostMapping("/create")
-    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam Integer rating, @RequestParam String imdbId, @RequestParam String username) {
+    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam(required = false) Integer rating, @RequestParam String imdbId, @RequestParam String username) {
 
-        if(rating < 1 || rating > 5) {
-            logger.error("Error occurred creating the review");
+        // Check if rating is provided and is within valid range
+        if(rating != null && (rating < 1 || rating > 5)) {
+            logger.error("Invalid rating value provided");
             return new ResponseEntity<String>("An error occurred creating the review (Rating to high or to low)", HttpStatus.BAD_REQUEST);
         }
 

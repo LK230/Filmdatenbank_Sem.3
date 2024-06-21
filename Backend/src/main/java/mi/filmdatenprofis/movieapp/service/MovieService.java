@@ -48,7 +48,7 @@ public class MovieService {
 
     public List<Movie> findMoviesByDirector(String director) {
         logger.info("Finding movies by director: " + director);
-        return movieRepository.findByDirectorIgnoreCase(director);
+        return movieRepository.findByDirectorContainingIgnoreCase(director);
     }
 
     public List<Movie> allMoviesSortedByRating() {

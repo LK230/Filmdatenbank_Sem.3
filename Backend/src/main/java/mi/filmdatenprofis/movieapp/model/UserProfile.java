@@ -18,8 +18,8 @@ public class UserProfile {
 
    public UserProfile(String username) {
         this.username = username;
-        favorites = new ArrayList<>();
-        reviews = new ArrayList<>();
+        this.favorites = new ArrayList<>();
+        this.reviews = new ArrayList<>();
     }
 
     public void addReview(Review review) {

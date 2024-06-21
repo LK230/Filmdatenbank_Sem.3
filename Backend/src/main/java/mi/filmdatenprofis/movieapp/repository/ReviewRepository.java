@@ -5,9 +5,10 @@ import mi.filmdatenprofis.movieapp.model.Review;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import java.util.List;
 
 // Annotation to indicate this is a Repository
 @Repository
 public interface ReviewRepository extends MongoRepository<Review, ObjectId> {
-    // This interface is intentionally left blank
+    List<Review> findByImdbIdAndCreatedBy(String imdbId, String createdBy);
 }

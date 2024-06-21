@@ -43,6 +43,13 @@ public class ReviewService {
 
     private static final Logger logger = LoggerFactory.getLogger(ReviewService.class);
 
+    // Method to check if a user has already given a rating for a movie
+    private boolean hasUserRatedMovie(String imdbId, String username) {
+        List<Review> reviews = reviewRepository.findAll();
+        return reviews.stream()
+                .anyMatch(review -> review.getImdbId().equals(imdbId) && review.getCreatedBy().equalsIgnoreCase(username) && review.getRating() != null);
+    }
+
     public Double calculateAverageRating (String imdbId) {
 
         //Calculate average rating of movie
@@ -81,6 +88,13 @@ public class ReviewService {
 
         try {
             Optional<User> currentUser = userRepository.findByUsernameIgnoreCase(username);
+
+            // Check if the user has already given a rating for this movie
+            if (rating != null && hasUserRatedMovie(imdbId, username)) {
+                logger.error("User has already given a rating for this movie");
+                return null;
+            }
+
             Review review = reviewRepository.insert(new Review(reviewBody, rating, imdbId, LocalDateTime.now(), LocalDateTime.now(), currentUser.get().getUsername()));
 
             mongoTemplate.update(Movie.class)
@@ -90,13 +104,15 @@ public class ReviewService {
                             .inc("reviews", 1))
                     .first();
 
-            //Change rating of movie
-            double averageRating = calculateAverageRating(imdbId);
-            mongoTemplate.update(Movie.class)
-                    .matching(Criteria.where("imdbId").is(imdbId))
-                    .apply(new Update()
-                            .set("rating", averageRating))
-                    .first();
+            // Change rating of movie if a rating was provided
+            if (rating != null) {
+                double averageRating = calculateAverageRating(imdbId);
+                mongoTemplate.update(Movie.class)
+                        .matching(Criteria.where("imdbId").is(imdbId))
+                        .apply(new Update()
+                                .set("rating", averageRating))
+                        .first();
+            }
 
             currentUser.get().getProfile().addReview(review);
             userRepository.save(currentUser.get());
