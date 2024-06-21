@@ -71,16 +71,23 @@ public class UserService {
         return userProfileRepository.findByUsernameIgnoreCase(username);
     }
 
-    public boolean addFavorites (String username, String imdbId) {
+    public boolean addFavorites(String username, String imdbId) {
         logger.info("Adding movie with ID: " + imdbId + " to favorites for user: " + username);
         User user = userRepository.findByUsernameIgnoreCase(username).orElse(null);
         Movie movie = movieRepository.findMovieByImdbId(imdbId).orElse(null);
-        if(user != null && movie != null) {
-            if(!user.getProfile().getFavorites().stream()
-                    .anyMatch(movieToCheck -> movie.getImdbId().equals(imdbId))) {
-                user.getProfile().getFavorites().add(movie);
-                userRepository.save(user);
-                userProfileRepository.save(user.getProfile());
+
+        if (user != null && movie != null) {
+            UserProfile profile = user.getProfile();
+
+            // Check if the movie is already in favorites
+            if (profile.getFavorites().stream().noneMatch(fav -> fav.getImdbId().equals(imdbId))) {
+                profile.getFavorites().add(movie);
+                userProfileRepository.save(profile); // Save profile first
+
+                // Update user with the latest profile changes
+                user.setProfile(profile);
+                userRepository.save(user); // Save user
+
                 return true;
             }
         }

@@ -17,6 +17,6 @@ public interface MovieRepository extends MongoRepository<Movie, ObjectId> {
     List<Movie> findMovieByTitleContainingIgnoreCase(String title);
     List<Movie> findAllByOrderByReleaseDateDesc();
     List<Movie> findByGenresIgnoreCase(String genre);
-    List<Movie> findByDirectorIgnoreCase(String director);
+    List<Movie> findByDirectorContainingIgnoreCase(String director);
     List<Movie> findAllByOrderByRating();
 }
