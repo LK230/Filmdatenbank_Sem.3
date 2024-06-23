@@ -30,7 +30,7 @@ export class MovieService {
 
   async getGenreMovies(genre){
     try{
-      const genreMovies = await getGenreMoviesEndpoint();
+      const genreMovies = await getGenreMoviesEndpoint(genre);
       return genreMovies;
     }catch (error) {
       console.error(error);
