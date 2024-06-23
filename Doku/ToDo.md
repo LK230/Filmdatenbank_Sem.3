@@ -4,20 +4,20 @@
 - [x] verknüpfung der Anforderungen untereinander
 
 ### Softwarearchitektur und Clean Code
-- [ ] Packetuntergliederung und mit Klassendiagramm dokumentiert
-- [ ] SOLID-Prinzipien angewandt und dokumentiert
+- [x] Packetuntergliederung und mit Klassendiagramm dokumentiert
+- [x] SOLID-Prinzipien angewandt und dokumentiert
 - [x] Interfaces und Factories eingesetzt
-- [ ] Dokumentation des Codes und Architektur
-- [ ] Dokumentieren wie Komponente miteinander kommunizieren
-- [ ] Dokumentation der architektonischen Entscheidungen mit Hilfe von ADR (mind. 3)
-- [ ] Code-Dokumentationprinzipen beschrieben und angewandt
+- [x] Dokumentation des Codes und Architektur
+- [x] Dokumentieren wie Komponente miteinander kommunizieren
+- [x] Dokumentation der architektonischen Entscheidungen mit Hilfe von ADR (mind. 3)
+- [x] Code-Dokumentationprinzipen beschrieben und angewandt
 
 ### git
 - [x] Commits mit Commit-Messages
 - [x] Tags & Changelog vorhanden
 - [ ] Tags & Changelog gepflegt
 - [x] Readme vorhanden
-- [ ] git-Vorgehen inkl. branching dokumentiert und angewandt
+- [x] git-Vorgehen inkl. branching dokumentiert und angewandt
 
 ### Build management & Testing
 - [ ] Build Management vorhanden
@@ -28,7 +28,7 @@
 - [x] .gitlab-ci.yml angelegt
 - [x] Build-Lifecycle in .gitlab-ci.yml abgebildet
 - [x] .gitlab-ci.yml so angepasst, dass manche Steps nur bei Bedarf ausgeführt werden
-- [ ] Dokumentation, dass nur manche Steps im .gitlab-ci.yml ausgeführt werden
+- [x] Dokumentation, dass nur manche Steps im .gitlab-ci.yml ausgeführt werden
 
 ### Persistenz
 - [x] Persistenz vorhanden
@@ -41,8 +41,8 @@
 - [x] CRUD teilweise umgesetzt
 - [x] CRUD-Operationen über externe Schnittstelle bereitgestellt. Bei REST: Korrekte Nutzung der HTTP-Verben und Status-Codes
 - [x] Dokumentation der Schnittstelle: 
-  - [ ] Doku der Operationen
-  - [ ] Warum welche Schnittstellenart (synchron/asynchron) eingesetzt
+  - [x] Doku der Operationen
+  - [x] Warum welche Schnittstellenart (synchron/asynchron) eingesetzt
 
 ### UI
 - [x] GUI vorhanden
@@ -51,7 +51,7 @@
 - [ ] (Potentiell) langlaufende Abfragen asynchron. Eine GUI-Operation (z.B. Speichern) ist ausreichend
 
 ### Parallele Programmierung
-- [ ] Thread vorhanden, der nicht auf shared state zugreift
+- [x] Thread vorhanden, der nicht auf shared state zugreift
 - [ ] Skizzierung möglicher Threads im Projekt
-- [ ] Beschreibung, welche Probleme mit diesen Threads auftreten könnten und wie diese verhindert werden können
-- [ ] Implementierung der beschriebenen Threads inkl. der Sicherungsmaßnahmen
+- [x] Beschreibung, welche Probleme mit diesen Threads auftreten könnten und wie diese verhindert werden können
+- [x] Implementierung der beschriebenen Threads inkl. der Sicherungsmaßnahmen
