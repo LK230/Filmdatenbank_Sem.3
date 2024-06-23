@@ -10,95 +10,89 @@ import {
 } from "../../components/skeletonLoader/SkeletonLoader";
 
 export default function Genres() {
-  const [movies, setMovies] = useState([]);
-  const [genre, setGenre] = useState([]);
+  const [genre, setGenre] = useState({});
   const [genreMovie, setGenreMovie] = useState({});
   const scrollRefs = useRef({});
 
   useEffect(() => {
-    const fetchGenres = async () => {
+    const fetchGenresAndMovies = async () => {
       try {
         const genreData = await new MovieService().getGenre();
         setGenre(genreData);
-      } catch (error) {
-        console.error("Fehler beim Abrufen der Genres:", error);
-      }
-    };
-    fetchGenres();
-  }, []);
 
-  useEffect(() => {
-      const fetchGenreMovies = async () => {
-        try {
-          const genreMovieData = await new MovieService().getGenreMovies("Action");
-          setGenreMovie(genreMovieData);
-        } catch (error) {
-          console.error("Fehler beim Abrufen der GenreMovies:", error);
+        const moviesForGenres = {};
+        for (const genreName of Object.keys(genreData)) {
+          const movies = await new MovieService().getGenreMovies(genreName);
+          moviesForGenres[genreName] = movies;
         }
-      };
-      fetchGenreMovies();
-    }
-  , []);
-
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const movieData = await new MovieService().getMovies();
-        setMovies(movieData);
+        setGenreMovie(moviesForGenres);
       } catch (error) {
-        console.error("Error fetching user me data:", error);
+        console.error("Fehler beim Abrufen der Genres und Filme:", error);
       }
     };
-    fetchMovies();
+    fetchGenresAndMovies();
   }, []);
 
-  const scrollLeft = (genre) => {
-    if (scrollRefs.current[genre]) {
-      scrollRefs.current[genre].scrollBy({ left: -300, behavior: "smooth" });
+  const scrollLeft = (genreName) => {
+    if (scrollRefs.current[genreName]) {
+      scrollRefs.current[genreName].scrollBy({
+        left: -300,
+        behavior: "smooth",
+      });
     }
   };
 
-  const scrollRight = (genre) => {
-    if (scrollRefs.current[genre]) {
-      scrollRefs.current[genre].scrollBy({ left: 300, behavior: "smooth" });
+  const scrollRight = (genreName) => {
+    if (scrollRefs.current[genreName]) {
+      scrollRefs.current[genreName].scrollBy({ left: 300, behavior: "smooth" });
     }
   };
-console.log(genreMovie)
+
   return (
     <div className="Genres">
       <div>
         {Object.keys(genre).length > 0
-          ? Object.keys(genre).map((genre) => (
-              <div key={genre}>
+          ? Object.keys(genre).map((genreName) => (
+              <div key={genreName}>
                 <h2>
-                  {genre}
+                  {genreName}
                   <span>.</span>
                 </h2>
                 <div>
                   <div className="img-view-container">
-                    <button className="arrow arrow-left" onClick={() => scrollLeft(genre)}>
-                      <img src={LeftArrow} alt="Left Arrow" />
-                    </button>
+                    {genreMovie[genreName]?.length > 4 && (
+                      <button
+                        className="arrow arrow-left"
+                        onClick={() => scrollLeft(genreName)}>
+                        <img src={LeftArrow} alt="Left Arrow" />
+                      </button>
+                    )}
+
                     <div
                       className="backdrop-container"
-                      ref={(el) => (scrollRefs.current[genre] = el)}
-                    >
-                      {genreMovie.length > 0
-                        ? genreMovie.map((obj, index) => (
+                      ref={(el) => (scrollRefs.current[genreName] = el)}>
+                      {genreMovie[genreName]?.length > 0
+                        ? genreMovie[genreName].map((movie, index) => (
                             <Card
                               key={index}
-                              id={obj.imdbId}
-                              poster={obj.poster}
-                              title={obj.title}
+                              id={movie.imdbId}
+                              poster={movie.poster}
+                              title={movie.title}
                             />
                           ))
                         : Array(5)
                             .fill(0)
-                            .map((_, index) => <SkeletonMovieCard key={index} />)}
+                            .map((_, index) => (
+                              <SkeletonMovieCard key={index} />
+                            ))}
                     </div>
-                    <button className="arrow arrow-right" onClick={() => scrollRight(genre)}>
-                      <img src={RightArrow} alt="Right Arrow" />
-                    </button>
+                    {genreMovie[genreName]?.length > 4 && (
+                      <button
+                        className="arrow arrow-right"
+                        onClick={() => scrollRight(genreName)}>
+                        <img src={RightArrow} alt="Right Arrow" />
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
