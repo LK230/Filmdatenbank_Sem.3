@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import Card from "../../components/card/Card";
 import "./Home.css";
 import { Searchbar } from "../../components/searchbar/Searchbar";
@@ -15,7 +14,7 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
-  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [/*filteredMovies*/, setFilteredMovies] = useState([]); // filteredMovies is not being used. Please fix!
   const [randomMovie, setRandomMovie] = useState(null);
   const scrollRef = useRef(null);
 
