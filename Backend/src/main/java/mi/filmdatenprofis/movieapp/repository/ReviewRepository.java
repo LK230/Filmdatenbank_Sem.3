@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 // Annotation to indicate this is a Repository
 @Repository
 public interface ReviewRepository extends MongoRepository<Review, ObjectId> {
-    // This interface is intentionally left blank
+
 }

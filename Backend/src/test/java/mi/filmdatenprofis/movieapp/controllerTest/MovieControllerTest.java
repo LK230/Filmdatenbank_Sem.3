@@ -1,4 +1,4 @@
-package mi.filmdatenprofis.movieapp.ControllerTest;
+package mi.filmdatenprofis.movieapp.controllerTest;
 
 import mi.filmdatenprofis.movieapp.controller.MovieController;
 import mi.filmdatenprofis.movieapp.model.Movie;
