@@ -60,13 +60,13 @@ export default function Genres() {
                 </h2>
                 <div>
                   <div className="img-view-container">
-                    {genreMovie[genreName]?.length > 4 && (
+                    {genreMovie[genreName]?.length > 3 ? (
                       <button
                         className="arrow arrow-left"
                         onClick={() => scrollLeft(genreName)}>
                         <img src={LeftArrow} alt="Left Arrow" />
                       </button>
-                    )}
+                    ):<div style={{margin: "37px"}}> </div>}
 
                     <div
                       className="backdrop-container"
@@ -86,7 +86,7 @@ export default function Genres() {
                               <SkeletonMovieCard key={index} />
                             ))}
                     </div>
-                    {genreMovie[genreName]?.length > 4 && (
+                    {genreMovie[genreName]?.length > 3 && (
                       <button
                         className="arrow arrow-right"
                         onClick={() => scrollRight(genreName)}>
