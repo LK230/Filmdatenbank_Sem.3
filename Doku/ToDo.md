@@ -20,9 +20,9 @@
 - [x] git-Vorgehen inkl. branching dokumentiert und angewandt
 
 ### Build management & Testing
-- [ ] Build Management vorhanden
-- [ ] Unit-Tests für Model und Controller nach F.I.R.S.T. Prinzip vorhanden
-- [ ] Integrationstests für Hauptkomponenten vorhanden
+- [x] Build Management vorhanden
+- [x] Unit-Tests für Model und Controller nach F.I.R.S.T. Prinzip vorhanden
+- [x] Integrationstests für Hauptkomponenten vorhanden
 
 ### CI/CD
 - [x] .gitlab-ci.yml angelegt
