@@ -1,6 +1,6 @@
 # Include the Static Application Security Testing (SAST) template
-#include:
-#  - template: Jobs/SAST.gitlab-ci.yml
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
 
 # Cache the Maven repository and Node modules directory to speed up future builds
 cache:
@@ -44,29 +44,29 @@ test-backend:
         - Backend/target/failsafe-reports/TEST-*.xml
 
 # Job to build the frontend
-#build-frontend:
-#  stage: build
-#  image: node:18
-#  script:
-#    - cd Frontend/my-app
-#    - echo 'Starting Build Stage for Frontend'
-#    - npm install
-#    - npm run build
+build-frontend:
+  stage: build
+  image: node:18
+  script:
+    - cd Frontend/my-app
+    - echo 'Starting Build Stage for Frontend'
+    - npm install
+    - npm run build
 
 # Job to test the frontend - postpone for now
-#test-frontend:
-#  stage: test
-#  image: node:18
-#  script:
-#    - cd Frontend/my-app
-#    - echo 'Checking if react-scripts is installed'
-#    - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
-#    - echo 'Starting Test Stage for Frontend'
-#    - npm run test
-#  artifacts:
-#    reports:
-#      junit:
-#        - Frontend/test-results.xml
+test-frontend:
+  stage: test
+  image: node:18
+  script:
+    - cd Frontend/my-app
+    - echo 'Checking if react-scripts is installed'
+    - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
+    - echo 'Starting Test Stage for Frontend'
+    - npm run test
+  artifacts:
+    reports:
+      junit:
+        - Frontend/test-results.xml
 
 # Job to package the backend into a JAR file
 package-backend:
@@ -75,7 +75,8 @@ package-backend:
   script:
     - cd Backend
     - echo 'Starting Package Stage for Backend'
-    - mvn package
+    - mvn package -DskipITs=true
+
   only:
     refs:
       - main
