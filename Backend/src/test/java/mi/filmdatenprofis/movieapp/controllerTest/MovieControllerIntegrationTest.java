@@ -60,7 +60,6 @@ public class MovieControllerIntegrationTest {
         movieRepository.delete(movie1);
         movieRepository.delete(movie2);
     }
-    /*
 
     @Test
     @Rollback
@@ -73,7 +72,7 @@ public class MovieControllerIntegrationTest {
                 .andExpect(jsonPath("$[?(@.title == 'The Shawshank Redemption')]").exists())
                 .andExpect(jsonPath("$[?(@.title == 'The Godfather')]").exists());
     }
-
+/*
     @Test
     @Rollback
     void shouldGetSingleMovie() throws Exception {
