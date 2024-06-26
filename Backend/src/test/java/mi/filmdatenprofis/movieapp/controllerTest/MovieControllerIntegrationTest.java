@@ -27,8 +27,6 @@ import java.util.Arrays;
 @AutoConfigureMockMvc
 public class MovieControllerIntegrationTest {
 
-    /*
-
     @Autowired
     private MockMvc mockMvc;
 
@@ -62,6 +60,7 @@ public class MovieControllerIntegrationTest {
         movieRepository.delete(movie1);
         movieRepository.delete(movie2);
     }
+    /*
 
     @Test
     @Rollback
