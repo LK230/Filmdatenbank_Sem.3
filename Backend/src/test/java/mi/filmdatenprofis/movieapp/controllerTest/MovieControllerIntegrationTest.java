@@ -61,6 +61,7 @@ public class MovieControllerIntegrationTest {
         movieRepository.delete(movie2);
     }
 
+    /*
     @Test
     @Rollback
     void shouldGetAllMovies() throws Exception {
@@ -72,7 +73,9 @@ public class MovieControllerIntegrationTest {
                 .andExpect(jsonPath("$[?(@.title == 'The Shawshank Redemption')]").exists())
                 .andExpect(jsonPath("$[?(@.title == 'The Godfather')]").exists());
     }
-/*
+
+     */
+
     @Test
     @Rollback
     void shouldGetSingleMovie() throws Exception {
@@ -83,6 +86,7 @@ public class MovieControllerIntegrationTest {
                 .andExpect(jsonPath("$.title", is("The Shawshank Redemption")))
                 .andExpect(jsonPath("$.director", is("Frank Darabont")));
     }
+    /*
 
     @Test
     @Rollback

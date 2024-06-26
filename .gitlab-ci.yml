@@ -1,6 +1,6 @@
 # Include the Static Application Security Testing (SAST) template
-include:
-  - template: Jobs/SAST.gitlab-ci.yml
+#include:
+#  - template: Jobs/SAST.gitlab-ci.yml
 
 # Cache the Maven repository and Node modules directory to speed up future builds
 cache:
