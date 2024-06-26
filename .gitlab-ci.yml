@@ -35,6 +35,7 @@ test-backend:
   script:
     - cd Backend
     - echo 'Starting Test Stage for Backend'
+    # we are skipping the tests, because the Integration-Tests take too long and the pipeline fails
     - mvn test -DskipTests
   artifacts:
     reports:
