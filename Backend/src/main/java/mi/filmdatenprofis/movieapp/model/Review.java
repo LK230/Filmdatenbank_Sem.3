@@ -29,10 +29,13 @@ public class Review {
     // IMDB ID of the movie
     private String imdbId;
 
+    // Username of user which created the review
     private String createdBy;
 
+    // Date of creation
     private LocalDateTime created;
 
+    // Date of last update
     private LocalDateTime updated;
 
     // Constructor to create a new Review with a body, optional rating, imdbId, and timestamps
