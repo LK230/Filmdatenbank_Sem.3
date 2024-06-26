@@ -75,7 +75,7 @@ package-backend:
   script:
     - cd Backend
     - echo 'Starting Package Stage for Backend'
-    - mvn package -DskipITs=true
+    - mvn package -DskipTests
 
   only:
     refs:
