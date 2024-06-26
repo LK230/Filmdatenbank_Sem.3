@@ -43,11 +43,13 @@ public class ReviewService {
 
     private static final Logger logger = LoggerFactory.getLogger(ReviewService.class);
 
-    /**
-     * Calculates the average rating of a movie based on its IMDb ID.
-     * @param imdbId IMDb ID of the movie
-     * @return Average rating rounded to the nearest 0.5, or null if IMDb ID is not found
-     */
+    // Method to check if a user has already given a rating for a movie
+    private boolean hasUserRatedMovie(String imdbId, String username) {
+        List<Review> reviews = reviewRepository.findAll();
+        return reviews.stream()
+                .anyMatch(review -> review.getImdbId().equals(imdbId) && review.getCreatedBy().equalsIgnoreCase(username) && review.getRating() != null);
+    }
+
     public Double calculateAverageRating (String imdbId) {
 
         //Calculate average rating of movie
@@ -95,6 +97,13 @@ public class ReviewService {
         try {
             // Find user and insert review to database
             Optional<User> currentUser = userRepository.findByUsernameIgnoreCase(username);
+
+            // Check if the user has already given a rating for this movie
+            if (rating != null && hasUserRatedMovie(imdbId, username)) {
+                logger.error("User has already given a rating for this movie");
+                return null;
+            }
+
             Review review = reviewRepository.insert(new Review(reviewBody, rating, imdbId, LocalDateTime.now(), LocalDateTime.now(), currentUser.get().getUsername()));
 
             // Update movies and push new review to review list
@@ -105,13 +114,15 @@ public class ReviewService {
                             .inc("reviews", 1))
                     .first();
 
-            // Change rating of movie
-            double averageRating = calculateAverageRating(imdbId);
-            mongoTemplate.update(Movie.class)
-                    .matching(Criteria.where("imdbId").is(imdbId))
-                    .apply(new Update()
-                            .set("rating", averageRating))
-                    .first();
+            // Change rating of movie if a rating was provided
+            if (rating != null) {
+                double averageRating = calculateAverageRating(imdbId);
+                mongoTemplate.update(Movie.class)
+                        .matching(Criteria.where("imdbId").is(imdbId))
+                        .apply(new Update()
+                                .set("rating", averageRating))
+                        .first();
+            }
 
             // Save changes to database
             currentUser.get().getProfile().addReview(review);

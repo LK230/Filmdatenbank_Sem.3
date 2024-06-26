@@ -26,12 +26,12 @@ public class ReviewController {
 
     // Endpoint to create a new review
     @PostMapping("/create")
-    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam Integer rating, @RequestParam String imdbId, @RequestParam String username) {
+    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam(required = false) Integer rating, @RequestParam String imdbId, @RequestParam String username) {
 
-        // Check if the rating is within the valid range (1 to 5)
-        if(rating < 1 || rating > 5) {
-            logger.error("Error occurred creating the review");
-            return new ResponseEntity<String>("An error occurred creating the review (Rating too high or too low)", HttpStatus.BAD_REQUEST);
+        // Check if rating is provided and is within valid range
+        if(rating != null && (rating < 1 || rating > 5)) {
+            logger.error("Invalid rating value provided");
+            return new ResponseEntity<String>("An error occurred creating the review (Rating to high or to low)", HttpStatus.BAD_REQUEST);
         }
 
         // Log the creation of the review
