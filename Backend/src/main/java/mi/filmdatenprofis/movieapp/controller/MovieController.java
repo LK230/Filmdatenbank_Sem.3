@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
 
 // Allows cross-origin requests from any domain
 @CrossOrigin(origins = "*")
@@ -31,10 +30,10 @@ public class MovieController {
 
     // Handles HTTP GET requests to /movies, returns a list of all movies
     @GetMapping
-    public CompletableFuture<ResponseEntity<List<Movie>>> getAllMovies() {
+    public ResponseEntity<List<Movie>> getAllMovies() {
         logger.info("Getting all movies");
-        return movieService.allMovies().thenApply(ResponseEntity::ok)
-                .exceptionally(e -> ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
+        // Returns the list of all movies with an HTTP status of OK (200)
+        return new ResponseEntity<List<Movie>>(movieService.allMovies(), HttpStatus.OK);
     }
 
     // Handles HTTP GET requests to /movies/{imdbId}, returns a single movie by its IMDb ID

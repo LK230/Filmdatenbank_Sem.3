@@ -89,6 +89,9 @@ public class UserService {
         return userProfileRepository.findByUsernameIgnoreCase(username);
     }
 
+    /**
+     * Adds a movie with the given IMDb ID to the favorites list of the user.
+     */
     public boolean addFavorites(String username, String imdbId) {
         logger.info("Adding movie with ID: " + imdbId + " to favorites for user: " + username);
 

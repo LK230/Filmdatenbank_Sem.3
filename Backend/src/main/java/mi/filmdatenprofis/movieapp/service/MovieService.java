@@ -22,10 +22,13 @@ public class MovieService {
 
     private static final Logger logger = LoggerFactory.getLogger(MovieService.class);
 
-    @Async
-    public CompletableFuture<List<Movie>> allMovies() {
-        logger.info("Fetching all movies in thread: " + Thread.currentThread().getName());
-        return CompletableFuture.completedFuture(movieRepository.findAll());
+    /**
+     * Fetches all movies from the repository.
+     * @return a list of all movies.
+     */
+    public List<Movie> allMovies() {
+        logger.info("Fetching all movies");
+        return movieRepository.findAll();
     }
 
     /**
@@ -92,17 +95,15 @@ public class MovieService {
      */
     public Map<String, List<Movie>> getMoviesByGenre() {
         logger.info("Getting movies by genre");
-
-        // Fetch all movies
         List<Movie> movies = movieRepository.findAll();
+        Map<String, List<Movie>> moviesByGenre = new HashMap<>();
 
-        // Group movies by genre using parallel streams
-        Map<String, List<Movie>> moviesByGenre = movies.parallelStream()
-                .flatMap(movie -> movie.getGenres().stream()
-                        .map(genre -> new AbstractMap.SimpleEntry<>(genre, movie)))
-                .collect(Collectors.groupingByConcurrent(Map.Entry::getKey,
-                        Collectors.mapping(Map.Entry::getValue, Collectors.toList())));
-
+        // Iterate over all movies to group them by genre
+        for (Movie movie : movies) {
+            for (String genre : movie.getGenres()) {
+                moviesByGenre.computeIfAbsent(genre, k -> new ArrayList<>()).add(movie);
+            }
+        }
         return moviesByGenre;
     }
 
