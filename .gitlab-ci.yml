@@ -35,7 +35,7 @@ test-backend:
   script:
     - cd Backend
     - echo 'Starting Test Stage for Backend'
-    - mvn test -DskipITs
+    - mvn test -DskipITs=true
   artifacts:
     reports:
       junit:
