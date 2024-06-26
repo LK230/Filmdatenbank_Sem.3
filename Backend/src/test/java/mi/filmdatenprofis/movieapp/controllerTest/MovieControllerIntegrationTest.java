@@ -76,6 +76,7 @@ public class MovieControllerIntegrationTest {
 
      */
 
+
     @Test
     @Rollback
     void shouldGetSingleMovie() throws Exception {

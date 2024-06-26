@@ -36,6 +36,7 @@ test-backend:
     - cd Backend
     - echo 'Starting Test Stage for Backend'
     - mvn test
+  parallel: 2  # Number of parallel jobs
   artifacts:
     reports:
       junit:
