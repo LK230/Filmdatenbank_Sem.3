@@ -55,3 +55,7 @@
 - [ ] Skizzierung möglicher Threads im Projekt
 - [x] Beschreibung, welche Probleme mit diesen Threads auftreten könnten und wie diese verhindert werden können
 - [x] Implementierung der beschriebenen Threads inkl. der Sicherungsmaßnahmen
+
+### Termine
+- 01.07.2024 Präsentation: 15 min ins.
+- 29.07.2024 - Kolloqium (Online oder Präsenz?)
