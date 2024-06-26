@@ -37,7 +37,7 @@ test-backend:
     - echo 'Starting Test Stage for Backend'
     - mvn test
   retry:
-    max: 3  # Retry up to 3 times if the job fails
+    max: 2  # Retry up to 2 times if the job fails
   artifacts:
     reports:
       junit:
