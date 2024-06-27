@@ -5,6 +5,78 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.31.6] - 2024-06-26
+
+### Added
+
+- Added JUnit and Mockito to project
+- Added commentaries and JavaDoc
+- Added unit tests for MovieController, ReviewController, UserController, MovieService, ReviewService and UserService
+- Added integration test for MovieController
+
+### Changed
+
+- Changed gitlab-ci.yml file
+
+### Removed
+
+- Removed threads in MovieController and MovieService
+
+## [1.30.6] - 2024-06-21
+
+### Added
+
+- Added method hasUserRatedMovie in ReviewService to find out if user already rated a movie and implemented method in calculateAverageRating
+
+### Changed
+
+- Changed createReview method -> rating is now optional
+- Changed addFavorites method in UserService
+- Changed date format of releaseDate in movie objects (movies.json)
+
+### Fixed
+
+- Fixed profile constructor 
+- Fixed method to search by director
+
+## [1.29.6] - 2024-06-21
+
+### Changed
+
+- Changed readme files and added seperate readme for project and backend
+
+## [1.29.5] - 2024-06-19
+
+### Added
+
+- Added threads and parallel streams in classes MovieController and MovieService
+
+## [1.28.5] - 2024-06-19
+
+### Added
+
+- Added CI/CD to project with new gitlab-ci.yml file
+
+## [1.27.5] - 2024-06-17
+
+### Fixed
+
+- Fixed issue with logback xml file
+
+## [1.27.4] - 2024-06-16
+
+### Removed
+
+- Removed wrong gitlab-ci.yml file 
+
+## [1.27.3] - 2024-06-12
+
+### Added
+
+  [Frontend]
+
+- Added logic to searchbar to find movies
+
 ## [1.26.3] - 2024-06-11
 
 ### Added
