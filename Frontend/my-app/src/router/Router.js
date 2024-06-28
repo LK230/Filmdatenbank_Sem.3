@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Genres from "../pages/Genres/Genres";
 import MovieView from "../pages/MovieView/MovieView";

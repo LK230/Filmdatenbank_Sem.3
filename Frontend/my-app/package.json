@@ -37,5 +37,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!axios).+\\.js$"
+    ]
   }
 }

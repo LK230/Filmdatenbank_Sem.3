@@ -10,16 +10,25 @@ import java.util.List;
 @Document(collection="profiles")
 @Data
 public class UserProfile {
+
+    // Unique id of profile
     @Id
     private ObjectId id;
+
+    // Username which belongs to profile
     private String username;
+
+    // List of favorite movies
     private List<Movie> favorites;
+
+    // List of created reviews
     private List<Review> reviews;
 
+    // Constructor
    public UserProfile(String username) {
         this.username = username;
-        favorites = new ArrayList<>();
-        reviews = new ArrayList<>();
+        this.favorites = new ArrayList<>();
+        this.reviews = new ArrayList<>();
     }
 
     public void addReview(Review review) {

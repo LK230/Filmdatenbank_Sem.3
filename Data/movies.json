@@ -4,7 +4,7 @@
   },
   "imdbId": "tt0848228",
   "title": "The Avengers",
-  "releaseDate": "04 May 2012",
+  "releaseDate": "2012-05-04",
   "director": "Joss Whedon",
   "runtime": "143 min",
   "actors": [
@@ -39,7 +39,7 @@
     },
     "imdbId": "tt0499549",
     "title": "Avatar",
-    "releaseDate": "18 Dec 2009",
+    "releaseDate": "2009-12-18",
     "director": "James Cameron",
     "runtime": "162 min",
     "actors": [
@@ -74,7 +74,7 @@
     },
     "imdbId": "tt0903747",
     "title": "Breaking Bad",
-    "releaseDate": "20 Jan 2008",
+    "releaseDate": "2008-01-20",
     "director": "Vince Gilligan",
     "runtime": "49 min",
     "actors": [
@@ -109,7 +109,7 @@
     },
     "imdbId": "tt3748528",
     "title": "Rogue One: A Star Wars Story",
-    "releaseDate": "16 Dec 2016",
+    "releaseDate": "2016-12-16",
     "director": "Gareth Edwards",
     "runtime": "133 min",
     "actors": [
@@ -144,7 +144,7 @@
     },
     "imdbId": "tt2094766",
     "title": "Assassin's Creed",
-    "releaseDate": "21 Dec 2016",
+    "releaseDate": "2016-12-21",
     "director": "Justin Kurzel",
     "runtime": "115",
     "actors": [
@@ -257,7 +257,7 @@
     },
     "imdbId": "tt1211837",
     "title": "Doctor Strange",
-    "releaseDate": "04 Nov 2016",
+    "releaseDate": "2016-11-04",
     "director": "Scott Derrickson",
     "runtime": "120 min",
     "actors": [
@@ -408,7 +408,7 @@
     },
     "imdbId": "tt0944947",
     "title": "Game of Thrones",
-    "releaseDate": "17 Apr 2011",
+    "releaseDate": "2011-04-17",
     "director": "David Benioff",
     "runtime": "56 min",
     "actors": [
@@ -443,7 +443,7 @@
     },
     "imdbId": "tt0416449",
     "title": "300",
-    "releaseDate": "09 Mar 2007",
+    "releaseDate": "2007-03-09",
     "director": "Zack Snyder",
     "runtime": "117 min",
     "actors": [
@@ -476,7 +476,7 @@
     },
     "imdbId": "tt2306299",
     "title": "Vikings",
-    "releaseDate": "03 Mar 2013",
+    "releaseDate": "2013-03-03",
     "director": "Michael Hirst",
     "runtime": "44 min",
     "actors": [
@@ -511,7 +511,7 @@
     },
     "imdbId": "tt3749900",
     "title": "Gotham",
-    "releaseDate": "01 Aug 2014",
+    "releaseDate": "2014-10-01",
     "director": "Bruno Heller",
     "runtime": "42 min",
     "actors": [
@@ -546,7 +546,7 @@
     },
     "imdbId": "tt3281796",
     "title": "Power",
-    "releaseDate": "31 Mar 2023",
+    "releaseDate": "2023-03-31",
     "director": "Raelle Tucker",
     "runtime": "50 min",
     "actors": [
@@ -660,7 +660,7 @@
     },
     "imdbId": "tt0480249",
     "title": "I Am Legend",
-    "releaseDate": "14 Dec 2007",
+    "releaseDate": "2007-12-14",
     "director": "Francis Lawrence",
     "runtime": "101 min",
     "actors": [
@@ -694,7 +694,7 @@
     },
     "imdbId": "tt0993846",
     "title": "The Wolf of Wall Street",
-    "releaseDate": "25 Dec 2013",
+    "releaseDate": "2013-12-25",
     "director": "Martin Scorsese",
     "runtime": "180 min",
     "actors": [
@@ -807,7 +807,7 @@
     },
     "imdbId": "tt0816692",
     "title": "Interstellar",
-    "releaseDate": "07 Nov 2014",
+    "releaseDate": "2014-11-07",
     "director": "Christopher Nolan",
     "runtime": "169 min",
     "actors": [
@@ -842,7 +842,7 @@
     },
     "imdbId": "tt2707408",
     "title": "Narcos",
-    "releaseDate": "28 Aug 2015",
+    "releaseDate": "2015-08-28",
     "director": "Carlo Bernard",
     "runtime": "49 min",
     "actors": [
@@ -877,7 +877,7 @@
     },
     "imdbId": "tt3322314",
     "title": "Luke Cage",
-    "releaseDate": "30 Sep 2016",
+    "releaseDate": "2016-09-30",
     "director": "Cheo Hodari Coker",
     "runtime": "55 min",
     "actors": [

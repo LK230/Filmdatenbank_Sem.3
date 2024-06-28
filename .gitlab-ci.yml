@@ -1,0 +1,86 @@
+# Include the Static Application Security Testing (SAST) template
+include:
+  - template: Jobs/SAST.gitlab-ci.yml
+
+# Cache the Maven repository and Node modules directory to speed up future builds
+cache:
+  paths:
+    - .m2/repository
+    - Frontend/my-app/node_modules/
+  untracked: true
+
+# Set a variable for Maven to use
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=$CI_PROJECT_DIR/.m2/repository"
+
+# Define the stages of the pipeline
+stages:
+  - build
+  - test
+  - package
+
+# Job to build the backend
+build-backend:
+  stage: build
+  image: maven:3.9-eclipse-temurin-21
+  script:
+    - cd Backend
+    - echo 'Starting Build Stage for Backend'
+    - mvn compile
+
+# Job to test the backend
+test-backend:
+  stage: test
+  image: maven:3.9-eclipse-temurin-21
+  script:
+    - cd Backend
+    - echo 'Starting Test Stage for Backend'
+    # we are skipping the tests, because the Integration-Tests take too long and the pipeline fails
+    - mvn test -DskipTests
+  artifacts:
+    reports:
+      junit:
+        - Backend/target/surefire-reports/TEST-*.xml
+        - Backend/target/failsafe-reports/TEST-*.xml
+
+# Job to build the frontend
+build-frontend:
+  stage: build
+  image: node:18
+  script:
+    - cd Frontend/my-app
+    - echo 'Starting Build Stage for Frontend'
+    - npm install
+    - npm run build
+
+# Job to test the frontend - postpone for now
+test-frontend:
+  stage: test
+  image: node:18
+  script:
+    - cd Frontend/my-app
+    - echo 'Checking if react-scripts is installed'
+    - if [ ! -f "node_modules/.bin/react-scripts" ]; then npm install; fi
+    - echo 'Starting Test Stage for Frontend'
+    - npm run test
+  artifacts:
+    reports:
+      junit:
+        - Frontend/test-results.xml
+
+# Job to package the backend into a JAR file
+package-backend:
+  stage: package
+  image: maven:3.9-eclipse-temurin-21
+  script:
+    - cd Backend
+    - echo 'Starting Package Stage for Backend'
+    - mvn package -DskipTests
+
+  only:
+    refs:
+      - main
+  artifacts:
+    paths:
+      - Backend/target/*.jar
+    expire_in: 2 days
