@@ -6,6 +6,7 @@ import GenreCard from "../../components/card/GenreCard";
 import { MovieService } from "../../assets/service/movie_service";
 import LeftArrow from "../../assets/images/ButtonSVG.svg";
 import RightArrow from "../../assets/images/ButtonSVGClose.svg";
+import { UserService } from "../../assets/service/user_service";
 import {
   SkeletonGenreCard,
   SkeletonMovieCard,
@@ -32,6 +33,21 @@ export default function Home() {
 
     fetchMovies();
   }, []);
+
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const user = await new UserService().getUser("JohnDoe", "john@doe.net", "1234");
+        console.log("USER", user)
+      } catch (error) {
+        console.error("Error fetching user me data:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -12,12 +12,53 @@ import {
   SkeletonTitle,
 } from "../../components/skeletonLoader/SkeletonLoader";
 import RatingView from "../../components/showRatingView/RatingView";
+import { UserService } from "../../assets/service/user_service";
 
 export default function MovieView() {
   const { imdbId } = useParams();
   const [movie, setMovie] = useState({ backdrops: [] });
   const scrollRef = useRef(null);
   const [backgroundImage, setBackgroundImage] = useState("");
+  const [username, setUser] = useState(null); 
+  const [isFavored, setIsFavored] = useState(false); 
+
+
+  const getAddToFavorites = async () => {
+    try {
+  console.log("USERNAME", username)
+
+      const response = await new UserService().userAddToFavorite(username.username, imdbId);
+      return response;
+    } catch (error) {
+      console.error("Error adding to favorites:", error);
+      throw error;
+    }
+  }
+
+  const getDeleteFromFavorites = async (username, imdbId) => {
+    try {
+      const response = await new UserService().userDeleteFromFavorite(username.username, imdbId);
+      return response;
+    } catch (error) {
+      console.error("Error deleting from favorites:", error);
+      throw error;
+    }
+  }
+
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const user = await new UserService().getUser("JohnDoe", "john@doe.net", "1234");
+        setUser(user)
+        console.log("USER", user)
+      } catch (error) {
+        console.error("Error fetching user me data:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -53,6 +94,24 @@ export default function MovieView() {
     }
   };
 
+  const handleFavMovie = () => {
+    if(username && username.favorites && username.favorites.some(obj => obj.imdbId === imdbId)){  //wenn obj id dann delete
+      getDeleteFromFavorites(username, imdbId);
+      setUser(prevUser => ({
+        ...prevUser,
+        favorites: prevUser.favorites.filter(fav => fav.imdbId !== imdbId),
+      }));
+    } else {
+      getAddToFavorites(username, imdbId); //sonst add
+      setUser(prevUser => ({
+        ...prevUser,
+        favorites: [...prevUser.favorites, { imdbId }],
+      }));
+    }
+  };  
+  
+    
+
   return (
     <div
       className="MovieContainer"
@@ -74,7 +133,7 @@ export default function MovieView() {
               <p>Watch</p>
             </button>
           </a>
-          <FavoriteButton></FavoriteButton>
+          <FavoriteButton onClick={handleFavMovie} isActive={isFavored}></FavoriteButton>
         </div>
         <div className="text-container">
           <hr />
@@ -129,6 +188,8 @@ export default function MovieView() {
         </div>
       </div>
     </div>
+
     
   );
+  
 }

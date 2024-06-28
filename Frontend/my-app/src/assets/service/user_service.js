@@ -1,5 +1,9 @@
 import {
+  getAddFavoritesEndpoint,
+  getAddToFavorites,
   getCreateUserEndpoint,
+  getDeleteFromFavorites,
+  getDeleteFromFavoritesEndpoint,
   getUserEndpoint,
   getUsersEndpoint,
 } from "./api_endpoints";
@@ -32,4 +36,25 @@ export class UserService {
       throw error;
     }
   }
+
+  async userAddToFavorite(username, imdbId) {
+    try {
+      const createdUser = await getAddFavoritesEndpoint(username, imdbId);
+      return createdUser; // removed .data
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+  
+  async userDeleteFromFavorite(username, imdbId) {
+    try {
+      const createdUser = await getDeleteFromFavoritesEndpoint(username, imdbId);
+      return createdUser; // removed .data
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }  
+
 }

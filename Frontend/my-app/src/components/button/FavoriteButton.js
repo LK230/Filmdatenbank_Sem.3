@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./FavoriteButton.css";
 
 import FavoriteButtonClicked from "../../assets/images/icons/FavoriteButtonClicked.svg";
-
 import FavoriteButtonUnclicked from "../../assets/images/icons/FavoriteButtonUnclicked.svg";
 
-export default function FavoriteButton() {
-  const [isFavored, setIsFavored] = useState(false);
+export default function FavoriteButton({onClick, isActive}) {
+  const [isFavored, setIsFavored] = useState(isActive);
 
-  function favored() {
+  useEffect(() => {
+    setIsFavored(isActive);
+  }, [isActive]);
+
+  const handleClick = () => {
     setIsFavored(!isFavored);
-  }
+    onClick();
+  };
 
   return (
     <div className="FavoriteButtonContainer">
-      <button onClick={favored}>
+      <button onClick={handleClick}>
         {isFavored ? (
           <img src={FavoriteButtonClicked} alt="Favorite Button Clicked" />
         ) : (
@@ -24,3 +28,4 @@ export default function FavoriteButton() {
     </div>
   );
 }
+
