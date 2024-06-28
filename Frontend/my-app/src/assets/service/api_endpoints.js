@@ -73,3 +73,23 @@ export async function getCreateReviewEndpoint(
     throw error;
   }
 }
+
+export async function getGenreEndpoint() {
+  try {
+    const response = await api.get("/movies/genre");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching genre:", error);
+    throw error;
+  }
+}
+
+export async function getGenreMoviesEndpoint(genre) {
+  try {
+    const response = await api.get("/movies/genre/" + genre);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie:", error);
+    throw error;
+  }
+}

@@ -12,6 +12,7 @@ import {
   SkeletonTitle,
 } from "../../components/skeletonLoader/SkeletonLoader";
 import RatingView from "../../components/showRatingView/RatingView";
+import { Link } from "react-router-dom";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -79,9 +80,11 @@ export default function MovieView() {
         <div className="text-container">
           <hr />
           <div className="tags-container">
-            {movie.genres?.map((obj, index) => {
-              return <Tags key={index} name={obj} />;
-            })}
+            {movie.genres?.map((genre, index) => (
+            <Link key={index} to={`/movies/genreview/${genre}`} className="link">
+             <Tags name={genre} />
+             </Link>
+              ))}
           </div>
 
           <p>{movie.plot}</p>
