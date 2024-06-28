@@ -73,3 +73,23 @@ export async function getCreateReviewEndpoint(
     throw error;
   }
 }
+
+export async function getAddFavoritesEndpoint(username, imdbId) {
+  try {
+      const response = await api.post(`/users/favorites/add?username=${username}&imdbId=${imdbId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error adding to favorites:", error);
+    throw error;
+  }
+}
+
+export async function getDeleteFromFavoritesEndpoint(username, imdbId) {
+  try {
+    const response = await api.delete(`/users/favorites/remove?username=${username}&imdbId=${imdbId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting from favorites:", error);
+    throw error;
+  }
+}
