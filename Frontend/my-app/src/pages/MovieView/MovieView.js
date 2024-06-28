@@ -12,6 +12,7 @@ import {
   SkeletonTitle,
 } from "../../components/skeletonLoader/SkeletonLoader";
 import RatingView from "../../components/showRatingView/RatingView";
+import Rated from "../../components/rated/Rated";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -69,6 +70,7 @@ export default function MovieView() {
       <div className="content-container">
         <div className="play-container">
           {movie ? <h1>{movie.title}</h1> : <SkeletonTitle />}
+          <Rated age={movie.rated}></Rated>
           <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
             <button className="play-icon">
               <p>Watch</p>
