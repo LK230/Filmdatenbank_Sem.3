@@ -15,7 +15,7 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
-  const [/*filteredMovies*/, setFilteredMovies] = useState([]); // filteredMovies is not being used. Please fix!
+  const [, /*filteredMovies*/ setFilteredMovies] = useState([]); // filteredMovies is not being used. Please fix!
   const [randomMovie, setRandomMovie] = useState(null);
   const scrollRef = useRef(null);
 
@@ -33,21 +33,6 @@ export default function Home() {
 
     fetchMovies();
   }, []);
-
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const user = await new UserService().getUser("JohnDoe", "john@doe.net", "1234");
-        console.log("USER", user)
-      } catch (error) {
-        console.error("Error fetching user me data:", error);
-      }
-    };
-
-    fetchUser();
-  }, []);
-
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -72,7 +57,9 @@ export default function Home() {
   };
 
   const handleSearch = (query) => {
-    const filtered = movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
+    const filtered = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
     setFilteredMovies(filtered);
   };
 

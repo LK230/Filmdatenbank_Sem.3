@@ -12,6 +12,7 @@ export class UserService {
   async getUser(username, email, password) {
     try {
       const user = await getUserEndpoint(username, email, password);
+      console.log("USERSERVICE", user);
       return user;
     } catch (error) {
       console.error(error);
@@ -37,24 +38,27 @@ export class UserService {
     }
   }
 
-  async userAddToFavorite(username, imdbId) {
+  async userAddToFavorite(email, imdbId) {
     try {
-      const createdUser = await getAddFavoritesEndpoint(username, imdbId);
+      const addFav = await getAddFavoritesEndpoint(email, imdbId);
+      console.log("addFav", addFav);
+      return addFav;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  async userDeleteFromFavorite(username, imdbId) {
+    try {
+      const createdUser = await getDeleteFromFavoritesEndpoint(
+        username,
+        imdbId
+      );
       return createdUser; // removed .data
     } catch (error) {
       console.error(error);
       throw error;
     }
   }
-  
-  async userDeleteFromFavorite(username, imdbId) {
-    try {
-      const createdUser = await getDeleteFromFavoritesEndpoint(username, imdbId);
-      return createdUser; // removed .data
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  }  
-
 }

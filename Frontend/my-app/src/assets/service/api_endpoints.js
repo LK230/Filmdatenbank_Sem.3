@@ -7,6 +7,7 @@ export async function getUserEndpoint(username, email, password) {
         email
       )}&password=${password}`
     );
+    console.log("response", response);
     return response.data;
   } catch (error) {
     console.error("Error:", error);
@@ -64,9 +65,9 @@ export async function getCreateReviewEndpoint(
 ) {
   try {
     const response = await api.post(
-    `/reviews/create?reviewBody=${reviewBody}&rating=${rating}&imdbId=${imdbId}&username=${username}`);
-    
-    
+      `/reviews/create?reviewBody=${reviewBody}&rating=${rating}&imdbId=${imdbId}&username=${username}`
+    );
+
     return response.data;
   } catch (error) {
     console.error("Error:", error);
@@ -74,9 +75,12 @@ export async function getCreateReviewEndpoint(
   }
 }
 
-export async function getAddFavoritesEndpoint(username, imdbId) {
+export async function getAddFavoritesEndpoint(email, imdbId) {
   try {
-      const response = await api.post(`/users/favorites/add?username=${username}&imdbId=${imdbId}`);
+    const response = await api.post(
+      `/users/favorites/add?email=${encodeURIComponent(email)}&imdbId=${imdbId}`
+    );
+    console.log("respone", response.data);
     return response.data;
   } catch (error) {
     console.error("Error adding to favorites:", error);
@@ -86,7 +90,9 @@ export async function getAddFavoritesEndpoint(username, imdbId) {
 
 export async function getDeleteFromFavoritesEndpoint(username, imdbId) {
   try {
-    const response = await api.delete(`/users/favorites/remove?username=${username}&imdbId=${imdbId}`);
+    const response = await api.delete(
+      `/users/favorites/remove?username=${username}&imdbId=${imdbId}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error deleting from favorites:", error);
