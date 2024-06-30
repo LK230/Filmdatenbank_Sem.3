@@ -15,6 +15,8 @@ import RatingView from "../../components/showRatingView/RatingView";
 import { UserService } from "../../assets/service/user_service";
 import Cookies from "js-cookie";
 import Rated from "../../components/rated/Rated";
+import RatingComponent from "../../components/ratingComponent/RatingComponent";
+import RatingStars from "../../components/showRatingView/RatingStars";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -119,6 +121,8 @@ export default function MovieView() {
     }
   };
 
+  console.log("movie", movie);
+
   return (
     <div
       className="MovieContainer"
@@ -147,6 +151,10 @@ export default function MovieView() {
               isActive={isFavored}></FavoriteButton>
           )}
         </div>
+        <div className="show-rate-content">
+          <p>{movie.rating?.toFixed(1).replace(".", ",")}</p>
+          <RatingStars rating={movie.rating}></RatingStars>
+        </div>
         <div className="text-container">
           <hr />
           <div className="tags-container">
@@ -160,7 +168,48 @@ export default function MovieView() {
             ))}
           </div>
 
-          <p>{movie.plot}</p>
+          <div className="info-content-container">
+            <div className="plot">
+              <p>{movie.plot}</p>
+            </div>
+
+            <div>
+              <table>
+                <tr>
+                  <th>
+                    <p>Unter der Regie von</p>
+                  </th>
+                  <td>
+                    <p>{movie.director}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <p>Besetzung</p>
+                  </th>
+                  <td>
+                    <ul>
+                      {movie.actors?.map((obj) => {
+                        return <li>{obj}</li>;
+                      })}
+                    </ul>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <p>Veröffentlicht am</p>
+                  </th>
+                  <td>
+                    {new Date(movie.releaseDate).toLocaleDateString("de-DE", {
+                      day: "2-digit",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
         </div>
 
         <div className="img-view-container">
@@ -195,18 +244,30 @@ export default function MovieView() {
           )}
         </div>
       </div>
+
       <div className="review-container">
         <div>
-          <h2>Bewertungen</h2>
-          {movie.reviewIds?.map((obj) => {
-            return (
-              <RatingView
-                user={obj.createdBy}
-                comment={obj.body}
-                rating={obj.rating}
-              />
-            );
-          })}
+          {email && (
+            <div>
+              <RatingComponent user={email} imdbId={imdbId} />
+            </div>
+          )}
+        </div>
+        <div className="ReviewsContainer">
+          <h2>Bewertungen von anderen Usern</h2>
+          {movie.reviewIds?.length > 0 ? (
+            movie.reviewIds?.map((obj) => {
+              return (
+                <RatingView
+                  user={obj.createdBy}
+                  comment={obj.body}
+                  rating={obj.rating}
+                />
+              );
+            })
+          ) : (
+            <h3>Noch keine Bewertungen vorhanden</h3>
+          )}
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 import { UserService } from "../../assets/service/user_service";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
+import Alert from "../../components/alert/Alert";
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -15,6 +16,8 @@ const LoginSignup = () => {
   const [surname, setSurname] = useState("");
   const userService = new UserService();
   const navigate = useNavigate();
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
 
   const handleSubmit = async () => {
     try {
@@ -23,7 +26,11 @@ const LoginSignup = () => {
         if (login === "Login successfully!") {
           Cookies.set("email", email, { expires: 7 });
           Cookies.set("password", password, { expires: 7 });
-          navigate("/");
+          setAlertMessage("Login erfolgreich!");
+          setAlertType("success");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
         }
       } else {
         const newUser = {
@@ -36,16 +43,27 @@ const LoginSignup = () => {
         const signup = await userService.createUser(newUser);
         if (signup === "User was created successfully!") {
           Cookies.set("email", email, { expires: 7 });
-          navigate("/");
+          setAlertMessage("Registrierung erfolgreich!");
+          setAlertType("success");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        } else {
+          setAlertMessage(
+            "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+          );
+          setAlertType("error");
         }
       }
     } catch (error) {
       console.error("Error during submission:", error);
+      setAlertMessage("Login fehlgeschlagen. Bitte versuchen Sie es erneut.");
+      setAlertType("error");
     }
   };
 
   return (
-    <div className="container">
+    <div className="LoginContainer">
       <div className="tabs">
         <div
           className={`tab ${isLogin ? "active" : ""}`}
@@ -129,6 +147,7 @@ const LoginSignup = () => {
           )}
         </div>
       </div>
+      <Alert message={alertMessage} type={alertType} />
     </div>
   );
 };

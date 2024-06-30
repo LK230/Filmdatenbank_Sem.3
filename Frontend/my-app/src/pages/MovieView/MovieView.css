@@ -35,6 +35,16 @@
   margin: 380px 0 0 0;
 }
 
+.MovieContainer .info-content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MovieContainer .info-content-container .plot {
+  width: 56%;
+  padding: 0 30px 0 0;
+}
+
 .MovieContainer .img-view-container {
   display: flex;
   align-items: center;
@@ -126,11 +136,10 @@
 
 .MovieContainer .review-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   width: 100%;
   margin: 20px;
+  align-items: baseline;
 }
 
 .MovieContainer h1 {
@@ -152,4 +161,48 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.MovieContainer .ReviewsContainer h3 {
+  color: #848484;
+}
+
+.MovieContainer .show-rate-content {
+  display: flex;
+  align-items: center;
+  margin: 0 50px;
+}
+
+.MovieContainer .show-rate-content p {
+  font-size: 19px;
+}
+
+.MovieContainer tr {
+  height: 6vh;
+}
+.MovieContainer th {
+  vertical-align: top;
+}
+
+.MovieContainer td {
+  vertical-align: top;
+}
+
+.MovieContainer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.MovieContainer li {
+  margin: 0 0 10px 0;
+}
+.MovieContainer td p {
+  margin: 0;
+}
+.MovieContainer table tr th p {
+  width: 200px;
+  text-align: left;
+  color: #848484;
+  margin: 0;
+  padding: 0;
 }

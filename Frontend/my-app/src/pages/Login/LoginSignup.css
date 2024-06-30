@@ -1,4 +1,4 @@
-.container {
+.LoginContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,13 +6,13 @@
   height: 100vh;
 }
 
-.tabs {
+.LoginContainer .tabs {
   display: flex;
   justify-content: center;
   margin: 70px 0 40px 0;
 }
 
-.tab {
+.LoginContainer .tab {
   font-family: Inter, sans-serif;
   font-size: 36px;
   font-style: normal;
@@ -23,25 +23,25 @@
   margin: 0 10px;
 }
 
-.tab.active {
+.LoginContainer .tab.active {
   color: #fff;
 }
 
-.content-container {
+.LoginContainer .content-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 45vh;
 }
 
-.content-wrapper {
+.LoginContainer .content-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.form-container {
+.LoginContainer .form-container {
   border: 1px solid #fff;
   border-radius: 23px;
   box-shadow: 4px 6px 3px 0px rgba(34, 34, 34, 0.25);
@@ -50,11 +50,11 @@
   height: 70vh;
 }
 
-.form-content {
+.LoginContainer .form-content {
   margin: 0 35px;
 }
 
-.header {
+.LoginContainer .header {
   color: #fff;
   font-family: Inter, sans-serif;
   font-size: 36px;
@@ -65,17 +65,17 @@
   margin-bottom: 60px;
 }
 
-.form-group {
+.LoginContainer .form-group {
   margin-bottom: 40px;
 }
 
-.name-fields {
+.LoginContainer .name-fields {
   display: flex;
   justify-content: space-between;
   gap: 13px;
 }
 
-.input-field {
+.LoginContainer .input-field {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -84,11 +84,11 @@
   font-size: 16px;
 }
 
-.name-fields .input-field {
+.LoginContainer .name-fields .input-field {
   width: 48%;
 }
 
-.form-button {
+.LoginContainer .form-button {
   display: flex;
   justify-content: end;
 }

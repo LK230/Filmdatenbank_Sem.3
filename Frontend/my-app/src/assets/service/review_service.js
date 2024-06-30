@@ -1,18 +1,20 @@
-import { getCreateReviewEndpoint, getCreateUserEndpoint } from "./api_endpoints";
+import {
+  getCreateReviewEndpoint,
+  getCreateUserEndpoint,
+} from "./api_endpoints";
 
 export class ReviewService {
-    async getCreateReview(reviewBody, rating, imdbId, username) {
+  async getCreateReview(reviewBody, rating, imdbId, email) {
     try {
-        const review = await getCreateReviewEndpoint (
-            reviewBody,
-            rating,
-            imdbId,
-            username
-        );
-        return review;
+      const review = await getCreateReviewEndpoint(
+        reviewBody,
+        rating,
+        imdbId,
+        email
+      );
+      return review;
     } catch (error) {
-        console.error(error);
-
+      console.error(error);
     }
-}
+  }
 }
