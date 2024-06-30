@@ -18,6 +18,8 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
   const navigate = useNavigate();
   const isAuthenticated = Cookies.get("email");
 
+  console.log("isAuthenticated", isAuthenticated);
+
   useEffect(() => {
     const handleResize = () => {
       setShowSidebar(window.innerWidth > 900);
@@ -64,28 +66,32 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
                     </Link>
                   </div>
                 </li>
-                <li
-                  className={`li-btn ${
-                    location.pathname === "/favorites" ? "active" : ""
-                  }`}>
-                  <div>
-                    <Link to="/favorites" className="link-btn">
-                      <MdOutlineFavoriteBorder />
-                      <p>Gespeichert</p>
-                    </Link>
-                  </div>
-                </li>
-                <li
-                  className={`li-btn ${
-                    location.pathname === "/profile" ? "active" : ""
-                  }`}>
-                  <div>
-                    <Link to="/profile" className="link-btn">
-                      <CgProfile />
-                      <p>Profil</p>
-                    </Link>
-                  </div>
-                </li>
+                {isAuthenticated && (
+                  <li
+                    className={`li-btn ${
+                      location.pathname === "/favorites" ? "active" : ""
+                    }`}>
+                    <div>
+                      <Link to="/favorites" className="link-btn">
+                        <MdOutlineFavoriteBorder />
+                        <p>Gespeichert</p>
+                      </Link>
+                    </div>
+                  </li>
+                )}
+                {isAuthenticated && (
+                  <li
+                    className={`li-btn ${
+                      location.pathname === "/profile" ? "active" : ""
+                    }`}>
+                    <div>
+                      <Link to="/profile" className="link-btn">
+                        <CgProfile />
+                        <p>Profil</p>
+                      </Link>
+                    </div>
+                  </li>
+                )}
               </ul>
             </div>
             <div className="logout-container">

@@ -141,9 +141,11 @@ export default function MovieView() {
               <p>Watch</p>
             </button>
           </a>
-          <FavoriteButton
-            onClick={handleFavMovie}
-            isActive={isFavored}></FavoriteButton>
+          {email && (
+            <FavoriteButton
+              onClick={handleFavMovie}
+              isActive={isFavored}></FavoriteButton>
+          )}
         </div>
         <div className="text-container">
           <hr />
