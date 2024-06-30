@@ -15,6 +15,7 @@ import RatingView from "../../components/showRatingView/RatingView";
 import { UserService } from "../../assets/service/user_service";
 import Cookies from "js-cookie";
 import Rated from "../../components/rated/Rated";
+import RatingComponent from "../../components/ratingComponent/RatingComponent";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -119,6 +120,8 @@ export default function MovieView() {
     }
   };
 
+  console.log("movie", movie);
+
   return (
     <div
       className="MovieContainer"
@@ -195,18 +198,29 @@ export default function MovieView() {
           )}
         </div>
       </div>
+
       <div className="review-container">
-        <div>
-          <h2>Bewertungen</h2>
-          {movie.reviewIds?.map((obj) => {
-            return (
-              <RatingView
-                user={obj.createdBy}
-                comment={obj.body}
-                rating={obj.rating}
-              />
-            );
-          })}
+        {email && (
+          <div>
+            <RatingComponent user={email} imdbId={imdbId} />
+          </div>
+        )}
+
+        <div className="ReviewsContainer">
+          <h2>Bewertungen von anderen Usern</h2>
+          {movie.reviewIds?.length > 0 ? (
+            movie.reviewIds?.map((obj) => {
+              return (
+                <RatingView
+                  user={obj.createdBy}
+                  comment={obj.body}
+                  rating={obj.rating}
+                />
+              );
+            })
+          ) : (
+            <h3>Noch keine Bewertungen vorhanden</h3>
+          )}
         </div>
       </div>
     </div>

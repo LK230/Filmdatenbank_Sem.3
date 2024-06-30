@@ -72,11 +72,13 @@ export async function getCreateReviewEndpoint(
   reviewBody,
   rating,
   imdbId,
-  username
+  email
 ) {
   try {
     const response = await api.post(
-      `/reviews/create?reviewBody=${reviewBody}&rating=${rating}&imdbId=${imdbId}&username=${username}`
+      `/reviews/create?reviewBody=${reviewBody}&rating=${rating}&imdbId=${imdbId}&email=${encodeURIComponent(
+        email
+      )}`
     );
 
     return response.data;
