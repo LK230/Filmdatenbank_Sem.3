@@ -11,12 +11,14 @@ import {
   SkeletonMovieCard,
   SkeletonRandomMovie,
 } from "../../components/skeletonLoader/SkeletonLoader";
+import { getGenreMoviesEndpoint } from "../../assets/service/api_endpoints";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
-  const [/*filteredMovies*/, setFilteredMovies] = useState([]); // filteredMovies is not being used. Please fix!
+  const [genre, setGenre] = useState([]);
+  const [filteredMovies, setFilteredMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
-  const scrollRef = useRef(null);
+  const scrollRef = useRef({});
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -29,8 +31,17 @@ export default function Home() {
         console.error("Error fetching user me data:", error);
       }
     };
+    const fetchGenres = async () => {
+      try {
+        const genreData = await new MovieService().getGenre();
+        setGenre(genreData);
+      } catch (error) {
+        console.error("Fehler beim Abrufen der Genres:", error);
+      }
+    };
 
     fetchMovies();
+    fetchGenres();
   }, []);
 
   useEffect(() => {
@@ -43,20 +54,22 @@ export default function Home() {
     return () => clearInterval(intervalId);
   }, [movies]);
 
-  const scrollLeft = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+  const scrollLeft = (key) => {
+    if (scrollRef.current[key]) {
+      scrollRef.current[key].scrollBy({ left: -300, behavior: "smooth" });
     }
   };
-
-  const scrollRight = () => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+  
+  const scrollRight = (key) => {
+    if (scrollRef.current[key]) {
+      scrollRef.current[key].scrollBy({ left: 300, behavior: "smooth" });
     }
   };
 
   const handleSearch = (query) => {
-    const filtered = movies.filter(movie => movie.title.toLowerCase().includes(query.toLowerCase()));
+    const filtered = movies.filter((movie) =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
     setFilteredMovies(filtered);
   };
 
@@ -81,10 +94,32 @@ export default function Home() {
           Kategorien<span>.</span>
         </h2>
         <div className="img-view-container">
-          <button className="arrow arrow-left" onClick={scrollLeft}>
+        <button className="arrow arrow-left" onClick={() => scrollLeft("genres")}>
+          <img src={LeftArrow} alt="Left Arrow" />
+        </button>
+              <div className="backdrop-container" ref={(el) => (scrollRef.current["genres"] = el)}>
+              {Object.keys(genre).length > 0
+               ? Object.keys(genre).map((obj, index) => (
+               <GenreCard key={index} genre={obj}></GenreCard>
+               ))
+                : Array(5)
+              .fill(0)
+               .map((_, index) => <SkeletonGenreCard key={index} />)}
+              </div>    
+        <button className="arrow arrow-right" onClick={() => scrollRight("genres")}>
+            <img src={RightArrow} alt="Right Arrow" />
+        </button>
+        </div>
+      </div>
+      <div>
+        <h2>
+          Beliebte Filme<span>.</span>
+        </h2>
+        <div className="img-view-container">
+          <button className="arrow arrow-left"  onClick={() => scrollLeft("movies")}>
             <img src={LeftArrow} alt="Left Arrow" />
           </button>
-          <div className="backdrop-container" ref={scrollRef}>
+          <div className="backdrop-container" ref={(el) => (scrollRef.current["movies"] = el)}>
             {movies.length > 0
               ? movies.map((obj, index) => (
                   <Card
@@ -97,22 +132,10 @@ export default function Home() {
                   .fill(0)
                   .map((_, index) => <SkeletonMovieCard key={index} />)}
           </div>
-          <button className="arrow arrow-right" onClick={scrollRight}>
+          <button className="arrow arrow-right" onClick={() => scrollRight("movies")}>
             <img src={RightArrow} alt="Right Arrow" />
           </button>
         </div>
-      </div>
-      <div>
-        {movies.length > 0
-          ? movies.map((obj, index) => (
-              <GenreCard
-                key={index}
-                id={obj.genre}
-                title={obj.title}></GenreCard>
-            ))
-          : Array(5)
-              .fill(0)
-              .map((_, index) => <SkeletonGenreCard key={index} />)}
       </div>
     </div>
   );
