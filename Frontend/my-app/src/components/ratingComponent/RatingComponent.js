@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import RatingStarUnclicked from "../../assets/images/icons/RatingStarUnclicked.svg";
 import RatingStarClicked from "../../assets/images/icons/RatingStarClicked.svg";
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 import "./RatingComponent.css";
 import { ReviewService } from "../../assets/service/review_service";
+import Alert from "../alert/Alert.js";
 
 export default function RatingComponent({ user, imdbId }) {
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [inputCount, setInputCount] = useState("");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
 
   function handleClick(value) {
     setRating(value);
@@ -26,7 +29,8 @@ export default function RatingComponent({ user, imdbId }) {
     setInputCount(e.target.value);
   };
 
-  const handleCreateReview = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const createReview = await new ReviewService().getCreateReview(
         inputCount,
@@ -34,10 +38,14 @@ export default function RatingComponent({ user, imdbId }) {
         imdbId,
         user
       );
-      console.log("createReview", createReview);
+      setAlertMessage("Review submitted successfully!");
+      setAlertType("success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
-      console.error("Error deleting from favorites:", error);
-      throw error;
+      setAlertMessage("Error submitting review. Please try again.");
+      setAlertType("error");
     }
   };
 
@@ -77,9 +85,10 @@ export default function RatingComponent({ user, imdbId }) {
         <div>
           <ButtonComponent
             label="Abschicken"
-            onClick={handleCreateReview}></ButtonComponent>
+            onClick={handleSubmit}></ButtonComponent>
         </div>
       </div>
+      <Alert message={alertMessage} type={alertType} />
     </div>
   );
 }
