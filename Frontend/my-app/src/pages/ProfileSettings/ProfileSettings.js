@@ -4,8 +4,8 @@ import InputField from '../../components/inputfield/InputField';
 
 export default function ProfileSettings() {
   
-    const [name] = useState('John');
-    const [email, setEmail] = useState('john@doe.net');
+    const [name] = useState('Lillj');
+    const [email, setEmail] = useState('lillj@mail.net');
     const [password, setPassword] = useState('1234');
     const [isEditing, setIsEditing] = useState(null); 
     
@@ -59,15 +59,14 @@ export default function ProfileSettings() {
         <label>Passwort</label>
         {isEditing === 'password' ? (
           <InputField
-            type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, 'password')}
             />
           ) : (<div>
               <InputField
-                type={'password'}
-                label={password}
+                type='password'
+                value={password}
                 disabled={true}
               ></InputField>
             <button onClick={() => handleEdit('password')}>ändern</button></div>
