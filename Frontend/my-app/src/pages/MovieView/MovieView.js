@@ -13,6 +13,7 @@ import {
 } from "../../components/skeletonLoader/SkeletonLoader";
 import RatingView from "../../components/showRatingView/RatingView";
 import { Link } from "react-router-dom";
+import Rated from "../../components/rated/Rated";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -70,6 +71,7 @@ export default function MovieView() {
       <div className="content-container">
         <div className="play-container">
           {movie ? <h1>{movie.title}</h1> : <SkeletonTitle />}
+          <Rated age={movie.rated}></Rated>
           <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
             <button className="play-icon">
               <p>Watch</p>
@@ -81,10 +83,13 @@ export default function MovieView() {
           <hr />
           <div className="tags-container">
             {movie.genres?.map((genre, index) => (
-            <Link key={index} to={`/movies/genreview/${genre}`} className="link">
-             <Tags name={genre} />
-             </Link>
-              ))}
+              <Link
+                key={index}
+                to={`/movies/genreview/${genre}`}
+                className="link">
+                <Tags name={genre} />
+              </Link>
+            ))}
           </div>
 
           <p>{movie.plot}</p>
@@ -92,11 +97,10 @@ export default function MovieView() {
 
         <div className="img-view-container">
           {movie.backdrops?.length > 3 && (
-              <button className="arrow arrow-left" onClick={scrollLeft}>
-                <img src={LeftArrow} alt=''/>
-              </button>
+            <button className="arrow arrow-left" onClick={scrollLeft}>
+              <img src={LeftArrow} alt="" />
+            </button>
           )}
-
 
           <div className="backdrop-container" ref={scrollRef}>
             {movie
@@ -118,20 +122,25 @@ export default function MovieView() {
           </div>
           {movie.backdrops?.length > 3 && (
             <button className="arrow arrow-right" onClick={scrollRight}>
-              <img src={RightArrow} alt=''/>
+              <img src={RightArrow} alt="" />
             </button>
           )}
         </div>
       </div>
-      <div className="review-container" >
-      <div>
+      <div className="review-container">
+        <div>
           <h2>Bewertungen</h2>
           {movie.reviewIds?.map((obj) => {
-            return <RatingView user={obj.createdBy} comment={obj.body} rating={obj.rating}/>
+            return (
+              <RatingView
+                user={obj.createdBy}
+                comment={obj.body}
+                rating={obj.rating}
+              />
+            );
           })}
         </div>
       </div>
     </div>
-    
   );
 }
