@@ -4,7 +4,7 @@ import "./FavoriteButton.css";
 import FavoriteButtonClicked from "../../assets/images/icons/FavoriteButtonClicked.svg";
 import FavoriteButtonUnclicked from "../../assets/images/icons/FavoriteButtonUnclicked.svg";
 
-export default function FavoriteButton({onClick, isActive}) {
+export default function FavoriteButton({ onClick, isActive }) {
   const [isFavored, setIsFavored] = useState(isActive);
 
   useEffect(() => {
@@ -28,4 +28,3 @@ export default function FavoriteButton({onClick, isActive}) {
     </div>
   );
 }
-

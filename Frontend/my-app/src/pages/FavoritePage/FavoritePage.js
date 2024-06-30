@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
 import { UserService } from "../../assets/service/user_service";
 import Cookies from "js-cookie";
+import "./FavoritePage.css";
 
 export default function FavoritePage() {
   const [movies, setMovies] = useState([]);
@@ -22,7 +23,7 @@ export default function FavoritePage() {
   }, []);
 
   return (
-    <div>
+    <div className="FavoritePage">
       {movies.length > 0 ? (
         movies.map((obj) => (
           <Card

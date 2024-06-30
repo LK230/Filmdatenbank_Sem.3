@@ -1,13 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Searchbar.css";
 import { FaSearch } from "react-icons/fa";
 import FavoriteButton from "../button/FavoriteButton";
+import { UserService } from "../../assets/service/user_service";
+import Cookies from "js-cookie";
 
 export const Searchbar = ({ movies, onSearch }) => {
   const [inputValue, setInputValue] = useState("");
   const [placeholder, setPlaceholder] = useState("Suche");
   const [suggestions, setSuggestions] = useState([]);
+  const [favoredMovies, setFavoredMovies] = useState(new Set());
+
+  const email = Cookies.get("email");
+  const password = Cookies.get("password");
+
+  useEffect(() => {
+    const fetchFavorites = async () => {
+      try {
+        const userMe = await new UserService().getUserMe(email, password);
+        if (userMe && userMe.profile.favorites) {
+          const favoriteIds = userMe.profile.favorites.map((fav) => fav.imdbId);
+          setFavoredMovies(new Set(favoriteIds));
+        }
+      } catch (error) {
+        console.error("Error fetching favorite movies:", error);
+      }
+    };
+
+    fetchFavorites();
+  }, [email, password]);
 
   const handleInputChange = (e) => {
     const value = e.target.value;
@@ -41,8 +63,41 @@ export const Searchbar = ({ movies, onSearch }) => {
     }
   };
 
-  const handleFavoriteClick = (e) => {
-    e.preventDefault();
+  const handleFavorite = async (imdbId) => {
+    if (favoredMovies.has(imdbId)) {
+      await getDeleteFromFavorites(imdbId);
+    } else {
+      await getAddToFavorites(imdbId);
+    }
+  };
+
+  const getAddToFavorites = async (imdbId) => {
+    try {
+      const response = await new UserService().userAddToFavorite(email, imdbId);
+      if (response === "Movie added to favorites successfully") {
+        setFavoredMovies((prev) => new Set(prev).add(imdbId));
+      }
+    } catch (error) {
+      console.error("Error adding to favorites:", error);
+    }
+  };
+
+  const getDeleteFromFavorites = async (imdbId) => {
+    try {
+      const response = await new UserService().userDeleteFromFavorite(
+        email,
+        imdbId
+      );
+      if (response === "Movie removed from favorites successfully") {
+        setFavoredMovies((prev) => {
+          const newSet = new Set(prev);
+          newSet.delete(imdbId);
+          return newSet;
+        });
+      }
+    } catch (error) {
+      console.error("Error deleting from favorites:", error);
+    }
   };
 
   return (
@@ -61,16 +116,18 @@ export const Searchbar = ({ movies, onSearch }) => {
       {suggestions.length > 0 && (
         <div className="suggestions">
           {suggestions.map((movie) => (
-            <Link
-              key={movie.imdbId}
-              to={`/movies/${movie.imdbId}`}
-              className="suggestion-item">
-              <img src={movie.poster} alt={movie.title} />
-              <span>{movie.title}</span>
-              <button onClick={handleFavoriteClick}>
-                <FavoriteButton></FavoriteButton>
-              </button>
-            </Link>
+            <div key={movie.imdbId} className="suggestion-item">
+              <Link to={`/movies/${movie.imdbId}`}>
+                <img src={movie.poster} alt={movie.title} />
+                <span>{movie.title}</span>
+              </Link>
+              <div className="favoriteButton">
+                <FavoriteButton
+                  onClick={() => handleFavorite(movie.imdbId)}
+                  isActive={favoredMovies.has(movie.imdbId)}
+                />
+              </div>
+            </div>
           ))}
         </div>
       )}
