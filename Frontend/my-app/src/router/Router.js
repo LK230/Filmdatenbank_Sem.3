@@ -5,6 +5,7 @@ import Genres from "../pages/Genres/Genres";
 import MovieView from "../pages/MovieView/MovieView";
 import Sidebar from "../components/sidebar/Sidebar";
 import Login from "../pages/Login/LoginSignup";
+import ProfileSettings from "../pages/ProfileSettings/ProfileSettings";
 import FavoritePage from "../pages/FavoritePage/FavoritePage";
 import { GenreView } from "../pages/Genres/GenreView";
 
@@ -45,6 +46,7 @@ export default function Router() {
             path="/movies/genreview/:genre"
             element={<GenreView />}></Route>
           <Route path="/movies/:imdbId" element={<MovieView />}></Route>
+          <Route path="/profile" element={<ProfileSettings />}></Route>
           <Route path="/favorites" element={<FavoritePage />}></Route>
         </Routes>
       </main>
