@@ -2,14 +2,16 @@ import React from "react";
 import "./GenreCard.css";
 import { Link } from "react-router-dom";
 
-export default function GenreCard({ title, id }) {
+export default function GenreCard({ genre }) {
   return (
-    <div className="GenreCard">
-      <Link to={`/movie:${id}`} className="link">
+   
+      <Link to={`/movies/genreview/${genre}`} className="link">
+         <div className="GenreCard">
         <div className="title-container">
-          <p>{title}</p>
+          <p>{genre}</p>
+        </div>
         </div>
       </Link>
-    </div>
+    
   );
 }

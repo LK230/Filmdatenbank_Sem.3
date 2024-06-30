@@ -4,7 +4,7 @@
   align-items: center;
 }
 
-.Searchbar {
+.SearchbarContainer .Searchbar {
   background-color: transparent;
   border: 1px solid #f4f4f4;
   display: flex;
@@ -15,7 +15,7 @@
   position: relative;
 }
 
-.Searchbar input {
+.SearchbarContainer .Searchbar input {
   background-color: transparent;
   color: #f4f4f4;
   font-family: Inter;
@@ -28,7 +28,7 @@
   width: 87%;
 }
 
-.Searchbar #search-icon {
+.SearchbarContainer .Searchbar #search-icon {
   color: #f4f4f4;
   width: 25px;
   height: 25px;
@@ -41,7 +41,7 @@
   cursor: default;
 }
 
-.suggestions {
+.SearchbarContainer .suggestions {
   position: absolute;
   top: 86px;
   background: #262630;
@@ -51,7 +51,13 @@
   border-radius: 10px;
 }
 
-.suggestion-item {
+.SearchbarContainer .suggestion-item {
+  display: flex;
+  display: flex;
+  align-items: center;
+}
+
+.SearchbarContainer .suggestion-item a {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -60,13 +66,13 @@
   text-decoration: none;
 }
 
-.suggestion-item img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;;
+.SearchbarContainer .suggestion-item img {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
 }
 
-.suggestion-item button {
+.SearchbarContainer .suggestion-item .favoriteButton {
   margin-left: auto;
   background: none;
   border: none;
@@ -74,6 +80,6 @@
   cursor: pointer;
 }
 
-.suggestion-item:hover{
+.SearchbarContainer .suggestion-item:hover {
   background-color: black;
 }

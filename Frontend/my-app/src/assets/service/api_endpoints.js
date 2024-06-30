@@ -36,6 +36,18 @@ export async function getCreateUserEndpoint(user) {
   }
 }
 
+export async function getUserMeEndpoint(email, password) {
+  try {
+    const response = await api.get(
+      `/users/userme?email=${encodeURIComponent(email)}&password=${password}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    throw error;
+  }
+}
+
 export async function getMoviesEndpoint() {
   try {
     const response = await api.get("/movies");
@@ -60,16 +72,63 @@ export async function getCreateReviewEndpoint(
   reviewBody,
   rating,
   imdbId,
-  username
+  email
 ) {
   try {
     const response = await api.post(
-    `/reviews/create?reviewBody=${reviewBody}&rating=${rating}&imdbId=${imdbId}&username=${username}`);
-    
-    
+      `/reviews/create?reviewBody=${reviewBody}&rating=${rating}&imdbId=${imdbId}&email=${encodeURIComponent(
+        email
+      )}`
+    );
+
     return response.data;
   } catch (error) {
     console.error("Error:", error);
+    throw error;
+  }
+}
+
+export async function getAddFavoritesEndpoint(email, imdbId) {
+  try {
+    const response = await api.post(
+      `/users/favorites/add?email=${encodeURIComponent(email)}&imdbId=${imdbId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error adding to favorites:", error);
+  }
+}
+
+export async function getGenreEndpoint() {
+  try {
+    const response = await api.get("/movies/genre");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching genre:", error);
+    throw error;
+  }
+}
+
+export async function getDeleteFromFavoritesEndpoint(email, imdbId) {
+  try {
+    const response = await api.delete(
+      `/users/favorites/remove?email=${encodeURIComponent(
+        email
+      )}&imdbId=${imdbId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error deleting from favorites:", error);
+    throw error;
+  }
+}
+
+export async function getGenreMoviesEndpoint(genre) {
+  try {
+    const response = await api.get("/movies/genre/" + genre);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie:", error);
     throw error;
   }
 }

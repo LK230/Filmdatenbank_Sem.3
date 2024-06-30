@@ -4,6 +4,8 @@ import InputField from "../../components/inputfield/InputField";
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 import { UserService } from "../../assets/service/user_service";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import Alert from "../../components/alert/Alert";
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -14,13 +16,21 @@ const LoginSignup = () => {
   const [surname, setSurname] = useState("");
   const userService = new UserService();
   const navigate = useNavigate();
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
 
   const handleSubmit = async () => {
     try {
       if (isLogin) {
         const login = await userService.getUsers(email, password);
         if (login === "Login successfully!") {
-          navigate("/");
+          Cookies.set("email", email, { expires: 7 });
+          Cookies.set("password", password, { expires: 7 });
+          setAlertMessage("Login erfolgreich!");
+          setAlertType("success");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
         }
       } else {
         const newUser = {
@@ -31,18 +41,29 @@ const LoginSignup = () => {
           email: email,
         };
         const signup = await userService.createUser(newUser);
-        console.log("Created User:", signup);
         if (signup === "User was created successfully!") {
-          navigate("/");
+          Cookies.set("email", email, { expires: 7 });
+          setAlertMessage("Registrierung erfolgreich!");
+          setAlertType("success");
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        } else {
+          setAlertMessage(
+            "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
+          );
+          setAlertType("error");
         }
       }
     } catch (error) {
       console.error("Error during submission:", error);
+      setAlertMessage("Login fehlgeschlagen. Bitte versuchen Sie es erneut.");
+      setAlertType("error");
     }
   };
 
   return (
-    <div className="container">
+    <div className="LoginContainer">
       <div className="tabs">
         <div
           className={`tab ${isLogin ? "active" : ""}`}
@@ -61,6 +82,7 @@ const LoginSignup = () => {
             <div className="form-content">
               <h1 className="header">Melde dich an</h1>
               <div className="content-container">
+                <div className="form-group"></div>
                 <div className="form-group">
                   <InputField
                     label="Email"
@@ -125,6 +147,7 @@ const LoginSignup = () => {
           )}
         </div>
       </div>
+      <Alert message={alertMessage} type={alertType} />
     </div>
   );
 };

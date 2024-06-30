@@ -1,65 +1,74 @@
-.RatingContainer{
-    font-family: Inter;
-    font-weight: 900;
-    font-size: 25px;
-    color: #f4f4f4;
-    margin: 20px;
+.RatingContainer {
+  font-family: Inter;
+  font-weight: 900;
+  font-size: 25px;
+  color: #f4f4f4;
+  margin: 20px;
+  width: 420px;
 }
 
-.RatingContainer h1 {
-    margin-bottom: 25px;
+.RatingContainer h2 {
+  margin-bottom: 13px;
 }
 
-.RatingContainer button{
-    background: none;
-    border: none;
-    cursor: pointer;
-    
+.RatingContainer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.RatingContainer button img {
+  width: 35px;
+  height: 35px;
 }
 
 .RatingContainer button:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
-.CommentContainer {
-    background-color: transparent;
-    border: 1px solid #f4f4f4;
-    display: flex;
-    border-radius: 18px;
-    width: 469px; 
-    height: 231px;
-    padding: 15px;
-    margin-top: 30px;
+.RatingContainer .InputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.RatingContainer .CommentContainer {
+  background-color: transparent;
+  border: 1px solid #f4f4f4;
+  display: flex;
+  border-radius: 18px;
+  width: 93%;
+  height: 160px;
+  padding: 15px;
+  margin-top: 13px;
 }
 
-.CommentContainer textarea {
-    background-color: transparent;
-    color: #bbbbbb;
-    border: none;
-    width: 100%;
-    height: 100%;
-    font-family: Inter;
-    font-size: 24px;
-    resize: none;
-    outline: none;
+.RatingContainer .CommentContainer textarea {
+  background-color: transparent;
+  color: #bbbbbb;
+  border: none;
+  width: 100%;
+  height: 100%;
+  font-family: Inter;
+  font-size: 24px;
+  resize: none;
+  outline: none;
 }
 
-.CommentContainer textarea:focus {
-    border: none;
-    cursor: default;
+.RatingContainer .CommentContainer textarea:focus {
+  border: none;
+  cursor: default;
 }
 
-.CharacterCountContainer{
-    color: #f4f4f4;
-    font-family: Inter;
-    font-size: 21px;
-    position: absolute;
-    text-align: right;
-    width: 500px;
-    margin-top: 5px;
+.RatingContainer .CharacterCountContainer {
+  color: #f4f4f4;
+  font-family: Inter;
+  font-size: 16px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.ButtonComponent{
-    margin-left: 330px;
-    margin-top: 30px;
+.RatingContainer .ButtonComponent {
+  margin-right: -17px;
+  margin-top: 11px;
 }

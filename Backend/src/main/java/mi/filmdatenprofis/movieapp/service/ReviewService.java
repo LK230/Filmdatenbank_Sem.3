@@ -44,10 +44,10 @@ public class ReviewService {
     private static final Logger logger = LoggerFactory.getLogger(ReviewService.class);
 
     // Method to check if a user has already given a rating for a movie
-    private boolean hasUserRatedMovie(String imdbId, String username) {
+    private boolean hasUserRatedMovie(String imdbId, String email) {
         List<Review> reviews = reviewRepository.findAll();
         return reviews.stream()
-                .anyMatch(review -> review.getImdbId().equals(imdbId) && review.getCreatedBy().equalsIgnoreCase(username) && review.getRating() != null);
+                .anyMatch(review -> review.getImdbId().equals(imdbId) && review.getCreatedBy().equalsIgnoreCase(email) && review.getRating() != null);
     }
 
     public Double calculateAverageRating (String imdbId) {
@@ -87,19 +87,19 @@ public class ReviewService {
      * @param reviewBody Content of the review
      * @param rating Rating given to the movie
      * @param imdbId IMDb ID of the movie being reviewed
-     * @param username Username of the user creating the review
+     * @param email Email of the user creating the review
      * @return Created Review object, or null if user or movie is not found
      */
-    public Review createReview(String reviewBody, Integer rating, String imdbId, String username) {
+    public Review createReview(String reviewBody, Integer rating, String imdbId, String email) {
 
-        logger.info("Creating review for movie with ID: " + imdbId + " by user: " + username);
+        logger.info("Creating review for movie with ID: " + imdbId + " by user: " + email);
 
         try {
             // Find user and insert review to database
-            Optional<User> currentUser = userRepository.findByUsernameIgnoreCase(username);
+            Optional<User> currentUser = userRepository.findByEmailIgnoreCase(email);
 
             // Check if the user has already given a rating for this movie
-            if (rating != null && hasUserRatedMovie(imdbId, username)) {
+            if (rating != null && hasUserRatedMovie(imdbId, email)) {
                 logger.error("User has already given a rating for this movie");
                 return null;
             }
