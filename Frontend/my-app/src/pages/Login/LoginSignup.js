@@ -34,7 +34,6 @@ const LoginSignup = () => {
           email: email,
         };
         const signup = await userService.createUser(newUser);
-        console.log("Created User:", signup);
         if (signup === "User was created successfully!") {
           Cookies.set("email", email, { expires: 7 });
           navigate("/");

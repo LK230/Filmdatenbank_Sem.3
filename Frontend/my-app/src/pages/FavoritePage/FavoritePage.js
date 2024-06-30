@@ -12,7 +12,6 @@ export default function FavoritePage() {
     const fetchMovies = async () => {
       try {
         const userMeData = await new UserService().getUserMe(email, password);
-        console.log("userMeData", userMeData.profile.favorites);
         setMovies(userMeData.profile.favorites);
       } catch (error) {
         console.error("Error fetching user me data:", error);
@@ -22,7 +21,6 @@ export default function FavoritePage() {
     fetchMovies();
   }, []);
 
-  console.log("movies", movies);
   return (
     <div>
       {movies.length > 0 ? (

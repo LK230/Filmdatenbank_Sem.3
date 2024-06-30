@@ -7,7 +7,6 @@ export async function getUserEndpoint(username, email, password) {
         email
       )}&password=${password}`
     );
-    console.log("response", response);
     return response.data;
   } catch (error) {
     console.error("Error:", error);

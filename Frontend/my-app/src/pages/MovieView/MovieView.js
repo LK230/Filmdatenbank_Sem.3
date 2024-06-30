@@ -76,7 +76,6 @@ export default function MovieView() {
     const fetchMovie = async () => {
       try {
         const movieData = await new MovieService().getMovie(imdbId);
-        console.log("movieData", movieData);
         setMovie(movieData);
         if (movieData.backdrops && movieData.backdrops.length > 0) {
           setBackgroundImage(movieData.backdrops[0]);
@@ -108,7 +107,6 @@ export default function MovieView() {
 
   const handleFavMovie = async () => {
     const userMe = await new UserService().getUserMe(email, password);
-    console.log("userMe handleFavMovie", userMe.profile.favorites);
 
     if (
       userMe &&
