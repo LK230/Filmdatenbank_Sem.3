@@ -121,12 +121,14 @@ export const Searchbar = ({ movies, onSearch }) => {
                 <img src={movie.poster} alt={movie.title} />
                 <span>{movie.title}</span>
               </Link>
-              <div className="favoriteButton">
-                <FavoriteButton
-                  onClick={() => handleFavorite(movie.imdbId)}
-                  isActive={favoredMovies.has(movie.imdbId)}
-                />
-              </div>
+              {email && (
+                <div className="favoriteButton">
+                  <FavoriteButton
+                    onClick={() => handleFavorite(movie.imdbId)}
+                    isActive={favoredMovies.has(movie.imdbId)}
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>

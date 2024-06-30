@@ -64,13 +64,7 @@ const LoginSignup = () => {
             <div className="form-content">
               <h1 className="header">Melde dich an</h1>
               <div className="content-container">
-                <div className="form-group">
-                  <InputField
-                    label="Username"
-                    value={username}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
+                <div className="form-group"></div>
                 <div className="form-group">
                   <InputField
                     label="Email"
