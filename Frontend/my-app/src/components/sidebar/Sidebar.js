@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import "./Sidebar.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
-import { GrLogout } from "react-icons/gr";
+import { GrLogin, GrLogout } from "react-icons/gr";
 import { IoLibraryOutline } from "react-icons/io5";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
+import Cookies from "js-cookie";
 
 import Logo from "../../assets/images/Logo.svg";
 import LogoSmall from "../../assets/images/LogoSmall.svg";
@@ -14,6 +15,8 @@ import ButtonSVGClose from "../../assets/images/ButtonSVGClose.svg";
 
 export default function Sidebar({ showSidebar, setShowSidebar }) {
   const location = useLocation();
+  const navigate = useNavigate();
+  const isAuthenticated = Cookies.get("email");
 
   useEffect(() => {
     const handleResize = () => {
@@ -22,6 +25,12 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [setShowSidebar]);
+
+  const handleLogout = () => {
+    Cookies.remove("email");
+    Cookies.remove("password");
+    navigate("/login");
+  };
 
   return (
     <div className={`Sidebar ${showSidebar ? "open" : "close"}`}>
@@ -84,10 +93,17 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
                 <ul>
                   <li>
                     <div>
-                      <Link to="/login" className="link-btn">
-                        <GrLogout />
-                        <p>Abmelden</p>
-                      </Link>
+                      {isAuthenticated ? (
+                        <button onClick={handleLogout} className="link-btn">
+                          <GrLogout />
+                          <p>Abmelden</p>
+                        </button>
+                      ) : (
+                        <Link to="/login" className="link-btn">
+                          <GrLogin />
+                          <p>Anmelden</p>
+                        </Link>
+                      )}
                     </div>
                   </li>
                 </ul>
@@ -150,9 +166,15 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
                 <ul>
                   <li>
                     <div>
-                      <Link to="/login" className="link-btn">
-                        <GrLogout />
-                      </Link>
+                      {isAuthenticated ? (
+                        <button onClick={handleLogout} className="link-btn">
+                          <GrLogout />
+                        </button>
+                      ) : (
+                        <Link to="/login" className="link-btn">
+                          <GrLogin />
+                        </Link>
+                      )}
                     </div>
                   </li>
                 </ul>
