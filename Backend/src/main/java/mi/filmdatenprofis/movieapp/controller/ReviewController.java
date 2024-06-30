@@ -26,7 +26,7 @@ public class ReviewController {
 
     // Endpoint to create a new review
     @PostMapping("/create")
-    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam(required = false) Integer rating, @RequestParam String imdbId, @RequestParam String username) {
+    public ResponseEntity<?> createReview(@RequestParam String reviewBody, @RequestParam(required = false) Integer rating, @RequestParam String imdbId, @RequestParam String email) {
 
         // Check if rating is provided and is within valid range
         if(rating != null && (rating < 1 || rating > 5)) {
@@ -37,7 +37,7 @@ public class ReviewController {
         // Log the creation of the review
         logger.info("Creating review for movie with ID: " + imdbId);
         // Create the review using the review service
-        Review review = reviewService.createReview(reviewBody, rating, imdbId, username);
+        Review review = reviewService.createReview(reviewBody, rating, imdbId, email);
 
         // Return the created review or an error message if creation failed
         if(review != null) {

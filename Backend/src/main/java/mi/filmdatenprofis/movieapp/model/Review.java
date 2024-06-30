@@ -39,12 +39,12 @@ public class Review {
     private LocalDateTime updated;
 
     // Constructor to create a new Review with a body, optional rating, imdbId, and timestamps
-    public Review(String reviewBody, Integer rating, String imdbId, LocalDateTime created, LocalDateTime updated, String username) {
+    public Review(String reviewBody, Integer rating, String imdbId, LocalDateTime created, LocalDateTime updated, String email) {
         this.body = reviewBody;
         this.rating = rating;
         this.imdbId = imdbId;
         this.created = created;
         this.updated = updated;
-        this.createdBy = username;
+        this.createdBy = email;
     }
 }
