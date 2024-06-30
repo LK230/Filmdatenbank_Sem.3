@@ -95,6 +95,15 @@ export async function getAddFavoritesEndpoint(email, imdbId) {
     return response.data;
   } catch (error) {
     console.error("Error adding to favorites:", error);
+  }
+}
+
+export async function getGenreEndpoint() {
+  try {
+    const response = await api.get("/movies/genre");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching genre:", error);
     throw error;
   }
 }
@@ -109,6 +118,16 @@ export async function getDeleteFromFavoritesEndpoint(email, imdbId) {
     return response.data;
   } catch (error) {
     console.error("Error deleting from favorites:", error);
+    throw error;
+  }
+}
+
+export async function getGenreMoviesEndpoint(genre) {
+  try {
+    const response = await api.get("/movies/genre/" + genre);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie:", error);
     throw error;
   }
 }

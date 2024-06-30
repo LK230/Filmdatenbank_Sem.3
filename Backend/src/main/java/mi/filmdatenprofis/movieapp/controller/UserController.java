@@ -12,35 +12,49 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
+// Allows cross-origin requests from any domain
+@CrossOrigin(origins = "*")
+// Indicates that this class is a REST controller
 @RestController
+// Maps HTTP requests to /users URL
 @RequestMapping("/users")
 public class UserController {
 
+    // Injects the UserService dependency
     @Autowired
     private UserService userService;
 
+    // Logger for logging messages
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
+    // Endpoint for creating a new user
     @PostMapping("/create")
     public ResponseEntity<String> createUser(@RequestBody User user) {
         logger.info("Creating user with email: " + user.getEmail());
+
+        // Checks if the email or username is already taken
         if (userService.isEmailAlreadyTaken(user.getEmail()) || userService.isUsernameAlreadyTaken(user.getUsername())) {
             return new ResponseEntity<>("The entered e-mail address or username is already taken", HttpStatus.BAD_REQUEST);
         }
 
+        // Validates the email format
         if(!userService.isValidEmail(user.getEmail())) {
             return new ResponseEntity<>("The entered e-mail address is not valid", HttpStatus.BAD_REQUEST);
         }
 
+        // Creates the user and returns a success message
         userService.createUser(user);
         return new ResponseEntity<>("User was created successfully!", HttpStatus.CREATED);
     }
 
+    // Endpoint for user login
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestParam String email, @RequestParam String password) {
         logger.info("User login attempt with email: " + email);
+        // Authenticates the user
         boolean isAuthenticated = userService.authenticateUser(email, password);
 
+        // Returns appropriate response based on authentication result
         if (isAuthenticated) {
             return new ResponseEntity<>("Login successfully!", HttpStatus.OK);
         } else {
@@ -48,11 +62,14 @@ public class UserController {
         }
     }
 
+    // Endpoint for getting a user's profile
     @GetMapping("/{username}")
     public ResponseEntity<?> getUserProfile(@RequestParam String username,
                                             @RequestParam String email,
                                             @RequestParam String password) {
         logger.info("Getting user profile for username: " + username);
+
+        // Authenticates the user
         if(userService.authenticateUser(email, password)) {
             return new ResponseEntity<Optional<UserProfile>>(userService.userProfile(username), HttpStatus.OK);
         }
@@ -81,6 +98,7 @@ public class UserController {
         }
     }
 
+    // Endpoint for removing a movie from a user's favorites
     @DeleteMapping("/favorites/remove")
     public ResponseEntity<?> removeFromFavorites(@RequestParam String email, @RequestParam String imdbId) {
         logger.info("Removing movie with ID: " + imdbId + " from favorites for user: " + email);
@@ -91,11 +109,15 @@ public class UserController {
         }
     }
 
+    // Endpoint for deleting a user
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteUser(@RequestParam String email, @RequestParam String password) {
         logger.info("Deleting user with email: " + email);
+
+        // Authenticates the user
         boolean isAuthenticated = userService.authenticateUser(email, password);
 
+        // Deletes the user and returns appropriate response
         if (isAuthenticated && userService.deleteUser(email)) {
             return new ResponseEntity<>("User was deleted", HttpStatus.OK);
         } else {
@@ -103,13 +125,17 @@ public class UserController {
         }
     }
 
+    // Endpoint for updating a user's password
     @PatchMapping("/update/password")
     public ResponseEntity<String> updatePassword(@RequestParam String email,
                                                  @RequestParam String password,
                                                  @RequestParam String newPassword) {
         logger.info("Updating password for user with email: " + email);
+
+        // Authenticates the user
         boolean isAuthenticated = userService.authenticateUser(email, password);
 
+        // Updates the password and returns appropriate response
         if (isAuthenticated && userService.changePassword(email, newPassword)) {
             return new ResponseEntity<>("Password changed successfully!", HttpStatus.OK);
         } else {
@@ -117,13 +143,17 @@ public class UserController {
         }
     }
 
+    // Endpoint for updating a user's email
     @PatchMapping("/update/email")
     public ResponseEntity<String> updateEmail(@RequestParam String email,
                                               @RequestParam String password,
                                               @RequestParam String newEmail) {
         logger.info("Updating email for user with email: " + email);
+
+        // Authenticates the user
         boolean isAuthenticated = userService.authenticateUser(email, password);
 
+        // Updates the email and returns appropriate response
         if (isAuthenticated && userService.changeEmail(email, newEmail)) {
             return new ResponseEntity<>("Email changed successfully!", HttpStatus.OK);
         } else {

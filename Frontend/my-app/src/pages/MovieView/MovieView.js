@@ -14,6 +14,8 @@ import {
 import RatingView from "../../components/showRatingView/RatingView";
 import { UserService } from "../../assets/service/user_service";
 import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
+import Rated from "../../components/rated/Rated";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -137,6 +139,7 @@ export default function MovieView() {
       <div className="content-container">
         <div className="play-container">
           {movie ? <h1>{movie.title}</h1> : <SkeletonTitle />}
+          <Rated age={movie.rated}></Rated>
           <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
             <button className="play-icon">
               <p>Watch</p>
@@ -149,9 +152,14 @@ export default function MovieView() {
         <div className="text-container">
           <hr />
           <div className="tags-container">
-            {movie.genres?.map((obj, index) => {
-              return <Tags key={index} name={obj} />;
-            })}
+            {movie.genres?.map((genre, index) => (
+              <Link
+                key={index}
+                to={`/movies/genreview/${genre}`}
+                className="link">
+                <Tags name={genre} />
+              </Link>
+            ))}
           </div>
 
           <p>{movie.plot}</p>
