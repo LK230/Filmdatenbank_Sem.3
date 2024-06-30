@@ -66,14 +66,27 @@ public class UserService {
         return false;
     }
 
+    public Optional<User> getUserProfileByEmail(String email, String password) {
+        logger.info("Fetching user by email: " + email);
+        Optional<User> userOptional = userRepository.findByEmailIgnoreCase(email);
+
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            if (user.getPassword().equals(password)) {
+                return userOptional;
+            }
+        }
+        return Optional.empty();
+    }
+
     public Optional<UserProfile> userProfile(String username) {
         logger.info("Fetching user profile for username: " + username);
         return userProfileRepository.findByUsernameIgnoreCase(username);
     }
 
-    public boolean addFavorites(String username, String imdbId) {
-        logger.info("Adding movie with ID: " + imdbId + " to favorites for user: " + username);
-        User user = userRepository.findByUsernameIgnoreCase(username).orElse(null);
+    public boolean addFavorites(String email, String imdbId) {
+        logger.info("Adding movie with ID: " + imdbId + " to favorites for user: " + email);
+        User user = userRepository.findByEmailIgnoreCase(email).orElse(null);
         Movie movie = movieRepository.findMovieByImdbId(imdbId).orElse(null);
 
         if (user != null && movie != null) {
@@ -94,14 +107,20 @@ public class UserService {
         return false;
     }
 
-    public boolean removeFavorites(String username, String imdbId) {
-        logger.info("Removing movie with ID: " + imdbId + " from favorites for user: " + username);
-        User user = userRepository.findByUsernameIgnoreCase(username).orElse(null);
-        Movie movie = movieRepository.findMovieByImdbId(imdbId).orElse(null);
-        if(user != null && movie != null) {
-            if(user.getProfile().getFavorites().stream()
-                    .anyMatch(movieToCheck -> movie.getImdbId().equals(imdbId))) {
-                user.getProfile().getFavorites().removeIf(movieToRemove -> movie.getImdbId().equals((imdbId)));
+    public boolean removeFavorites(String email, String imdbId) {
+        logger.info("Removing movie with ID: " + imdbId + " from favorites for user: " + email);
+        User user = userRepository.findByEmailIgnoreCase(email).orElse(null);
+        Movie movieToRemove = movieRepository.findMovieByImdbId(imdbId).orElse(null);
+
+        if (user != null && movieToRemove != null) {
+            // Check if the movie with imdbId exists in the user's favorites
+            if (user.getProfile().getFavorites().stream()
+                    .anyMatch(movie -> movie.getImdbId().equals(imdbId))) {
+
+                // Remove the movie from the user's favorites
+                user.getProfile().getFavorites().removeIf(movie -> movie.getImdbId().equals(imdbId));
+
+                // Save changes to the repositories
                 userRepository.save(user);
                 userProfileRepository.save(user.getProfile());
                 return true;
@@ -109,6 +128,7 @@ public class UserService {
         }
         return false;
     }
+
 
     public boolean deleteUser(String email) {
         logger.info("Deleting user with email: " + email);

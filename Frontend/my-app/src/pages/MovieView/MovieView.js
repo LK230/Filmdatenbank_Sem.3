@@ -22,43 +22,55 @@ export default function MovieView() {
   const [backgroundImage, setBackgroundImage] = useState("");
   const [user, setUser] = useState(null);
   const [isFavored, setIsFavored] = useState(false);
+  const email = Cookies.get("email");
+  const password = Cookies.get("password");
 
   const getAddToFavorites = async () => {
     try {
-      const email = Cookies.get("email");
       const response = await new UserService().userAddToFavorite(email, imdbId);
-      console.log("response", response);
+      if (response === "Movie added to favorites successfully") {
+        setIsFavored(true);
+      }
     } catch (error) {
       console.error("Error adding to favorites:", error);
       throw error;
     }
   };
 
-  // const getDeleteFromFavorites = async (user, imdbId) => {
-  //   try {
-  //     const response = await new UserService().userDeleteFromFavorite(
-  //       user.username,
-  //       imdbId
-  //     );
-  //     return response;
-  //   } catch (error) {
-  //     console.error("Error deleting from favorites:", error);
-  //     throw error;
-  //   }
-  // };
+  const getDeleteFromFavorites = async () => {
+    try {
+      const response = await new UserService().userDeleteFromFavorite(
+        email,
+        imdbId
+      );
+      if (response === "Movie removed from favorites successfully") {
+        setIsFavored(false);
+      }
+    } catch (error) {
+      console.error("Error deleting from favorites:", error);
+      throw error;
+    }
+  };
 
-  // const fetchUser = async () => {
-  //   try {
-  //     const email = Cookies.get("email");
-  //     const password = Cookies.get("password");
-  //     const userdata = await new UserService().getUsers(email, password);
-  //     console.log("USER", userdata);
-
-  //     setUser(userdata);
-  //   } catch (error) {
-  //     console.error("Error fetching user me data:", error);
-  //   }
-  // };
+  useEffect(() => {
+    const fetchUserFavorites = async () => {
+      try {
+        const userMe = await new UserService().getUserMe(email, password);
+        if (
+          userMe &&
+          userMe.profile.favorites &&
+          userMe.profile.favorites.some((obj) => obj.imdbId === imdbId)
+        ) {
+          setIsFavored(true);
+        } else {
+          setIsFavored(false);
+        }
+      } catch (error) {
+        console.error("Error fetching user favorites:", error);
+      }
+    };
+    fetchUserFavorites();
+  }, []);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -94,24 +106,18 @@ export default function MovieView() {
     }
   };
 
-  const handleFavMovie = () => {
+  const handleFavMovie = async () => {
+    const userMe = await new UserService().getUserMe(email, password);
+    console.log("userMe handleFavMovie", userMe.profile.favorites);
+
     if (
-      user &&
-      user.favorites &&
-      user.favorites.some((obj) => obj.imdbId === imdbId)
+      userMe &&
+      userMe.profile.favorites &&
+      userMe.profile.favorites.some((obj) => obj.imdbId === imdbId)
     ) {
-      //wenn obj id dann delete
-      // getDeleteFromFavorites(user, imdbId);
-      // setUser((prevUser) => ({
-      //   ...prevUser,
-      //   favorites: prevUser.favorites.filter((fav) => fav.imdbId !== imdbId),
-      // }));
+      getDeleteFromFavorites();
     } else {
-      // getAddToFavorites(user, imdbId); //sonst add
-      // setUser((prevUser) => ({
-      //   ...prevUser,
-      //   favorites: [...prevUser.favorites, { imdbId }],
-      // }));
+      getAddToFavorites();
     }
   };
 
@@ -137,7 +143,7 @@ export default function MovieView() {
             </button>
           </a>
           <FavoriteButton
-            onClick={getAddToFavorites}
+            onClick={handleFavMovie}
             isActive={isFavored}></FavoriteButton>
         </div>
         <div className="text-container">

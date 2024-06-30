@@ -37,6 +37,18 @@ export async function getCreateUserEndpoint(user) {
   }
 }
 
+export async function getUserMeEndpoint(email, password) {
+  try {
+    const response = await api.get(
+      `/users/userme?email=${encodeURIComponent(email)}&password=${password}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    throw error;
+  }
+}
+
 export async function getMoviesEndpoint() {
   try {
     const response = await api.get("/movies");
@@ -80,7 +92,6 @@ export async function getAddFavoritesEndpoint(email, imdbId) {
     const response = await api.post(
       `/users/favorites/add?email=${encodeURIComponent(email)}&imdbId=${imdbId}`
     );
-    console.log("respone", response.data);
     return response.data;
   } catch (error) {
     console.error("Error adding to favorites:", error);
@@ -88,10 +99,12 @@ export async function getAddFavoritesEndpoint(email, imdbId) {
   }
 }
 
-export async function getDeleteFromFavoritesEndpoint(username, imdbId) {
+export async function getDeleteFromFavoritesEndpoint(email, imdbId) {
   try {
     const response = await api.delete(
-      `/users/favorites/remove?username=${username}&imdbId=${imdbId}`
+      `/users/favorites/remove?email=${encodeURIComponent(
+        email
+      )}&imdbId=${imdbId}`
     );
     return response.data;
   } catch (error) {

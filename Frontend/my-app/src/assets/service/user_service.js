@@ -5,6 +5,7 @@ import {
   getDeleteFromFavorites,
   getDeleteFromFavoritesEndpoint,
   getUserEndpoint,
+  getUserMeEndpoint,
   getUsersEndpoint,
 } from "./api_endpoints";
 
@@ -12,7 +13,6 @@ export class UserService {
   async getUser(username, email, password) {
     try {
       const user = await getUserEndpoint(username, email, password);
-      console.log("USERSERVICE", user);
       return user;
     } catch (error) {
       console.error(error);
@@ -22,6 +22,15 @@ export class UserService {
   async getUsers(email, password) {
     try {
       const user = await getUsersEndpoint(email, password);
+      return user;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async getUserMe(email, password) {
+    try {
+      const user = await getUserMeEndpoint(email, password);
       return user;
     } catch (error) {
       console.error(error);
@@ -41,7 +50,6 @@ export class UserService {
   async userAddToFavorite(email, imdbId) {
     try {
       const addFav = await getAddFavoritesEndpoint(email, imdbId);
-      console.log("addFav", addFav);
       return addFav;
     } catch (error) {
       console.error(error);
@@ -49,13 +57,10 @@ export class UserService {
     }
   }
 
-  async userDeleteFromFavorite(username, imdbId) {
+  async userDeleteFromFavorite(email, imdbId) {
     try {
-      const createdUser = await getDeleteFromFavoritesEndpoint(
-        username,
-        imdbId
-      );
-      return createdUser; // removed .data
+      const deleteFav = await getDeleteFromFavoritesEndpoint(email, imdbId);
+      return deleteFav;
     } catch (error) {
       console.error(error);
       throw error;
