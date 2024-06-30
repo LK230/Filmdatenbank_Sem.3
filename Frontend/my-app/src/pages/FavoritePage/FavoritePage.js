@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import Card from "../../components/card/Card";
 import { UserService } from "../../assets/service/user_service";
-import { SkeletonMovieCard } from "../../components/skeletonLoader/SkeletonLoader";
 import Cookies from "js-cookie";
 
 export default function FavoritePage() {
@@ -28,9 +26,9 @@ export default function FavoritePage() {
   return (
     <div>
       {movies.length > 0 ? (
-        movies.map((obj, index) => (
+        movies.map((obj) => (
           <Card
-            key={index}
+            key={obj.imdbId}
             id={obj.imdbId}
             poster={obj.poster}
             title={obj.title}></Card>

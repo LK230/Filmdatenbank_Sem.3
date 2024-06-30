@@ -6,13 +6,11 @@ import GenreCard from "../../components/card/GenreCard";
 import { MovieService } from "../../assets/service/movie_service";
 import LeftArrow from "../../assets/images/ButtonSVG.svg";
 import RightArrow from "../../assets/images/ButtonSVGClose.svg";
-import { UserService } from "../../assets/service/user_service";
 import {
   SkeletonGenreCard,
   SkeletonMovieCard,
   SkeletonRandomMovie,
 } from "../../components/skeletonLoader/SkeletonLoader";
-import { getGenreMoviesEndpoint } from "../../assets/service/api_endpoints";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -104,12 +102,12 @@ export default function Home() {
             className="backdrop-container"
             ref={(el) => (scrollRef.current["genres"] = el)}>
             {Object.keys(genre).length > 0
-              ? Object.keys(genre).map((obj, index) => (
-                  <GenreCard key={index} genre={obj}></GenreCard>
+              ? Object.keys(genre).map((obj) => (
+                  <GenreCard key={obj} genre={obj}></GenreCard>
                 ))
               : Array(5)
                   .fill(0)
-                  .map((_, index) => <SkeletonGenreCard key={index} />)}
+                  .map((_) => <SkeletonGenreCard />)}
           </div>
           <button
             className="arrow arrow-right"
@@ -132,16 +130,16 @@ export default function Home() {
             className="backdrop-container"
             ref={(el) => (scrollRef.current["movies"] = el)}>
             {movies.length > 0
-              ? movies.map((obj, index) => (
+              ? movies.map((obj) => (
                   <Card
-                    key={index}
+                    key={obj.imdbId}
                     id={obj.imdbId}
                     poster={obj.poster}
                     title={obj.title}></Card>
                 ))
               : Array(5)
                   .fill(0)
-                  .map((_, index) => <SkeletonMovieCard key={index} />)}
+                  .map((_) => <SkeletonMovieCard />)}
           </div>
           <button
             className="arrow arrow-right"

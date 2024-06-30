@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MovieService } from "../../assets/service/movie_service";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./MovieView.css";
 import FavoriteButton from "../../components/button/FavoriteButton";
 import BackdropCard from "../../components/card/BackdropCard";
@@ -14,7 +14,6 @@ import {
 import RatingView from "../../components/showRatingView/RatingView";
 import { UserService } from "../../assets/service/user_service";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
 import Rated from "../../components/rated/Rated";
 
 export default function MovieView() {
@@ -22,7 +21,6 @@ export default function MovieView() {
   const [movie, setMovie] = useState({ backdrops: [] });
   const scrollRef = useRef(null);
   const [backgroundImage, setBackgroundImage] = useState("");
-  const [user, setUser] = useState(null);
   const [isFavored, setIsFavored] = useState(false);
   const email = Cookies.get("email");
   const password = Cookies.get("password");
@@ -152,9 +150,9 @@ export default function MovieView() {
         <div className="text-container">
           <hr />
           <div className="tags-container">
-            {movie.genres?.map((genre, index) => (
+            {movie.genres?.map((genre) => (
               <Link
-                key={index}
+                key={genre}
                 to={`/movies/genreview/${genre}`}
                 className="link">
                 <Tags name={genre} />
