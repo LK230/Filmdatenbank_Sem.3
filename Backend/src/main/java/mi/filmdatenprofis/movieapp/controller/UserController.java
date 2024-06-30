@@ -78,13 +78,20 @@ public class UserController {
         }
     }
 
-    // Endpoint for adding a movie to a user's favorites
-    @PostMapping("/favorites/add")
-    public ResponseEntity<?> addToFavorites(@RequestParam String username, @RequestParam String imdbId) {
-        logger.info("Adding movie with ID: " + imdbId + " to favorites for user: " + username);
+    @GetMapping("/userme")
+    public ResponseEntity<?> getUserByEmail(@RequestParam String email, @RequestParam String password) {
+        Optional<User> user = userService.getUserProfileByEmail(email, password);
+        if (user.isPresent()) {
+            return new ResponseEntity<>(user.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+        }
+    }
 
-        // Adds the movie to favorites and returns appropriate response
-        if (userService.addFavorites(username, imdbId)) {
+    @PostMapping("/favorites/add")
+    public ResponseEntity<?> addToFavorites(@RequestParam String email, @RequestParam String imdbId) {
+        logger.info("Adding movie with ID: " + imdbId + " to favorites for user: " + email);
+        if (userService.addFavorites(email, imdbId)) {
             return new ResponseEntity<>("Movie added to favorites successfully", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Error: Wrong username, movie or movie is already in favorites", HttpStatus.BAD_REQUEST);
@@ -93,11 +100,9 @@ public class UserController {
 
     // Endpoint for removing a movie from a user's favorites
     @DeleteMapping("/favorites/remove")
-    public ResponseEntity<?> removeFromFavorites(@RequestParam String username, @RequestParam String imdbId) {
-        logger.info("Removing movie with ID: " + imdbId + " from favorites for user: " + username);
-
-        // Removes the movie from favorites and returns appropriate response
-        if (userService.removeFavorites(username, imdbId)) {
+    public ResponseEntity<?> removeFromFavorites(@RequestParam String email, @RequestParam String imdbId) {
+        logger.info("Removing movie with ID: " + imdbId + " from favorites for user: " + email);
+        if (userService.removeFavorites(email, imdbId)) {
             return new ResponseEntity<>("Movie removed from favorites successfully", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Error: Wrong username, movie or movie is not in favorites", HttpStatus.BAD_REQUEST);

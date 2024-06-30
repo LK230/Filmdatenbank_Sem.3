@@ -57,10 +57,10 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
                 </li>
                 <li
                   className={`li-btn ${
-                    location.pathname === "/favourites" ? "active" : ""
+                    location.pathname === "/favorites" ? "active" : ""
                   }`}>
                   <div>
-                    <Link to="/favourites" className="link-btn">
+                    <Link to="/favorites" className="link-btn">
                       <MdOutlineFavoriteBorder />
                       <p>Gespeichert</p>
                     </Link>
@@ -125,10 +125,10 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
                 </li>
                 <li
                   className={`li-btn ${
-                    location.pathname === "/favourites" ? "active" : ""
+                    location.pathname === "/favorites" ? "active" : ""
                   }`}>
                   <div>
-                    <Link to="/favourites" className="link-btn">
+                    <Link to="/favorites" className="link-btn">
                       <MdOutlineFavoriteBorder />
                     </Link>
                   </div>

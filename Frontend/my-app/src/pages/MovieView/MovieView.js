@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MovieService } from "../../assets/service/movie_service";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import "./MovieView.css";
 import FavoriteButton from "../../components/button/FavoriteButton";
 import BackdropCard from "../../components/card/BackdropCard";
@@ -12,7 +12,8 @@ import {
   SkeletonTitle,
 } from "../../components/skeletonLoader/SkeletonLoader";
 import RatingView from "../../components/showRatingView/RatingView";
-import { Link } from "react-router-dom";
+import { UserService } from "../../assets/service/user_service";
+import Cookies from "js-cookie";
 import Rated from "../../components/rated/Rated";
 
 export default function MovieView() {
@@ -20,12 +21,61 @@ export default function MovieView() {
   const [movie, setMovie] = useState({ backdrops: [] });
   const scrollRef = useRef(null);
   const [backgroundImage, setBackgroundImage] = useState("");
+  const [isFavored, setIsFavored] = useState(false);
+  const email = Cookies.get("email");
+  const password = Cookies.get("password");
+
+  const getAddToFavorites = async () => {
+    try {
+      const response = await new UserService().userAddToFavorite(email, imdbId);
+      if (response === "Movie added to favorites successfully") {
+        setIsFavored(true);
+      }
+    } catch (error) {
+      console.error("Error adding to favorites:", error);
+      throw error;
+    }
+  };
+
+  const getDeleteFromFavorites = async () => {
+    try {
+      const response = await new UserService().userDeleteFromFavorite(
+        email,
+        imdbId
+      );
+      if (response === "Movie removed from favorites successfully") {
+        setIsFavored(false);
+      }
+    } catch (error) {
+      console.error("Error deleting from favorites:", error);
+      throw error;
+    }
+  };
+
+  useEffect(() => {
+    const fetchUserFavorites = async () => {
+      try {
+        const userMe = await new UserService().getUserMe(email, password);
+        if (
+          userMe &&
+          userMe.profile.favorites &&
+          userMe.profile.favorites.some((obj) => obj.imdbId === imdbId)
+        ) {
+          setIsFavored(true);
+        } else {
+          setIsFavored(false);
+        }
+      } catch (error) {
+        console.error("Error fetching user favorites:", error);
+      }
+    };
+    fetchUserFavorites();
+  }, []);
 
   useEffect(() => {
     const fetchMovie = async () => {
       try {
         const movieData = await new MovieService().getMovie(imdbId);
-        console.log("movieData", movieData);
         setMovie(movieData);
         if (movieData.backdrops && movieData.backdrops.length > 0) {
           setBackgroundImage(movieData.backdrops[0]);
@@ -55,6 +105,20 @@ export default function MovieView() {
     }
   };
 
+  const handleFavMovie = async () => {
+    const userMe = await new UserService().getUserMe(email, password);
+
+    if (
+      userMe &&
+      userMe.profile.favorites &&
+      userMe.profile.favorites.some((obj) => obj.imdbId === imdbId)
+    ) {
+      getDeleteFromFavorites();
+    } else {
+      getAddToFavorites();
+    }
+  };
+
   return (
     <div
       className="MovieContainer"
@@ -77,14 +141,16 @@ export default function MovieView() {
               <p>Watch</p>
             </button>
           </a>
-          <FavoriteButton></FavoriteButton>
+          <FavoriteButton
+            onClick={handleFavMovie}
+            isActive={isFavored}></FavoriteButton>
         </div>
         <div className="text-container">
           <hr />
           <div className="tags-container">
-            {movie.genres?.map((genre, index) => (
+            {movie.genres?.map((genre) => (
               <Link
-                key={index}
+                key={genre}
                 to={`/movies/genreview/${genre}`}
                 className="link">
                 <Tags name={genre} />

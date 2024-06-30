@@ -4,6 +4,7 @@ import InputField from "../../components/inputfield/InputField";
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 import { UserService } from "../../assets/service/user_service";
 import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const LoginSignup = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -20,6 +21,8 @@ const LoginSignup = () => {
       if (isLogin) {
         const login = await userService.getUsers(email, password);
         if (login === "Login successfully!") {
+          Cookies.set("email", email, { expires: 7 });
+          Cookies.set("password", password, { expires: 7 });
           navigate("/");
         }
       } else {
@@ -31,8 +34,8 @@ const LoginSignup = () => {
           email: email,
         };
         const signup = await userService.createUser(newUser);
-        console.log("Created User:", signup);
         if (signup === "User was created successfully!") {
+          Cookies.set("email", email, { expires: 7 });
           navigate("/");
         }
       }
@@ -61,6 +64,13 @@ const LoginSignup = () => {
             <div className="form-content">
               <h1 className="header">Melde dich an</h1>
               <div className="content-container">
+                <div className="form-group">
+                  <InputField
+                    label="Username"
+                    value={username}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
                 <div className="form-group">
                   <InputField
                     label="Email"

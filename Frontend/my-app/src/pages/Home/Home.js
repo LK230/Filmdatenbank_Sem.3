@@ -11,7 +11,6 @@ import {
   SkeletonMovieCard,
   SkeletonRandomMovie,
 } from "../../components/skeletonLoader/SkeletonLoader";
-import { getGenreMoviesEndpoint } from "../../assets/service/api_endpoints";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -59,7 +58,7 @@ export default function Home() {
       scrollRef.current[key].scrollBy({ left: -300, behavior: "smooth" });
     }
   };
-  
+
   const scrollRight = (key) => {
     if (scrollRef.current[key]) {
       scrollRef.current[key].scrollBy({ left: 300, behavior: "smooth" });
@@ -94,21 +93,27 @@ export default function Home() {
           Kategorien<span>.</span>
         </h2>
         <div className="img-view-container">
-        <button className="arrow arrow-left" onClick={() => scrollLeft("genres")}>
-          <img src={LeftArrow} alt="Left Arrow" />
-        </button>
-              <div className="backdrop-container" ref={(el) => (scrollRef.current["genres"] = el)}>
-              {Object.keys(genre).length > 0
-               ? Object.keys(genre).map((obj, index) => (
-               <GenreCard key={index} genre={obj}></GenreCard>
-               ))
-                : Array(5)
-              .fill(0)
-               .map((_, index) => <SkeletonGenreCard key={index} />)}
-              </div>    
-        <button className="arrow arrow-right" onClick={() => scrollRight("genres")}>
+          <button
+            className="arrow arrow-left"
+            onClick={() => scrollLeft("genres")}>
+            <img src={LeftArrow} alt="Left Arrow" />
+          </button>
+          <div
+            className="backdrop-container"
+            ref={(el) => (scrollRef.current["genres"] = el)}>
+            {Object.keys(genre).length > 0
+              ? Object.keys(genre).map((obj) => (
+                  <GenreCard key={obj} genre={obj}></GenreCard>
+                ))
+              : Array(5)
+                  .fill(0)
+                  .map((_) => <SkeletonGenreCard />)}
+          </div>
+          <button
+            className="arrow arrow-right"
+            onClick={() => scrollRight("genres")}>
             <img src={RightArrow} alt="Right Arrow" />
-        </button>
+          </button>
         </div>
       </div>
       <div>
@@ -116,23 +121,29 @@ export default function Home() {
           Beliebte Filme<span>.</span>
         </h2>
         <div className="img-view-container">
-          <button className="arrow arrow-left"  onClick={() => scrollLeft("movies")}>
+          <button
+            className="arrow arrow-left"
+            onClick={() => scrollLeft("movies")}>
             <img src={LeftArrow} alt="Left Arrow" />
           </button>
-          <div className="backdrop-container" ref={(el) => (scrollRef.current["movies"] = el)}>
+          <div
+            className="backdrop-container"
+            ref={(el) => (scrollRef.current["movies"] = el)}>
             {movies.length > 0
-              ? movies.map((obj, index) => (
+              ? movies.map((obj) => (
                   <Card
-                    key={index}
+                    key={obj.imdbId}
                     id={obj.imdbId}
                     poster={obj.poster}
                     title={obj.title}></Card>
                 ))
               : Array(5)
                   .fill(0)
-                  .map((_, index) => <SkeletonMovieCard key={index} />)}
+                  .map((_) => <SkeletonMovieCard />)}
           </div>
-          <button className="arrow arrow-right" onClick={() => scrollRight("movies")}>
+          <button
+            className="arrow arrow-right"
+            onClick={() => scrollRight("movies")}>
             <img src={RightArrow} alt="Right Arrow" />
           </button>
         </div>

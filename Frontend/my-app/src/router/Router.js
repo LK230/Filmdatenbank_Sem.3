@@ -5,6 +5,7 @@ import Genres from "../pages/Genres/Genres";
 import MovieView from "../pages/MovieView/MovieView";
 import Sidebar from "../components/sidebar/Sidebar";
 import Login from "../pages/Login/LoginSignup";
+import FavoritePage from "../pages/FavoritePage/FavoritePage";
 import { GenreView } from "../pages/Genres/GenreView";
 
 export default function Router() {
@@ -39,9 +40,12 @@ export default function Router() {
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/genres" element={<Genres/>}></Route>
-          <Route path="/movies/genreview/:genre" element={<GenreView />}></Route>
+          <Route path="/genres" element={<Genres />}></Route>
+          <Route
+            path="/movies/genreview/:genre"
+            element={<GenreView />}></Route>
           <Route path="/movies/:imdbId" element={<MovieView />}></Route>
+          <Route path="/favorites" element={<FavoritePage />}></Route>
         </Routes>
       </main>
     </div>
