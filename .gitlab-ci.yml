@@ -52,7 +52,7 @@ test-start-frontend:
     - echo 'Starting Build Stage for Frontend'
     - npm install
     - npm run dev
-  timeout: 1 minutes
+  timeout: 5 minutes
   only:
     refs:
       - main
