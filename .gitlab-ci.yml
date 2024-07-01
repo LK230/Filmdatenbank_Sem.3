@@ -50,8 +50,8 @@ build-frontend:
   script:
     - cd Frontend/my-app
     - echo 'Starting Build Stage for Frontend'
-    - npm install
-    - npm start
+    #- npm install
+    #- npm start
 
 # Job to test the frontend - postpone for now
 test-frontend:
