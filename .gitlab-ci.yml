@@ -51,7 +51,7 @@ build-frontend:
     - cd Frontend/my-app
     - echo 'Starting Build Stage for Frontend'
     - npm install
-    - npm run build
+    - npm start
 
 # Job to test the frontend - postpone for now
 test-frontend:
