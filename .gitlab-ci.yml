@@ -36,7 +36,7 @@ test-backend:
     - cd Backend
     - echo 'Starting Test Stage for Backend'
     # we are skipping the tests, because the Integration-Tests take too long and the pipeline fails
-    - mvn test -DskipTests
+    - mvn test -Dtest= '!MovieControllerIntegrationTest'
   artifacts:
     reports:
       junit:
