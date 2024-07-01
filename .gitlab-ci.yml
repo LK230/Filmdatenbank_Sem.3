@@ -44,14 +44,18 @@ test-backend:
         - Backend/target/failsafe-reports/TEST-*.xml
 
 # Job to build the frontend
-build-frontend:
+test-start-frontend:
   stage: build
   image: node:18
   script:
     - cd Frontend/my-app
     - echo 'Starting Build Stage for Frontend'
-    #- npm install
-    #- npm start
+    - npm install
+    - npm run dev
+  timeout: 1 minutes
+  only:
+    refs:
+      - main
 
 # Job to test the frontend - postpone for now
 test-frontend:
