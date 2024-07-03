@@ -102,9 +102,9 @@ public class ReviewServiceTest {
     @Test
     public void testCreateReview_UserNotFound() {
         // Test creating a review when user is not found
-        when(userRepository.findByUsernameIgnoreCase("john_doe")).thenReturn(Optional.empty());
+        when(userRepository.findByEmailIgnoreCase("john.doe@example.com")).thenReturn(Optional.empty());
 
-        Review result = reviewService.createReview("Great movie!", 5, "tt0111161", "john_doe");
+        Review result = reviewService.createReview("Great movie!", 5, "tt0111161", "john.doe@example.com");
 
         // Verify no review is created
         assertNull(result);

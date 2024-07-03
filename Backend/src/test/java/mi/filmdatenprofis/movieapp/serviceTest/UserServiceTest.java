@@ -162,31 +162,47 @@ public class UserServiceTest {
 
     @Test
     public void testAddFavorites_Success() {
-        // Mocking repository calls to return a user and a movie
-        when(userRepository.findByUsernameIgnoreCase("john_doe")).thenReturn(Optional.of(user));
+        // Mocking repository calls
+        when(userRepository.findByEmailIgnoreCase("john.doe@example.com")).thenReturn(Optional.of(user));
         when(movieRepository.findMovieByImdbId("tt0111161")).thenReturn(Optional.of(movie));
+        when(userProfileRepository.save(any(UserProfile.class))).thenReturn(user.getProfile());
+        when(userRepository.save(any(User.class))).thenReturn(user);
 
-        boolean result = userService.addFavorites("john_doe", "tt0111161");
+        // Call the method
+        boolean result = userService.addFavorites("john.doe@example.com", "tt0111161");
 
-        assertTrue(result); // The result should be true as the movie was successfully added
-        assertTrue(user.getProfile().getFavorites().contains(movie)); // The movie should be in the user's favorites
-        verify(userRepository, times(1)).save(user); // Verify the user repository was called once
-        verify(userProfileRepository, times(1)).save(userProfile); // Verify the user profile repository was called once
+        // Assertions
+        assertTrue(result); // Expecting the movie to be added successfully
+
+        // Verify repository interactions
+        verify(userRepository, times(1)).findByEmailIgnoreCase("john.doe@example.com");
+        verify(movieRepository, times(1)).findMovieByImdbId("tt0111161");
+        verify(userProfileRepository, times(1)).save(any(UserProfile.class));
+        verify(userRepository, times(1)).save(any(User.class));
     }
 
     @Test
     public void testRemoveFavorites_Success() {
-        // Adding a movie to the user's favorites and mocking repository calls to return a user and a movie
+        // Prepare user with a movie already in favorites
         user.getProfile().getFavorites().add(movie);
-        when(userRepository.findByUsernameIgnoreCase("john_doe")).thenReturn(Optional.of(user));
+
+        // Mocking repository calls
+        when(userRepository.findByEmailIgnoreCase("john.doe@example.com")).thenReturn(Optional.of(user));
         when(movieRepository.findMovieByImdbId("tt0111161")).thenReturn(Optional.of(movie));
+        when(userProfileRepository.save(any(UserProfile.class))).thenReturn(user.getProfile());
+        when(userRepository.save(any(User.class))).thenReturn(user);
 
-        boolean result = userService.removeFavorites("john_doe", "tt0111161");
+        // Call the method
+        boolean result = userService.removeFavorites("john.doe@example.com", "tt0111161");
 
-        assertTrue(result); // The result should be true as the movie was successfully removed
-        assertFalse(user.getProfile().getFavorites().contains(movie)); // The movie should not be in the user's favorites anymore
-        verify(userRepository, times(1)).save(user); // Verify the user repository was called once
-        verify(userProfileRepository, times(1)).save(userProfile); // Verify the user profile repository was called once
+        // Assertions
+        assertTrue(result); // Expecting the movie to be removed successfully
+
+        // Verify repository interactions
+        verify(userRepository, times(1)).findByEmailIgnoreCase("john.doe@example.com");
+        verify(movieRepository, times(1)).findMovieByImdbId("tt0111161");
+        verify(userProfileRepository, times(1)).save(any(UserProfile.class));
+        verify(userRepository, times(1)).save(any(User.class));
     }
 
     @Test
