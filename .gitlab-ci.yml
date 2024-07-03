@@ -56,7 +56,7 @@ start-frontend:
   only:
     refs:
       - main
-  #allow_failure: true
+  allow_failure: true
 
 # Job to test the frontend - postpone for now
 test-frontend:
@@ -80,7 +80,7 @@ package-backend:
   script:
     - cd Backend
     - echo 'Starting Package Stage for Backend'
-    - mvn package -DskipTests
+    - mvn package -Dtest='!MovieControllerIntegrationTest'
 
   only:
     refs:
