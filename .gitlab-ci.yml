@@ -7,7 +7,6 @@ cache:
   paths:
     - .m2/repository
     - Frontend/my-app/node_modules/
-  untracked: true
 
 # Set a variable for Maven to use
 variables:
@@ -35,7 +34,7 @@ test-backend:
   script:
     - cd Backend
     - echo 'Starting Test Stage for Backend'
-    # we are skipping the tests, because the Integration-Tests take too long and the pipeline fails
+    # we are skipping the Integration-Tests because they take too long
     - mvn test -Dtest='!MovieControllerIntegrationTest'
   artifacts:
     reports:
@@ -44,7 +43,7 @@ test-backend:
         - Backend/target/failsafe-reports/TEST-*.xml
 
 # Job to build the frontend
-test-start-frontend:
+start-frontend:
   stage: build
   image: node:18
   script:
@@ -56,7 +55,7 @@ test-start-frontend:
   only:
     refs:
       - main
-  allow_failure: true
+  #allow_failure: true
 
 # Job to test the frontend - postpone for now
 test-frontend:
