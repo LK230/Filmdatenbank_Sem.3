@@ -50,7 +50,8 @@ start-frontend:
     - cd Frontend/my-app
     - echo 'Starting Build Stage for Frontend'
     - npm install
-    - npm run dev
+    - npm start
+#    - npm run dev
   timeout: 5 minutes
   only:
     refs:
