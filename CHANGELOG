@@ -5,9 +5,69 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.37.8] - 2024-07-03
+
+### Fixed
+
+- Fixed unit tests in UserServiceTest
+
+## [1.37.7] - 2024-06-30
+
+### Added
+
+  [Frontend]
+
+- Added profile page with settings
+
+## [1.36.7] - 2024-06-30
+
+### Added
+
+  [Frontend]
+
+- Added logic to add raising component
+
+## [1.34.7] - 2024-06-30
+
+### Added
+
+  [Frontend]
+
+- Added logic for favorites list 
+
+## [1.33.7] - 2024-06-30
+
+### Added
+
+  [Frontend]
+
+- Added age rating to movies
+- Added different age icons
+
+## [1.32.7] - 2024-06-30
+
+### Fixed
+
+  [Backend]
+
+- Fixed bug with add to favorites method
+- Changed params of endpoint to email and removed username
+
+## [1.32.6] - 2024-06-28
+
+### Added
+
+  [Frontend]
+
+- Added endpoints to get genres
+- Added genres to homepage
+- Added seperate genrepage
+
 ## [1.31.6] - 2024-06-26
 
 ### Added
+
+  [Backend]
 
 - Added JUnit and Mockito to project
 - Added commentaries and JavaDoc
@@ -20,11 +80,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+  [Backend]
+
 - Removed threads in MovieController and MovieService
 
 ## [1.30.6] - 2024-06-21
 
 ### Added
+
+  [Backend]
 
 - Added method hasUserRatedMovie in ReviewService to find out if user already rated a movie and implemented method in calculateAverageRating
 
@@ -48,6 +112,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.29.5] - 2024-06-19
 
 ### Added
+
+  [Backend]
 
 - Added threads and parallel streams in classes MovieController and MovieService
 
