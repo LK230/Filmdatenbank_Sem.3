@@ -7,6 +7,8 @@ import {
   getUserEndpoint,
   getUserMeEndpoint,
   getUsersEndpoint,
+  patchUpdateEmailEndpoint,
+  patchUpdatePasswordEndpoint,
 } from "./api_endpoints";
 
 export class UserService {
@@ -61,6 +63,26 @@ export class UserService {
     try {
       const deleteFav = await getDeleteFromFavoritesEndpoint(email, imdbId);
       return deleteFav;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  async userPatchUpdatePassword(email, password, newPassword) {
+    try {
+      const updateUserPassword = await patchUpdatePasswordEndpoint(email, password, newPassword);
+      return updateUserPassword;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  async userPatchUpdateEmail(email, password, newEmail) {
+    try {
+      const updateUserEmail = await patchUpdateEmailEndpoint(email, password, newEmail);
+      return updateUserEmail;
     } catch (error) {
       console.error(error);
       throw error;
