@@ -1,28 +1,60 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ProfileSettings.css';
 import InputField from '../../components/inputfield/InputField';
+import { UserService } from '../../assets/service/user_service';
+import Cookies from "js-cookie";
 
 export default function ProfileSettings() {
   
-    const [name] = useState('Lillj');
-    const [email, setEmail] = useState('lillj@mail.net');
-    const [password, setPassword] = useState('1234');
+    const [name, setName] = useState('');
+    const [newEmail, setNewEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
     const [isEditing, setIsEditing] = useState(null); 
-    
+    const userService = new UserService();
+    const myEmail = Cookies.get("email");
+    const myPassword = Cookies.get("password");
+    const [email, setEmail] = useState(myEmail);
+    const [password, setPassword] = useState(myPassword);
+
     const handleEdit = (field) => {
       setIsEditing(field);
     };
-
+    useEffect(() => {
+      const fetchUserData = async () => {
+        try {  
+          const user = await userService.getUserMe(myEmail, myPassword)
+          console.log('user', user) 
+          setName(user.name)
+        } catch (error) {
+          console.log("Fehler beim Laden des Users", error)
+         }
+      } 
+      fetchUserData()
+   }, [])
     const handleSave = () => {
       setIsEditing(null);
     };
 
-    const handleKeyDown = (event, field) => {
+    const handleKeyDown = async(event, field) =>  {
       if (event.key === 'Enter'){
         if (field === 'email') {
-          setEmail(event.target.value);
+          try {
+            await userService.userPatchUpdateEmail(myEmail, myPassword, event.target.value)
+            Cookies.set('email', event.target.value)
+            setNewEmail(event.target.value);
+          } catch (error) {
+            console.log('Fehler beim Ändern der E-Mail Adresse', error)
+          }
+
         } else if (field === 'password') {
-          setPassword(event.target.value);
+          try {
+            await userService.userPatchUpdatePassword(email, myPassword, event.target.value)
+            Cookies.set('password', event.target.value)
+            setNewPassword(event.target.value);
+          } catch (error) {
+            console.log('Fehler beim Ändern des Passworts', error)
+          }
+          
         }
         handleSave();
       }
@@ -43,7 +75,7 @@ export default function ProfileSettings() {
         {isEditing === 'email' ? (
           <InputField
               type='text'
-              value={email}
+              value={newEmail || email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, 'email')}
             />
@@ -59,14 +91,14 @@ export default function ProfileSettings() {
         <label>Passwort</label>
         {isEditing === 'password' ? (
           <InputField
-            value={password}
+            value={ newPassword || password }
             onChange={(e) => setPassword(e.target.value)}
               onKeyDown={(e) => handleKeyDown(e, 'password')}
             />
           ) : (<div>
               <InputField
                 type='password'
-                value={password}
+                value={myPassword}
                 disabled={true}
               ></InputField>
             <button onClick={() => handleEdit('password')}>ändern</button></div>
