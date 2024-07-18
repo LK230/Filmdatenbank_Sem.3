@@ -8,22 +8,31 @@ import Login from "../pages/Login/LoginSignup";
 import ProfileSettings from "../pages/ProfileSettings/ProfileSettings";
 import FavoritePage from "../pages/FavoritePage/FavoritePage";
 import { GenreView } from "../pages/Genres/GenreView";
+import Header from "../components/header/Header";
 
 export default function Router() {
-  const shouldBeOpen = () => window.innerWidth > 1200;
-  const [showSidebar, setShowSidebar] = useState(shouldBeOpen);
+  const shouldBeOpen = () => window.innerWidth > 900;
+  const [showSmallSidebar, setShowSmallSidebar] = useState(shouldBeOpen);
+  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 500);
+  const [showHeader, setShowHeader] = useState(window.innerWidth <= 500);
   const path = useLocation();
 
   const contentStyle = {
-    marginLeft: showSidebar ? "260px" : "90px",
+    marginLeft: showHeader ? "0" : showSmallSidebar ? "260px" : "90px",
     transition: "margin 0.2s ease",
     borderRadius: "30px",
   };
 
-  // Resize Sidebar
   useEffect(() => {
     const handleResize = () => {
-      setShowSidebar(shouldBeOpen());
+      setShowSmallSidebar(shouldBeOpen());
+      setShowHeader(window.innerWidth <= 500);
+      if (window.innerWidth <= 500) {
+        setShowSidebar(false);
+        console.log("showSidebar", showSidebar);
+      } else {
+        setShowSidebar(true);
+      }
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -33,9 +42,13 @@ export default function Router() {
 
   return (
     <div>
-      {!isLoginPage && (
-        <Sidebar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+      {!isLoginPage && showSidebar && (
+        <Sidebar
+          showSidebar={showSmallSidebar}
+          setShowSidebar={setShowSmallSidebar}
+        />
       )}
+      {!isLoginPage && showHeader && !showSidebar && <Header />}
 
       <main style={isLoginPage ? {} : contentStyle}>
         <Routes>
