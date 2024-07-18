@@ -173,6 +173,38 @@ export default function MovieView() {
             ))}
           </div>
 
+          <div className="img-view-container">
+            {movie.backdrops?.length > 3 && (
+              <button className="arrow arrow-left" onClick={scrollLeft}>
+                <img src={LeftArrow} alt="" />
+              </button>
+            )}
+
+            <div className="backdrop-container" ref={scrollRef}>
+              {movie
+                ? movie.backdrops?.map((img, index) => (
+                    <BackdropCard
+                      key={index}
+                      img={img}
+                      className="backdrop-card"
+                      onClick={() => handleBackdropClick(img)}
+                    />
+                  ))
+                : Array(5)
+                    .fill(0)
+                    .map((_, index) => (
+                      <div key={index} className="backdrop-card">
+                        <SkeletonMovieCard />
+                      </div>
+                    ))}
+            </div>
+            {movie.backdrops?.length > 3 && (
+              <button className="arrow arrow-right" onClick={scrollRight}>
+                <img src={RightArrow} alt="" />
+              </button>
+            )}
+          </div>
+
           <div className="info-content-container">
             <div className="plot">
               <p>{movie.plot}</p>
@@ -215,38 +247,6 @@ export default function MovieView() {
               </table>
             </div>
           </div>
-        </div>
-
-        <div className="img-view-container">
-          {movie.backdrops?.length > 3 && (
-            <button className="arrow arrow-left" onClick={scrollLeft}>
-              <img src={LeftArrow} alt="" />
-            </button>
-          )}
-
-          <div className="backdrop-container" ref={scrollRef}>
-            {movie
-              ? movie.backdrops?.map((img, index) => (
-                  <BackdropCard
-                    key={index}
-                    img={img}
-                    className="backdrop-card"
-                    onClick={() => handleBackdropClick(img)}
-                  />
-                ))
-              : Array(5)
-                  .fill(0)
-                  .map((_, index) => (
-                    <div key={index} className="backdrop-card">
-                      <SkeletonMovieCard />
-                    </div>
-                  ))}
-          </div>
-          {movie.backdrops?.length > 3 && (
-            <button className="arrow arrow-right" onClick={scrollRight}>
-              <img src={RightArrow} alt="" />
-            </button>
-          )}
         </div>
       </div>
 

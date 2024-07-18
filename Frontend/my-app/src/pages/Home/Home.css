@@ -12,6 +12,7 @@
 .Home .backdrop-container {
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
   scroll-snap-type: x mandatory;
   gap: 10px;
   width: 80rem;

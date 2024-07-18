@@ -50,6 +50,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin: 30px 0 45px;
 }
 
 .MovieContainer .backdrop-container {
@@ -137,6 +138,7 @@
 
 .MovieContainer .tags-container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .MovieContainer .review-container {
@@ -174,6 +176,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin: 0;
 }
 
 .MovieContainer .ReviewsContainer {
@@ -245,6 +248,7 @@
   }
   .MovieContainer {
     height: 250px;
+    padding: 50px 30px;
   }
 
   .MovieContainer .content-container {

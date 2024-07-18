@@ -6,16 +6,15 @@
   display: flex;
   flex-direction: column;
   margin: 20px 0;
+  align-items: flex-start;
 }
 
 .RatingView .top-container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-}
-
-.RatingView .user-container {
-  padding: 10px 0 0 40px;
+  margin: 20px;
+  width: 90%;
 }
 
 .RatingView .user-container p {
@@ -27,26 +26,17 @@
   line-height: normal;
 }
 
-.RatingView .rating-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  padding: 6px 26px 0 0;
-}
-
-.RatingView .rating-container img {
-  width: 30px;
-  height: 29px;
-}
-
 .RatingView .comment-container {
-  width: 300px;
+  margin: 10px 20px;
+  width: 70%;
+}
+
+.RatingView .comment-container p {
   color: #fff;
-  font-family: Inter, initial;
+
+  font-family: Inter;
   font-size: 21px;
   font-style: normal;
   font-weight: 100;
-  padding: 0 10px 40px 40px;
-  margin-top: -20px;
+  line-height: normal;
 }

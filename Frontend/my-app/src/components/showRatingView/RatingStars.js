@@ -22,7 +22,7 @@ const RatingStars = ({ rating }) => {
           key={i}
           src={RatingStarUnclicked}
           alt="unclicked star"
-          style={{ width: "35px" }}
+          style={{ width: "1.8rem" }}
         />
       );
     }
