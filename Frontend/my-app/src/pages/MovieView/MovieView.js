@@ -17,6 +17,7 @@ import Cookies from "js-cookie";
 import Rated from "../../components/rated/Rated";
 import RatingComponent from "../../components/ratingComponent/RatingComponent";
 import RatingStars from "../../components/showRatingView/RatingStars";
+import { ReviewService } from "../../assets/service/review_service";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -122,6 +123,20 @@ export default function MovieView() {
   };
 
   console.log("movie", movie);
+  console.log(
+    "REVIEWID",
+    movie.reviewIds?.map((obj) => obj.id)
+  );
+
+  const handleDeleteReview = async (reviewId) => {
+    try {
+      console.log("reviewId", reviewId);
+      const deleteReview = await new ReviewService().deleteReview(reviewId);
+      console.log("delete", deleteReview);
+    } catch (error) {
+      console.log("Fehler beim Löschen der Bewertung", error);
+    }
+  };
 
   return (
     <div
@@ -267,6 +282,7 @@ export default function MovieView() {
                   user={obj.createdBy}
                   comment={obj.body}
                   rating={obj.rating}
+                  onClick={() => handleDeleteReview(obj.id)}
                 />
               );
             })

@@ -1,11 +1,17 @@
 import React from "react";
 import RatingStars from "./RatingStars";
+import { FaRegTrashAlt } from "react-icons/fa";
 import "./RatingView.css";
 
-export default function RatingView({ user, comment, rating }) {
+export default function RatingView({ user, comment, rating, onClick }) {
   return (
     <div className="RatingView">
       <div className="top-container">
+        <div>
+          <button onClick={onClick}>
+            <FaRegTrashAlt />
+          </button>
+        </div>
         <div className="user-container">
           <p>{user}</p>
         </div>

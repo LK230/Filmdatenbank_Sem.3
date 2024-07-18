@@ -133,9 +133,15 @@ export async function getGenreMoviesEndpoint(genre) {
   }
 }
 
-export async function patchUpdatePasswordEndpoint(email, password, newPassword) {
+export async function patchUpdatePasswordEndpoint(
+  email,
+  password,
+  newPassword
+) {
   try {
-    const response = await api.patch(`/users/update/password?email=${email}&password=${password}&newPassword=${newPassword}`);
+    const response = await api.patch(
+      `/users/update/password?email=${email}&password=${password}&newPassword=${newPassword}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);
@@ -143,10 +149,22 @@ export async function patchUpdatePasswordEndpoint(email, password, newPassword) 
   }
 }
 
-
 export async function patchUpdateEmailEndpoint(email, password, newEmail) {
   try {
-    const response = await api.patch(`/users/update/email?email=${email}&password=${password}&newEmail=${newEmail}`);
+    const response = await api.patch(
+      `/users/update/email?email=${email}&password=${password}&newEmail=${newEmail}`
+    );
+    console.log("response", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie:", error);
+    throw error;
+  }
+}
+
+export async function deleteReviewEndpoint(reviewId) {
+  try {
+    const response = await api.patch(`/reviews/remove/` + reviewId);
     console.log("response", response.data);
     return response.data;
   } catch (error) {
