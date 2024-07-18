@@ -7,11 +7,6 @@ export default function RatingView({ user, comment, rating, onClick }) {
   return (
     <div className="RatingView">
       <div className="top-container">
-        <div>
-          <button onClick={onClick}>
-            <FaRegTrashAlt />
-          </button>
-        </div>
         <div className="user-container">
           <p>{user}</p>
         </div>
@@ -23,6 +18,11 @@ export default function RatingView({ user, comment, rating, onClick }) {
       </div>
       <div className="comment-container">
         <p>{comment}</p>
+      </div>
+      <div className="trash-container">
+        <button onClick={onClick}>
+          <FaRegTrashAlt />
+        </button>
       </div>
     </div>
   );

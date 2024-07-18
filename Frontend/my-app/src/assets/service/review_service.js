@@ -15,10 +15,9 @@ export class ReviewService {
     }
   }
 
-  async deleteReview(reviewId) {
+  async deleteReview(username, imdbId) {
     try {
-      console.log("reviewId", reviewId);
-      const review = await deleteReviewEndpoint({ reviewId });
+      const review = await deleteReviewEndpoint(username, imdbId);
       return review;
     } catch (error) {
       console.error(error);

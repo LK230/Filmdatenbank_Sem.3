@@ -31,6 +31,9 @@ const LoginSignup = () => {
           setTimeout(() => {
             navigate("/");
           }, 2000);
+        } else {
+          setAlertMessage("Unbekannter Fehler beim Login.");
+          setAlertType("error");
         }
       } else {
         const newUser = {
@@ -49,16 +52,31 @@ const LoginSignup = () => {
             navigate("/");
           }, 2000);
         } else {
-          setAlertMessage(
-            "Registrierung fehlgeschlagen. Bitte versuchen Sie es erneut."
-          );
+          setAlertMessage("Unbekannter Fehler bei der Registrierung.");
           setAlertType("error");
         }
       }
     } catch (error) {
       console.error("Error during submission:", error);
-      setAlertMessage("Login fehlgeschlagen. Bitte versuchen Sie es erneut.");
-      setAlertType("error");
+      if (error === "Wrong email or password") {
+        setAlertMessage(
+          error.message || "Falsche Email-Adresse oder Passwort."
+        );
+        setAlertType("error");
+      } else if (
+        error === "The entered e-mail address or username is already taken"
+      ) {
+        setAlertMessage(
+          error.message ||
+            "Die eingegebene Email-Adresse oder der Username ist bereits vergeben."
+        );
+        setAlertType("error");
+      } else if (error === "The entered e-mail address is not valid") {
+        setAlertMessage(
+          error.message || "Die eingegebene Email-Adresse ist nicht gültig."
+        );
+        setAlertType("error");
+      }
     }
   };
 

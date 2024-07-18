@@ -17,7 +17,8 @@ export class UserService {
       const user = await getUserEndpoint(username, email, password);
       return user;
     } catch (error) {
-      console.error(error);
+      console.error("Error get User:", error);
+      throw error;
     }
   }
 
@@ -26,7 +27,8 @@ export class UserService {
       const user = await getUsersEndpoint(email, password);
       return user;
     } catch (error) {
-      console.error(error);
+      console.error("Error get Users:", error);
+      throw error;
     }
   }
 
@@ -35,7 +37,8 @@ export class UserService {
       const user = await getUserMeEndpoint(email, password);
       return user;
     } catch (error) {
-      console.error(error);
+      console.error("Error get UserMe:", error);
+      throw error;
     }
   }
 
@@ -44,7 +47,7 @@ export class UserService {
       const createdUser = await getCreateUserEndpoint(user);
       return createdUser.data;
     } catch (error) {
-      console.error(error);
+      console.error("Error create UserMe:", error);
       throw error;
     }
   }
@@ -71,7 +74,11 @@ export class UserService {
 
   async userPatchUpdatePassword(email, password, newPassword) {
     try {
-      const updateUserPassword = await patchUpdatePasswordEndpoint(email, password, newPassword);
+      const updateUserPassword = await patchUpdatePasswordEndpoint(
+        email,
+        password,
+        newPassword
+      );
       return updateUserPassword;
     } catch (error) {
       console.error(error);
@@ -81,7 +88,11 @@ export class UserService {
 
   async userPatchUpdateEmail(email, password, newEmail) {
     try {
-      const updateUserEmail = await patchUpdateEmailEndpoint(email, password, newEmail);
+      const updateUserEmail = await patchUpdateEmailEndpoint(
+        email,
+        password,
+        newEmail
+      );
       return updateUserEmail;
     } catch (error) {
       console.error(error);

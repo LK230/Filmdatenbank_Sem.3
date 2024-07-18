@@ -27,7 +27,7 @@ export default function Home() {
         setFilteredMovies(movieData);
         setRandomMovie(movieData[Math.floor(Math.random() * movieData.length)]);
       } catch (error) {
-        console.error("Error fetching user me data:", error);
+        console.error("Error fetching movie data:", error);
       }
     };
     const fetchGenres = async () => {
@@ -35,7 +35,7 @@ export default function Home() {
         const genreData = await new MovieService().getGenre();
         setGenre(genreData);
       } catch (error) {
-        console.error("Fehler beim Abrufen der Genres:", error);
+        console.error("Error fetching genre data:", error);
       }
     };
 
@@ -107,7 +107,7 @@ export default function Home() {
                 ))
               : Array(5)
                   .fill(0)
-                  .map((_) => <SkeletonGenreCard />)}
+                  .map((_, index) => <SkeletonGenreCard key={index} />)}
           </div>
           <button
             className="arrow arrow-right"
@@ -139,7 +139,7 @@ export default function Home() {
                 ))
               : Array(5)
                   .fill(0)
-                  .map((_) => <SkeletonMovieCard />)}
+                  .map((_, index) => <SkeletonMovieCard key={index} />)}
           </div>
           <button
             className="arrow arrow-right"
