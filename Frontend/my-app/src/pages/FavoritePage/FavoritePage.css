@@ -3,3 +3,11 @@
   width: 100%;
   flex-wrap: wrap;
 }
+
+@media (max-width: 600px) {
+  .FavoritePage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

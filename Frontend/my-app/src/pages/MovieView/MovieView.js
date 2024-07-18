@@ -139,17 +139,22 @@ export default function MovieView() {
       <div className="content-container">
         <div className="play-container">
           {movie ? <h1>{movie.title}</h1> : <SkeletonTitle />}
-          <Rated age={movie.rated}></Rated>
-          <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
-            <button className="play-icon">
-              <p>Watch</p>
-            </button>
-          </a>
-          {email && (
-            <FavoriteButton
-              onClick={handleFavMovie}
-              isActive={isFavored}></FavoriteButton>
-          )}
+          <div className="right-side">
+            <Rated age={movie.rated}></Rated>
+            <a
+              href={movie.trailerLink}
+              target="_blank"
+              rel="noopener noreferrer">
+              <button className="play-icon">
+                <p>Watch</p>
+              </button>
+            </a>
+            {email && (
+              <FavoriteButton
+                onClick={handleFavMovie}
+                isActive={isFavored}></FavoriteButton>
+            )}
+          </div>
         </div>
         <div className="show-rate-content">
           <p>{movie.rating?.toFixed(1).replace(".", ",")}</p>
@@ -246,7 +251,7 @@ export default function MovieView() {
       </div>
 
       <div className="review-container">
-        <div>
+        <div className="RaitingComponentContainer">
           {email && (
             <div>
               <RatingComponent user={email} imdbId={imdbId} />

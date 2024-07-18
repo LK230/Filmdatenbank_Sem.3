@@ -10,18 +10,30 @@
   align-items: center;
   justify-content: center;
   box-sizing: content-box;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.GenreCard .title-container {
+  color: #fff;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .GenreCard {
+    width: 140px;
+    height: 70px;
+    margin: 7px;
   }
 
-  .link {
-    text-decoration: none;
+  .GenreCard p {
+    font-size: 13px;
+    font-weight: 600;
   }
-
-  .GenreCard .title-container {
-    color: #fff;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    text-align: center;
-  }
-  
+}

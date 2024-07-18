@@ -1,11 +1,18 @@
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 10px 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: fixed;
   z-index: 10;
+  background-color: #0d1015;
+  align-items: center;
+  width: 100%;
+}
+
+.header .header-container {
+  display: flex;
+  justify-content: space-between;
+  width: 91%;
 }
 
 .header-logo img {
@@ -20,7 +27,7 @@
 
 .header-nav {
   position: absolute;
-  top: 60px;
+  top: 45px;
   left: 0;
   width: 100%;
   background-color: #0d1015;

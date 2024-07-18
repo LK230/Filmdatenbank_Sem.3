@@ -79,9 +79,14 @@
 
 .MovieContainer .play-container {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   margin: 0 50px;
+}
+
+.MovieContainer .play-container .right-side {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .MovieContainer .img-container img {
@@ -136,10 +141,18 @@
 
 .MovieContainer .review-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 100%;
-  margin: 20px;
   align-items: baseline;
+  gap: 25px;
+}
+
+.MovieContainer .review-container .RaitingComponentContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0 20px;
 }
 
 .MovieContainer h1 {
@@ -161,6 +174,14 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.MovieContainer .ReviewsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0 20px;
 }
 
 .MovieContainer .ReviewsContainer h3 {
@@ -205,4 +226,64 @@
   color: #848484;
   margin: 0;
   padding: 0;
+}
+
+@media (max-width: 900px) {
+  .MovieContainer .play-container {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 20px;
+    flex-direction: column;
+  }
+
+  .MovieContainer .play-container .right-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 15px 0;
+  }
+  .MovieContainer {
+    height: 250px;
+  }
+
+  .MovieContainer .content-container {
+    margin: 200px 0 0 0;
+  }
+
+  .MovieContainer .show-rate-content {
+    margin: 0 20px;
+  }
+
+  .MovieContainer .text-container {
+    margin: 10px 20px;
+  }
+
+  .MovieContainer .info-content-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .MovieContainer .info-content-container .plot {
+    width: 100%;
+    padding: 0;
+  }
+
+  .MovieContainer .review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    width: 100%;
+  }
+
+  .MovieContainer .review-container .RaitingComponentContainer {
+    width: 90%;
+  }
+
+  .MovieContainer .ReviewsContainer {
+    width: 90%;
+  }
 }

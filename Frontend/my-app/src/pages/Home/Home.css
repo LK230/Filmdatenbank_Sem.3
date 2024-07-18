@@ -24,8 +24,8 @@
 }
 
 .Home .random-movie img {
-  width: 55rem;
-  height: 30rem;
+  width: 45rem;
+  height: 20rem;
   object-fit: cover;
   object-position: 0% 12%;
   border-radius: 25px;
@@ -65,4 +65,13 @@
   border: none;
   height: 45px;
   cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .Home {
+    padding: 50px 30px;
+  }
+  .Home .arrow {
+    display: none;
+  }
 }
