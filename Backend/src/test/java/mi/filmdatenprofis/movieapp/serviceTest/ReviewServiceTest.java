@@ -114,9 +114,9 @@ public class ReviewServiceTest {
     @Test
     public void testDeleteReview_ReviewNotFound() {
         // Test deleting a review when review is not found
-        when(reviewRepository.findById(any(ObjectId.class))).thenReturn(Optional.empty());
+        when(reviewRepository.findOneByImdbIdAndCreatedBy(anyString(), anyString())).thenReturn(null);
 
-        boolean result = reviewService.deleteReview(new ObjectId().toHexString());
+        boolean result = reviewService.deleteReview("john_doe", "tt0111161");
 
         // Verify no review is deleted
         assertFalse(result);
@@ -127,9 +127,9 @@ public class ReviewServiceTest {
     @Test
     public void testUpdateReview_ReviewNotFound() {
         // Test updating a review when review is not found
-        when(reviewRepository.findById(any(ObjectId.class))).thenReturn(Optional.empty());
+        when(reviewRepository.findOneByImdbIdAndCreatedBy(anyString(), anyString())).thenReturn(null);
 
-        boolean result = reviewService.updateReview(new ObjectId().toHexString(), "Updated review", 4);
+        boolean result = reviewService.updateReview("sampleUser", "tt1234567", "Updated review", 4);
 
         // Verify no review is updated
         assertFalse(result);

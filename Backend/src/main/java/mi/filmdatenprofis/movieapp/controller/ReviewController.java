@@ -50,11 +50,11 @@ public class ReviewController {
 
     // Endpoint to delete an existing review
     @DeleteMapping("/remove")
-    public ResponseEntity<String> deleteReview(@RequestParam String reviewId) {
+    public ResponseEntity<String> deleteReview(@RequestParam String username, @RequestParam String imdbId) {
         // Log the deletion of the review
-        logger.info("Deleting review with ID: " + reviewId);
+        logger.info("Deleting review from user " + username + " on movie " + imdbId);
         // Attempt to delete the review using the review service
-        if(reviewService.deleteReview(reviewId)) {
+        if(reviewService.deleteReview(username, imdbId)) {
             return new ResponseEntity<String>("Review was deleted", HttpStatus.OK);
         } else {
             logger.error("Error occurred removing the review");
@@ -64,11 +64,11 @@ public class ReviewController {
 
     // Endpoint to update an existing review
     @PatchMapping("/update")
-    public ResponseEntity<String> updateReview(@RequestParam String reviewId, @RequestParam String body, @RequestParam Integer rating) {
+    public ResponseEntity<String> updateReview(@RequestParam String username, @RequestParam String imdbId, @RequestParam String body, @RequestParam Integer rating) {
         // Log the update of the review
-        logger.info("Updating review with ID: " + reviewId);
+        logger.info("Updating review with from: " + username);
         // Attempt to update the review using the review service
-        if(reviewService.updateReview(reviewId, body, rating)) {
+        if(reviewService.updateReview(username, imdbId, body, rating)) {
             return new ResponseEntity<String>("Review was updated successfully", HttpStatus.OK);
         } else {
             logger.error("Error occurred updating the review");

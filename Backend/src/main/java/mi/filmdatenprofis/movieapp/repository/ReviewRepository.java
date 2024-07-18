@@ -11,4 +11,5 @@ import java.util.List;
 @Repository
 public interface ReviewRepository extends MongoRepository<Review, ObjectId> {
     List<Review> findByImdbIdAndCreatedBy(String imdbId, String createdBy);
+    Review findOneByImdbIdAndCreatedBy(String imdbId, String createdBy);
 }
