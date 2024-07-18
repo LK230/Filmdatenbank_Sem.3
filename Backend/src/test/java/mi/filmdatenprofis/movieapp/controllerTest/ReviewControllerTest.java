@@ -86,65 +86,65 @@ public class ReviewControllerTest {
     @Test
     public void testDeleteReview_Success() {
         // Mocking the service call
-        when(reviewService.deleteReview("1")).thenReturn(true);
+        when(reviewService.deleteReview("sampleUser", "tt1234567")).thenReturn(true);
 
         // Calling the controller method
-        ResponseEntity<String> response = reviewController.deleteReview("1");
+        ResponseEntity<String> response = reviewController.deleteReview("sampleUser", "tt1234567");
 
         // Verifying the response
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Review was deleted", response.getBody());
 
         // Verifying that reviewService.deleteReview(...) was called exactly once with the correct parameter
-        verify(reviewService, times(1)).deleteReview("1");
+        verify(reviewService, times(1)).deleteReview("sampleUser", "tt1234567");
     }
 
     @Test
     public void testDeleteReview_Failure() {
         // Mocking the service call to return false
-        when(reviewService.deleteReview("1")).thenReturn(false);
+        when(reviewService.deleteReview("User", "tt1234567")).thenReturn(false);
 
         // Calling the controller method
-        ResponseEntity<String> response = reviewController.deleteReview("1");
+        ResponseEntity<String> response = reviewController.deleteReview("User", "tt1234567");
 
         // Verifying the response
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
         assertEquals("An error occurred removing the review", response.getBody());
 
         // Verifying that reviewService.deleteReview(...) was called exactly once with the correct parameter
-        verify(reviewService, times(1)).deleteReview("1");
+        verify(reviewService, times(1)).deleteReview("User", "tt1234567");
     }
 
     @Test
     public void testUpdateReview_Success() {
         // Mocking the service call
-        when(reviewService.updateReview("1", "Updated review body", 5)).thenReturn(true);
+        when(reviewService.updateReview("sampleUser", "tt1234567", "Updated review body", 5)).thenReturn(true);
 
         // Calling the controller method
-        ResponseEntity<String> response = reviewController.updateReview("1", "Updated review body", 5);
+        ResponseEntity<String> response = reviewController.updateReview("sampleUser", "tt1234567", "Updated review body", 5);
 
         // Verifying the response
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Review was updated successfully", response.getBody());
 
         // Verifying that reviewService.updateReview(...) was called exactly once with the correct parameters
-        verify(reviewService, times(1)).updateReview("1", "Updated review body", 5);
+        verify(reviewService, times(1)).updateReview("sampleUser", "tt1234567", "Updated review body", 5);
     }
 
     @Test
     public void testUpdateReview_NotFound() {
         // Mocking the service call to return false
-        when(reviewService.updateReview("1", "Updated review body", 5)).thenReturn(false);
+        when(reviewService.updateReview("sampleUser", "tt1234567", "Updated review body", 5)).thenReturn(false);
 
         // Calling the controller method
-        ResponseEntity<String> response = reviewController.updateReview("1", "Updated review body", 5);
+        ResponseEntity<String> response = reviewController.updateReview("sampleUser", "tt1234567", "Updated review body", 5);
 
         // Verifying the response
         assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
         assertEquals("An error occurred updating the review", response.getBody());
 
         // Verifying that reviewService.updateReview(...) was called exactly once with the correct parameters
-        verify(reviewService, times(1)).updateReview("1", "Updated review body", 5);
+        verify(reviewService, times(1)).updateReview("sampleUser", "tt1234567", "Updated review body", 5);
     }
 
 }

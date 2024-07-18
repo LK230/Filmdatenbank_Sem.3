@@ -140,20 +140,20 @@ public class ReviewService {
 
     /**
      * Deletes a review from the system and updates the average rating of the movie.
-     * @param id ID of the review to be deleted
+     * @param username Username of the user who created the review
+     * @param imdbId movie ID which belongs to the review
      * @return true if deletion is successful, false otherwise
      */
-    public boolean deleteReview(String id) {
-        logger.info("Deleting review with ID: " + id);
+    public boolean deleteReview(String username, String imdbId) {
+        logger.info("Deleting review from user: " + username);
 
         try {
             // Convert id to ObjectID and find it in database
-            ObjectId reviewId = new ObjectId(id);
-            Review review = reviewRepository.findById(reviewId).orElse(null);
+            Review review = reviewRepository.findOneByImdbIdAndCreatedBy(imdbId, username);
 
                 // Delete review from user profile and save changes
                 User user = userRepository.findByUsernameIgnoreCase(review.getCreatedBy()).orElse(null);
-                user.getProfile().getReviews().removeIf(reviewToRemove -> review.getId().equals((reviewId)));
+                user.getProfile().getReviews().removeIf(reviewToRemove -> review.getId().equals((review.getId())));
                 userRepository.save(user);
                 userProfileRepository.save(user.getProfile());
 
@@ -162,7 +162,7 @@ public class ReviewService {
 
                 // Create update on movie and delete review
                 Update update = new Update()
-                        .pull("reviewIds", Query.query(Criteria.where("_id").is(id)))
+                        .pull("reviewIds", Query.query(Criteria.where("_id").is(review.getId())))
                         .inc("reviews", -1);
 
                 mongoTemplate.update(Movie.class)
@@ -194,18 +194,17 @@ public class ReviewService {
 
     /**
      * Updates an existing review with new content and rating, and updates the movie's average rating.
-     * @param id ID of the review to be updated
+     * @param imdbId ID of the movie which belongs to the review
+     * @param username Username of user who created the review
      * @param body New content of the review
      * @param rating New rating given to the movie
      * @return true if update is successful, false otherwise
      */
-    public boolean updateReview(String id, String body, Integer rating) {
-        logger.info("Updating review with ID: " + id);
+    public boolean updateReview(String username, String imdbId, String body, Integer rating) {
+        logger.info("Updating review with from: " + username);
         try {
 
-            // Convert id into ObjectID and find review in database
-            ObjectId reviewId = new ObjectId(id);
-            Review review = reviewRepository.findById(reviewId).orElse(null);
+            Review review = reviewRepository.findOneByImdbIdAndCreatedBy(imdbId, username);
 
             // If review was found set attributes to new values
             if(review != null) {
