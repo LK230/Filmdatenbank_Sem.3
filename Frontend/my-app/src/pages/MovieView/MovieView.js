@@ -17,6 +17,8 @@ import Cookies from "js-cookie";
 import Rated from "../../components/rated/Rated";
 import RatingComponent from "../../components/ratingComponent/RatingComponent";
 import RatingStars from "../../components/showRatingView/RatingStars";
+import { ReviewService } from "../../assets/service/review_service";
+import Alert from "../../components/alert/Alert";
 
 export default function MovieView() {
   const { imdbId } = useParams();
@@ -26,6 +28,8 @@ export default function MovieView() {
   const [isFavored, setIsFavored] = useState(false);
   const email = Cookies.get("email");
   const password = Cookies.get("password");
+  const [alertMessage, setAlertMessage] = useState("");
+  const [alertType, setAlertType] = useState("");
 
   const getAddToFavorites = async () => {
     try {
@@ -72,7 +76,7 @@ export default function MovieView() {
       }
     };
     fetchUserFavorites();
-  }, []);
+  }, [email, password, imdbId]);
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -121,7 +125,19 @@ export default function MovieView() {
     }
   };
 
-  console.log("movie", movie);
+  const handleDeleteReview = async (username, imdbId) => {
+    try {
+      await new ReviewService().deleteReview(username, imdbId);
+      setAlertMessage("Bewertung erfolgreich gelöscht!");
+      setAlertType("success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
+    } catch (error) {
+      setAlertMessage("Fehler beim Löschen der Bewertung!");
+      setAlertType("success");
+    }
+  };
 
   return (
     <div
@@ -212,38 +228,40 @@ export default function MovieView() {
 
             <div>
               <table>
-                <tr>
-                  <th>
-                    <p>Unter der Regie von</p>
-                  </th>
-                  <td>
-                    <p>{movie.director}</p>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    <p>Besetzung</p>
-                  </th>
-                  <td>
-                    <ul>
-                      {movie.actors?.map((obj) => {
-                        return <li>{obj}</li>;
+                <tbody>
+                  <tr>
+                    <th>
+                      <p>Unter der Regie von</p>
+                    </th>
+                    <td>
+                      <p>{movie.director}</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>Besetzung</p>
+                    </th>
+                    <td>
+                      <ul>
+                        {movie.actors?.map((obj) => {
+                          return <li key={obj}>{obj}</li>;
+                        })}
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>
+                      <p>Veröffentlicht am</p>
+                    </th>
+                    <td>
+                      {new Date(movie.releaseDate).toLocaleDateString("de-DE", {
+                        day: "2-digit",
+                        month: "long",
+                        year: "numeric",
                       })}
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                    <p>Veröffentlicht am</p>
-                  </th>
-                  <td>
-                    {new Date(movie.releaseDate).toLocaleDateString("de-DE", {
-                      day: "2-digit",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </div>
@@ -264,9 +282,11 @@ export default function MovieView() {
             movie.reviewIds?.map((obj) => {
               return (
                 <RatingView
+                  key={obj.id} // Add a unique key here
                   user={obj.createdBy}
                   comment={obj.body}
                   rating={obj.rating}
+                  onClick={() => handleDeleteReview(obj.createdBy, obj.imdbId)}
                 />
               );
             })
@@ -275,6 +295,7 @@ export default function MovieView() {
           )}
         </div>
       </div>
+      <Alert message={alertMessage} type={alertType} />
     </div>
   );
 }

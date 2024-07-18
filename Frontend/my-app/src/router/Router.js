@@ -21,6 +21,7 @@ export default function Router() {
     marginLeft: showHeader ? "0" : showSmallSidebar ? "260px" : "90px",
     transition: "margin 0.2s ease",
     borderRadius: "30px",
+    paddingTop: showHeader ? "50px" : "0",
   };
 
   useEffect(() => {
@@ -29,7 +30,6 @@ export default function Router() {
       setShowHeader(window.innerWidth <= 900);
       if (window.innerWidth <= 900) {
         setShowSidebar(false);
-        console.log("showSidebar", showSidebar);
       } else {
         setShowSidebar(true);
       }

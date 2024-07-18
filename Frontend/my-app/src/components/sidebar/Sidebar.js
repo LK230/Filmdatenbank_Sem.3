@@ -18,8 +18,6 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
   const navigate = useNavigate();
   const isAuthenticated = Cookies.get("email");
 
-  console.log("isAuthenticated", isAuthenticated);
-
   useEffect(() => {
     const handleResize = () => {
       setShowSidebar(window.innerWidth > 1100);

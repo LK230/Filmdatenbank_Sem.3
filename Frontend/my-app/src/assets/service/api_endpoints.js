@@ -9,8 +9,8 @@ export async function getUserEndpoint(username, email, password) {
     );
     return response.data;
   } catch (error) {
-    console.error("Error:", error);
-    throw error;
+    console.error("Error fetching User:", error);
+    throw error.response.data;
   }
 }
 
@@ -22,7 +22,7 @@ export async function getUsersEndpoint(email, password) {
     return response.data;
   } catch (error) {
     console.error("Error fetching User:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -31,8 +31,8 @@ export async function getCreateUserEndpoint(user) {
     const response = await api.post("/users/create", user);
     return response;
   } catch (error) {
-    console.error("Error creating User:", error);
-    throw error;
+    console.error("Error fetching User:", error);
+    throw error.response.data;
   }
 }
 
@@ -133,9 +133,15 @@ export async function getGenreMoviesEndpoint(genre) {
   }
 }
 
-export async function patchUpdatePasswordEndpoint(email, password, newPassword) {
+export async function patchUpdatePasswordEndpoint(
+  email,
+  password,
+  newPassword
+) {
   try {
-    const response = await api.patch(`/users/update/password?email=${email}&password=${password}&newPassword=${newPassword}`);
+    const response = await api.patch(
+      `/users/update/password?email=${email}&password=${password}&newPassword=${newPassword}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);
@@ -143,11 +149,23 @@ export async function patchUpdatePasswordEndpoint(email, password, newPassword) 
   }
 }
 
-
 export async function patchUpdateEmailEndpoint(email, password, newEmail) {
   try {
-    const response = await api.patch(`/users/update/email?email=${email}&password=${password}&newEmail=${newEmail}`);
-    console.log("response", response.data);
+    const response = await api.patch(
+      `/users/update/email?email=${email}&password=${password}&newEmail=${newEmail}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movie:", error);
+    throw error;
+  }
+}
+
+export async function deleteReviewEndpoint(username, imdbId) {
+  try {
+    const response = await api.delete(
+      `/reviews/remove?username=${username}&imdbId=${imdbId}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);

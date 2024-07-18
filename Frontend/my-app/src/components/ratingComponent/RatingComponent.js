@@ -21,7 +21,7 @@ export default function RatingComponent({ user, imdbId }) {
     setHoverRating(value);
   }
 
-  function handleMouseLeave(value) {
+  function handleMouseLeave() {
     setHoverRating(0);
   }
 
@@ -32,7 +32,7 @@ export default function RatingComponent({ user, imdbId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const createReview = await new ReviewService().getCreateReview(
+      await new ReviewService().getCreateReview(
         inputCount,
         rating,
         imdbId,
@@ -62,9 +62,11 @@ export default function RatingComponent({ user, imdbId }) {
           }
           return (
             <button
+              key={value}
               onClick={() => handleClick(value)}
               onMouseEnter={() => handleMouseEnter(value)}
-              onMouseLeave={handleMouseLeave}>
+              onMouseLeave={handleMouseLeave}
+              className="rating-star-button">
               <img src={imageSrc} alt="Rating Star" />
             </button>
           );
