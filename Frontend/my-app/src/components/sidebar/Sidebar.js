@@ -22,7 +22,7 @@ export default function Sidebar({ showSidebar, setShowSidebar }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setShowSidebar(window.innerWidth > 900);
+      setShowSidebar(window.innerWidth > 1100);
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);

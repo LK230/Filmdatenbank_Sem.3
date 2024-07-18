@@ -105,41 +105,46 @@ const LoginSignup = () => {
             </div>
           ) : (
             <div className="form-content">
-              <h1 className="header">Registriere dich</h1>
-              <div className="form-group name-fields">
-                <InputField
-                  label="Name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <InputField
-                  label="Nachname"
-                  value={surname}
-                  onChange={(e) => setSurname(e.target.value)}
-                />
+              <div>
+                <div className="header-container">
+                  <h1 className="header">Registriere dich</h1>
+                </div>
+                <div className="form-group name-fields">
+                  <InputField
+                    label="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <InputField
+                    label="Nachname"
+                    value={surname}
+                    onChange={(e) => setSurname(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <InputField
+                    label="Username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <InputField
+                    label="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <InputField
+                    label="Passwort"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
               </div>
-              <div className="form-group">
-                <InputField
-                  label="Username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <InputField
-                  label="Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="form-group">
-                <InputField
-                  label="Passwort"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
+
               <div className="form-button">
                 <ButtonComponent label="Abschicken" onClick={handleSubmit} />
               </div>

@@ -11,10 +11,10 @@ import { GenreView } from "../pages/Genres/GenreView";
 import Header from "../components/header/Header";
 
 export default function Router() {
-  const shouldBeOpen = () => window.innerWidth > 900;
+  const shouldBeOpen = () => window.innerWidth > 1100;
   const [showSmallSidebar, setShowSmallSidebar] = useState(shouldBeOpen);
-  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 500);
-  const [showHeader, setShowHeader] = useState(window.innerWidth <= 500);
+  const [showSidebar, setShowSidebar] = useState(window.innerWidth > 900);
+  const [showHeader, setShowHeader] = useState(window.innerWidth <= 900);
   const path = useLocation();
 
   const contentStyle = {
@@ -26,8 +26,8 @@ export default function Router() {
   useEffect(() => {
     const handleResize = () => {
       setShowSmallSidebar(shouldBeOpen());
-      setShowHeader(window.innerWidth <= 500);
-      if (window.innerWidth <= 500) {
+      setShowHeader(window.innerWidth <= 900);
+      if (window.innerWidth <= 900) {
         setShowSidebar(false);
         console.log("showSidebar", showSidebar);
       } else {

@@ -1,6 +1,6 @@
 .Card {
   width: 271px;
-  height: 204px;
+  max-height: 204px;
   border-radius: 11px;
   box-shadow: 0px 2px 10px 0px #353540;
   background: #2d2c36;
@@ -44,4 +44,23 @@
   justify-content: center;
   text-decoration: none;
   text-align: center;
+}
+
+@media (max-width: 500px) {
+  .Card {
+    width: 140px;
+    height: 98px;
+    margin: 7px;
+  }
+
+  .Card .link img {
+    width: 140px;
+    height: 70px;
+    object-position: 0% 20%;
+  }
+
+  .Card p {
+    font-size: 13px;
+    font-weight: 600;
+  }
 }

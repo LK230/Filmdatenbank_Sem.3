@@ -139,17 +139,22 @@ export default function MovieView() {
       <div className="content-container">
         <div className="play-container">
           {movie ? <h1>{movie.title}</h1> : <SkeletonTitle />}
-          <Rated age={movie.rated}></Rated>
-          <a href={movie.trailerLink} target="_blank" rel="noopener noreferrer">
-            <button className="play-icon">
-              <p>Watch</p>
-            </button>
-          </a>
-          {email && (
-            <FavoriteButton
-              onClick={handleFavMovie}
-              isActive={isFavored}></FavoriteButton>
-          )}
+          <div className="right-side">
+            <Rated age={movie.rated}></Rated>
+            <a
+              href={movie.trailerLink}
+              target="_blank"
+              rel="noopener noreferrer">
+              <button className="play-icon">
+                <p>Watch</p>
+              </button>
+            </a>
+            {email && (
+              <FavoriteButton
+                onClick={handleFavMovie}
+                isActive={isFavored}></FavoriteButton>
+            )}
+          </div>
         </div>
         <div className="show-rate-content">
           <p>{movie.rating?.toFixed(1).replace(".", ",")}</p>
@@ -166,6 +171,38 @@ export default function MovieView() {
                 <Tags name={genre} />
               </Link>
             ))}
+          </div>
+
+          <div className="img-view-container">
+            {movie.backdrops?.length > 3 && (
+              <button className="arrow arrow-left" onClick={scrollLeft}>
+                <img src={LeftArrow} alt="" />
+              </button>
+            )}
+
+            <div className="backdrop-container" ref={scrollRef}>
+              {movie
+                ? movie.backdrops?.map((img, index) => (
+                    <BackdropCard
+                      key={index}
+                      img={img}
+                      className="backdrop-card"
+                      onClick={() => handleBackdropClick(img)}
+                    />
+                  ))
+                : Array(5)
+                    .fill(0)
+                    .map((_, index) => (
+                      <div key={index} className="backdrop-card">
+                        <SkeletonMovieCard />
+                      </div>
+                    ))}
+            </div>
+            {movie.backdrops?.length > 3 && (
+              <button className="arrow arrow-right" onClick={scrollRight}>
+                <img src={RightArrow} alt="" />
+              </button>
+            )}
           </div>
 
           <div className="info-content-container">
@@ -211,42 +248,10 @@ export default function MovieView() {
             </div>
           </div>
         </div>
-
-        <div className="img-view-container">
-          {movie.backdrops?.length > 3 && (
-            <button className="arrow arrow-left" onClick={scrollLeft}>
-              <img src={LeftArrow} alt="" />
-            </button>
-          )}
-
-          <div className="backdrop-container" ref={scrollRef}>
-            {movie
-              ? movie.backdrops?.map((img, index) => (
-                  <BackdropCard
-                    key={index}
-                    img={img}
-                    className="backdrop-card"
-                    onClick={() => handleBackdropClick(img)}
-                  />
-                ))
-              : Array(5)
-                  .fill(0)
-                  .map((_, index) => (
-                    <div key={index} className="backdrop-card">
-                      <SkeletonMovieCard />
-                    </div>
-                  ))}
-          </div>
-          {movie.backdrops?.length > 3 && (
-            <button className="arrow arrow-right" onClick={scrollRight}>
-              <img src={RightArrow} alt="" />
-            </button>
-          )}
-        </div>
       </div>
 
       <div className="review-container">
-        <div>
+        <div className="RaitingComponentContainer">
           {email && (
             <div>
               <RatingComponent user={email} imdbId={imdbId} />

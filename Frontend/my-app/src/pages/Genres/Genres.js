@@ -66,7 +66,9 @@ export default function Genres() {
                         onClick={() => scrollLeft(genreName)}>
                         <img src={LeftArrow} alt="Left Arrow" />
                       </button>
-                    ):<div style={{margin: "37px"}}> </div>}
+                    ) : (
+                      <div className="arrow-margin"> </div>
+                    )}
 
                     <div
                       className="backdrop-container"

@@ -27,14 +27,17 @@ export default function Header() {
 
   return (
     <header className="header">
-      <div className="header-logo">
-        <Link to="/">
-          <img src={Logo} alt="CineCritique Logo" />
-        </Link>
+      <div className="header-container">
+        <div className="header-logo">
+          <Link to="/">
+            <img src={Logo} alt="CineCritique Logo" />
+          </Link>
+        </div>
+        <div className="burger-menu-icon" onClick={toggleMenu}>
+          {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </div>
       </div>
-      <div className="burger-menu-icon" onClick={toggleMenu}>
-        {menuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-      </div>
+
       {menuOpen && (
         <nav className="header-nav">
           <ul>

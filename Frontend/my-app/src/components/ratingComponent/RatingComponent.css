@@ -4,7 +4,7 @@
   font-size: 25px;
   color: #f4f4f4;
   margin: 20px;
-  width: 420px;
+  width: 100%;
 }
 
 .RatingContainer h2 {
@@ -18,8 +18,8 @@
 }
 
 .RatingContainer button img {
-  width: 35px;
-  height: 35px;
+  width: 2rem;
+  height: 2rem;
 }
 
 .RatingContainer button:hover {
@@ -71,4 +71,11 @@
 .RatingContainer .ButtonComponent {
   margin-right: -17px;
   margin-top: 11px;
+}
+
+@media (max-width: 900px) {
+  .RatingContainer {
+    margin: 0;
+    font-size: 20px;
+  }
 }
