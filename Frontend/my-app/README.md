@@ -25,13 +25,24 @@ Frontend/
 └── my-app/
     ├── public/
     ├── src/
+    │    ├── assets/
     │   ├── components/
     │   ├── pages/
+    │   ├── router/
     │   ├── App.js
-    │   ├── index.js
     │   └── ...
     └── package.json
 
+
+```text
+.
+├── docs
+|   └── README.md
+|   └── guide.md
+|   └── de-de
+|       └──README.md
+|       └──guide.md
+```
 
 ## Vrwendete Technologien
 
