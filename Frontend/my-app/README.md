@@ -11,9 +11,11 @@ Führen Sie die folgenden Schritte aus, um das Projekt zu installieren und zu st
    cd Frontend/my-app
 
 2. Installieren Sie die notwendigen Abhängigkeiten:
+   ```bash
     npm install
 
 3. Starten Sie die Anwendung:
+   ```bash
     npm start
 
 
