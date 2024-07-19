@@ -48,6 +48,18 @@ export async function getUserMeEndpoint(email, password) {
   }
 }
 
+export async function deleteUserProfileEndpoint(email, password) {
+  try {
+    const response = await api.delete(
+      `/users/delete?email=${encodeURIComponent(email)}&password=${password}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    throw error;
+  }
+}
+
 export async function getMoviesEndpoint() {
   try {
     const response = await api.get("/movies");

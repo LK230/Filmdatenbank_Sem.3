@@ -46,6 +46,7 @@ const LoginSignup = () => {
         const signup = await userService.createUser(newUser);
         if (signup === "User was created successfully!") {
           Cookies.set("email", email, { expires: 7 });
+          Cookies.set("password", password, { expires: 7 });
           setAlertMessage("Registrierung erfolgreich!");
           setAlertType("success");
           setTimeout(() => {

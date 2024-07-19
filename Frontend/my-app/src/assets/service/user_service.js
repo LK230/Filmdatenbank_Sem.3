@@ -1,4 +1,5 @@
 import {
+  deleteUserProfileEndpoint,
   getAddFavoritesEndpoint,
   getAddToFavorites,
   getCreateUserEndpoint,
@@ -93,6 +94,16 @@ export class UserService {
         password,
         newEmail
       );
+      return updateUserEmail;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+
+  async deleteUserProfile(email, password) {
+    try {
+      const updateUserEmail = await deleteUserProfileEndpoint(email, password);
       return updateUserEmail;
     } catch (error) {
       console.error(error);

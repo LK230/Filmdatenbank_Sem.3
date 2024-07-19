@@ -13,7 +13,7 @@ const RatingStars = ({ rating }) => {
           key={i}
           src={RatingStarClicked}
           alt="clicked star"
-          style={{ width: "35px" }}
+          style={{ width: "1.8rem" }}
         />
       );
     } else {
