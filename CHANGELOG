@@ -5,6 +5,52 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.42.8] - 2024-07-19
+
+### Changed
+
+  [Frontend]
+
+- Changed deleteReview endpoint to new params
+- Some style changes
+
+### Added
+
+- Added some alerts
+- Added logic to remove review
+
+## [1.41.8] - 2024-07-18
+
+### Changed
+
+  [Backend]
+
+- Changed updateReview and deleteReview parameters to usermail and imdbId
+
+## [1.40.8] - 2024-07-18
+
+### Added
+
+  [Frontend]
+
+- Added responsive design
+
+## [1.39.8] - 2024-07-18
+
+### Added
+
+  [Frontend]
+
+- Added smartphone size design
+
+## [1.38.8] - 2024-07-14
+
+### Added
+
+  [Frontend]
+
+- Added profile logic to update credentials 
+
 ## [1.37.8] - 2024-07-03
 
 ### Fixed
