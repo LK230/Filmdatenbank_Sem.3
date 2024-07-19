@@ -126,14 +126,18 @@ public class ReviewServiceTest {
 
     @Test
     public void testUpdateReview_ReviewNotFound() {
-        // Test updating a review when review is not found
+        // Mock the repositories and service
+        when(userRepository.findByEmailIgnoreCase(anyString())).thenReturn(Optional.of(new User()));
         when(reviewRepository.findOneByImdbIdAndCreatedBy(anyString(), anyString())).thenReturn(null);
 
-        boolean result = reviewService.updateReview("sampleUser", "tt1234567", "Updated review", 4);
+        // Call the method under test
+        boolean result = reviewService.updateReview("john.doe@example.com", "tt0111161", "Updated review", 4);
 
-        // Verify no review is updated
+        // Verify that the method returns false and no save operation was performed
         assertFalse(result);
         verify(reviewRepository, never()).save(any(Review.class));
+        verify(userProfileRepository, never()).save(any());
+        verify(userRepository, never()).save(any());
     }
 }
 

@@ -64,11 +64,11 @@ public class ReviewController {
 
     // Endpoint to update an existing review
     @PatchMapping("/update")
-    public ResponseEntity<String> updateReview(@RequestParam String username, @RequestParam String imdbId, @RequestParam String body, @RequestParam Integer rating) {
+    public ResponseEntity<String> updateReview(@RequestParam String usermail, @RequestParam String imdbId, @RequestParam String body, @RequestParam Integer rating) {
         // Log the update of the review
-        logger.info("Updating review with from: " + username);
+        logger.info("Updating review from user: " + usermail + " on movie: " + imdbId);
         // Attempt to update the review using the review service
-        if(reviewService.updateReview(username, imdbId, body, rating)) {
+        if(reviewService.updateReview(usermail, imdbId, body, rating)) {
             return new ResponseEntity<String>("Review was updated successfully", HttpStatus.OK);
         } else {
             logger.error("Error occurred updating the review");

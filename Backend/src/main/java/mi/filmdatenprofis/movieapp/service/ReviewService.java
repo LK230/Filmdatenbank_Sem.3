@@ -23,6 +23,9 @@ import java.util.Optional;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * Service class for managing reviews and calculating movie ratings.
+ */
 @Service
 public class ReviewService {
 
@@ -43,13 +46,33 @@ public class ReviewService {
 
     private static final Logger logger = LoggerFactory.getLogger(ReviewService.class);
 
-    // Method to check if a user has already given a rating for a movie
+    /**
+     * Checks if a user has already given a rating for a specific movie.
+     *
+     * This method iterates over all reviews and checks if there exists a review
+     * with the given IMDb ID, created by the user with the provided email, and
+     * has a non-null rating.
+     *
+     * @param imdbId the IMDb ID of the movie
+     * @param email  the email of the user
+     * @return true if the user has rated the movie, false otherwise
+     */
     private boolean hasUserRatedMovie(String imdbId, String email) {
         List<Review> reviews = reviewRepository.findAll();
         return reviews.stream()
                 .anyMatch(review -> review.getImdbId().equals(imdbId) && review.getCreatedBy().equalsIgnoreCase(email) && review.getRating() != null);
     }
 
+    /**
+     * Calculates the average rating for a specific movie based on its reviews.
+     *
+     * This method retrieves the movie by its IMDb ID and sums up all the ratings
+     * of its reviews. The average rating is calculated and rounded to the nearest
+     * 0.5 steps.
+     *
+     * @param imdbId the IMDb ID of the movie
+     * @return the average rating of the movie, or null if the movie is not found
+     */
     public Double calculateAverageRating (String imdbId) {
 
         //Calculate average rating of movie
@@ -186,38 +209,39 @@ public class ReviewService {
             logger.error("Review not found");
             return false;
         }
-        catch(IllegalArgumentException e) {
-            logger.error("Could not convert given string to objectID");
-            return false;
-        }
     }
 
     /**
      * Updates an existing review with new content and rating, and updates the movie's average rating.
      * @param imdbId ID of the movie which belongs to the review
-     * @param username Username of user who created the review
+     * @param usermail Usermail of user who created the review
      * @param body New content of the review
      * @param rating New rating given to the movie
      * @return true if update is successful, false otherwise
      */
-    public boolean updateReview(String username, String imdbId, String body, Integer rating) {
-        logger.info("Updating review with from: " + username);
+    public boolean updateReview(String usermail, String imdbId, String body, Integer rating) {
+        logger.info("Updating review from user with mail: " + usermail);
         try {
 
-            Review review = reviewRepository.findOneByImdbIdAndCreatedBy(imdbId, username);
+            // Find user by given usermail who created review
+            Optional<User> user = userRepository.findByEmailIgnoreCase(usermail);
 
-            // If review was found set attributes to new values
-            if(review != null) {
-                review.setBody(body);
-                review.setRating(rating);
-                review.setUpdated(LocalDateTime.now());
-                reviewRepository.save(review);
+            // If user was found get username and find review on given movie
+            if(user.isPresent()) {
 
-                // Find user and update changes also in profile
-                User user = userRepository.findByUsernameIgnoreCase(review.getCreatedBy()).orElse(null);
+                String username = user.get().getUsername();
+                Review review = reviewRepository.findOneByImdbIdAndCreatedBy(imdbId, username);
 
-                if (user != null) {
-                    List<Review> reviews = user.getProfile().getReviews();
+                // If review was found set attributes to new values
+                if (review != null) {
+
+                    review.setBody(body);
+                    review.setRating(rating);
+                    review.setUpdated(LocalDateTime.now());
+                    reviewRepository.save(review);
+
+                    // Change review in userProfile and save to DB
+                    List<Review> reviews = user.get().getProfile().getReviews();
                     reviews.stream()
                             .filter(userProfileReview -> userProfileReview.getId().equals(review.getId()))
                             .findFirst()
@@ -225,47 +249,52 @@ public class ReviewService {
                                 userProfileReview.setRating(rating);
                                 userProfileReview.setBody(body);
                             });
-                    userProfileRepository.save(user.getProfile());
-                    userRepository.save(user);
-                }
 
-                // Find movie which belongs to the review
-                Movie movie = movieRepository.findMovieByImdbId(review.getImdbId()).orElse(null);
+                    userProfileRepository.save(user.get().getProfile());
+                    userRepository.save(user.get());
 
-                // If movie was found change review also in movie
-                if (movie != null) {
-                    List<Review> reviews = movie.getReviewIds();
-                    int index = IntStream.range(0, reviews.size())
-                            .filter(i -> reviews.get(i).getId().equals(review.getId()))
-                            .findFirst()
-                            .orElse(-1);
-                    if (index != -1) {
-                        Review updatedReview = reviews.get(index);
-                        updatedReview.setRating(rating);
-                        updatedReview.setBody(body);
 
-                        mongoTemplate.update(Movie.class)
-                                .matching(Criteria.where("imdbId").is(movie.getImdbId()).and("reviewIds._id").is(updatedReview.getId())) // Verwende hier die ID des zu aktualisierenden Reviews
-                                .apply(new Update().set("reviewIds.$", updatedReview)) // Hier wird das $-Operator verwendet, um das entsprechende Element zu identifizieren
-                                .first();
+                    // Find movie which belongs to the review
+                    Movie movie = movieRepository.findMovieByImdbId(review.getImdbId()).orElse(null);
 
-                        //Adjust new rating of movie
-                        double averageRating = calculateAverageRating(movie.getImdbId());
-                        mongoTemplate.update(Movie.class)
-                                .matching(Criteria.where("imdbId").is(movie.getImdbId()))
-                                .apply(new Update()
-                                        .set("rating", averageRating))
-                                .first();
+                    // If movie was found change review also in movie
+                    if (movie != null) {
+                        List<Review> movieReviews = movie.getReviewIds();
+                        int index = IntStream.range(0, reviews.size())
+                                .filter(i -> movieReviews.get(i).getId().equals(review.getId()))
+                                .findFirst()
+                                .orElse(-1);
+                        if (index != -1) {
+                            Review updatedReview = movieReviews.get(index);
+                            updatedReview.setRating(rating);
+                            updatedReview.setBody(body);
+
+                            mongoTemplate.update(Movie.class)
+                                    .matching(Criteria.where("imdbId").is(movie.getImdbId()).and("reviewIds._id").is(updatedReview.getId())) // Verwende hier die ID des zu aktualisierenden Reviews
+                                    .apply(new Update().set("reviewIds.$", updatedReview)) // Hier wird das $-Operator verwendet, um das entsprechende Element zu identifizieren
+                                    .first();
+
+                            //Adjust new rating of movie
+                            double averageRating = calculateAverageRating(movie.getImdbId());
+                            mongoTemplate.update(Movie.class)
+                                    .matching(Criteria.where("imdbId").is(movie.getImdbId()))
+                                    .apply(new Update()
+                                            .set("rating", averageRating))
+                                    .first();
+                        }
                     }
+                    return true;
                 }
-                return true;
-            }
-            else {
+            } else {
                 return false;
             }
-        } catch(IllegalArgumentException e) {
-            logger.error("Could not convert given string to objectID");
+        } catch(NullPointerException e) {
+            logger.error("Review not found");
+            return false;
+        }catch(Exception e) {
+            logger.error("An unexpected error occurred: ", e);
             return false;
         }
+        return false;
     }
 }
