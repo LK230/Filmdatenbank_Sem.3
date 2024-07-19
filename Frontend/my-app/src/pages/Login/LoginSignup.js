@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginSignup.css";
 import InputField from "../../components/inputfield/InputField";
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
@@ -14,10 +14,25 @@ const LoginSignup = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
   const userService = new UserService();
   const navigate = useNavigate();
   const [alertMessage, setAlertMessage] = useState("");
   const [alertType, setAlertType] = useState("");
+
+  useEffect(() => {
+    if (isLogin) {
+      setIsFormValid(email !== "" && password !== "");
+    } else {
+      setIsFormValid(
+        email !== "" &&
+          password !== "" &&
+          username !== "" &&
+          name !== "" &&
+          surname !== ""
+      );
+    }
+  }, [email, password, username, name, surname, isLogin]);
 
   const handleSubmit = async () => {
     try {
@@ -119,7 +134,11 @@ const LoginSignup = () => {
                 </div>
               </div>
               <div className="form-button">
-                <ButtonComponent label="Anmelden" onClick={handleSubmit} />
+                <ButtonComponent
+                  label="Anmelden"
+                  onClick={handleSubmit}
+                  disabled={!isFormValid}
+                />
               </div>
             </div>
           ) : (
@@ -165,7 +184,11 @@ const LoginSignup = () => {
               </div>
 
               <div className="form-button">
-                <ButtonComponent label="Abschicken" onClick={handleSubmit} />
+                <ButtonComponent
+                  label="Abschicken"
+                  onClick={handleSubmit}
+                  disabled={!isFormValid}
+                />
               </div>
             </div>
           )}

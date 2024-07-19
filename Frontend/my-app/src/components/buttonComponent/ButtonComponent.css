@@ -9,6 +9,12 @@
   justify-content: space-between;
 }
 
+.ButtonComponentContainer button:disabled p,
+img {
+  color: #767676;
+  cursor: no-drop;
+}
+
 .ButtonComponentContainer button p {
   margin: 0;
   width: 128px;
