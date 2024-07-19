@@ -18,7 +18,6 @@ Führen Sie die folgenden Schritte aus, um das Projekt zu installieren und zu st
    ```bash
     npm start
 
-
 ## Verzeichnisstruktur
 
 Eine kurze Übersicht der Verzeichnisstruktur:
