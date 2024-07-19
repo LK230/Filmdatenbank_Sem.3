@@ -21,6 +21,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt zu installieren und zu st
 
 Eine kurze Übersicht der Verzeichnisstruktur:
 
+```text
 Frontend/
 └── my-app/
     ├── public/
@@ -32,17 +33,9 @@ Frontend/
     │   ├── App.js
     │   └── ...
     └── package.json
-
+```
 
 ```text
-.
-├── docs
-|   └── README.md
-|   └── guide.md
-|   └── de-de
-|       └──README.md
-|       └──guide.md
-```
 
 ## Vrwendete Technologien
 
