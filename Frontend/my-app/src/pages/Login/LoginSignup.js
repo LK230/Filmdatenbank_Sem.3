@@ -185,6 +185,7 @@ const LoginSignup = () => {
               </div>
 
               <div className="form-button">
+                <Link to="/">Ohne Anmeldung erkunden</Link>
                 <ButtonComponent
                   label="Abschicken"
                   onClick={handleSubmit}

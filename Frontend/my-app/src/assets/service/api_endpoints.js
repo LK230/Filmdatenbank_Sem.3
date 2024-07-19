@@ -70,6 +70,16 @@ export async function getMoviesEndpoint() {
   }
 }
 
+export async function getBestRatedMoviesEndpoint() {
+  try {
+    const response = await api.get("/movies/bestrated");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching movies:", error);
+    throw error.response.data;
+  }
+}
+
 export async function getMovieEndpoint(imdbId) {
   try {
     const response = await api.get("/movies/" + imdbId);

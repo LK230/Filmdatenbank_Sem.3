@@ -17,14 +17,18 @@ export const Searchbar = ({ movies, onSearch }) => {
 
   useEffect(() => {
     const fetchFavorites = async () => {
-      try {
-        const userMe = await new UserService().getUserMe(email, password);
-        if (userMe && userMe.profile.favorites) {
-          const favoriteIds = userMe.profile.favorites.map((fav) => fav.imdbId);
-          setFavoredMovies(new Set(favoriteIds));
+      if (email && password) {
+        try {
+          const userMe = await new UserService().getUserMe(email, password);
+          if (userMe && userMe.profile.favorites) {
+            const favoriteIds = userMe.profile.favorites.map(
+              (fav) => fav.imdbId
+            );
+            setFavoredMovies(new Set(favoriteIds));
+          }
+        } catch (error) {
+          console.error("Error fetching favorite movies:", error);
         }
-      } catch (error) {
-        console.error("Error fetching favorite movies:", error);
       }
     };
 

@@ -140,4 +140,11 @@
   .LoginContainer .tab {
     font-size: 19px;
   }
+
+  .LoginContainer .form-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
 }
