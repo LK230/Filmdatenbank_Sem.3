@@ -44,7 +44,7 @@ export async function getUserMeEndpoint(email, password) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movies:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -56,7 +56,7 @@ export async function deleteUserProfileEndpoint(email, password) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movies:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -66,7 +66,7 @@ export async function getMoviesEndpoint() {
     return response.data;
   } catch (error) {
     console.error("Error fetching movies:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -76,7 +76,7 @@ export async function getMovieEndpoint(imdbId) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -96,7 +96,7 @@ export async function getCreateReviewEndpoint(
     return response.data;
   } catch (error) {
     console.error("Error:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -108,6 +108,7 @@ export async function getAddFavoritesEndpoint(email, imdbId) {
     return response.data;
   } catch (error) {
     console.error("Error adding to favorites:", error);
+    throw error.response.data;
   }
 }
 
@@ -117,7 +118,7 @@ export async function getGenreEndpoint() {
     return response.data;
   } catch (error) {
     console.error("Error fetching genre:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -131,7 +132,7 @@ export async function getDeleteFromFavoritesEndpoint(email, imdbId) {
     return response.data;
   } catch (error) {
     console.error("Error deleting from favorites:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -141,7 +142,7 @@ export async function getGenreMoviesEndpoint(genre) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -157,7 +158,7 @@ export async function patchUpdatePasswordEndpoint(
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -169,7 +170,7 @@ export async function patchUpdateEmailEndpoint(email, password, newEmail) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);
-    throw error;
+    throw error.response.data;
   }
 }
 
@@ -181,6 +182,6 @@ export async function deleteReviewEndpoint(username, imdbId) {
     return response.data;
   } catch (error) {
     console.error("Error fetching movie:", error);
-    throw error;
+    throw error.response.data;
   }
 }

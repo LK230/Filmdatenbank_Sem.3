@@ -3,7 +3,7 @@ import "./LoginSignup.css";
 import InputField from "../../components/inputfield/InputField";
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 import { UserService } from "../../assets/service/user_service";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Alert from "../../components/alert/Alert";
 
@@ -134,6 +134,7 @@ const LoginSignup = () => {
                 </div>
               </div>
               <div className="form-button">
+                <Link to="/">Ohne Anmeldung erkunden</Link>
                 <ButtonComponent
                   label="Anmelden"
                   onClick={handleSubmit}

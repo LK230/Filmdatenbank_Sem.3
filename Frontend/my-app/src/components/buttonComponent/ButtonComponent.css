@@ -10,7 +10,7 @@
 }
 
 .ButtonComponentContainer button:disabled p,
-img {
+.ButtonComponentContainer button:disabled img {
   color: #767676;
   cursor: no-drop;
 }

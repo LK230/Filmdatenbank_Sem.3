@@ -75,10 +75,7 @@
   cursor: pointer;
 }
 
-.profile-settings .delte-profile-container {
-}
-
-.profile-settings .delte-profile-container button {
+.profile-settings .delete-profile-container button {
   background: none;
   border: none;
   display: flex;
@@ -94,6 +91,6 @@
   cursor: pointer;
 }
 
-.profile-settings .delte-profile-container p {
-  margin: 10px;
+.profile-settings .delete-profile-container p {
+  margin: 0 10px;
 }

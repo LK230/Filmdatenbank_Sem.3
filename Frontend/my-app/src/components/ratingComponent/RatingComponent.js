@@ -38,13 +38,15 @@ export default function RatingComponent({ user, imdbId }) {
         imdbId,
         user
       );
-      setAlertMessage("Review submitted successfully!");
+      setAlertMessage("Bewertung erfolgreich hochgeladen!");
       setAlertType("success");
       setTimeout(() => {
         window.location.reload();
       }, 2000);
     } catch (error) {
-      setAlertMessage("Error submitting review. Please try again.");
+      setAlertMessage(
+        "Fehler beim Abschicken der Bewertung. Bitte versuche  es erneut."
+      );
       setAlertType("error");
     }
   };

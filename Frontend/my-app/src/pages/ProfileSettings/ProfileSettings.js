@@ -56,6 +56,8 @@ export default function ProfileSettings() {
           );
           Cookies.set("email", event.target.value);
           setNewEmail(event.target.value);
+          setAlertMessage("Email erfolgreich geändert.");
+          setAlertType("success");
         } else if (field === "password") {
           await userService.userPatchUpdatePassword(
             email,
@@ -64,6 +66,8 @@ export default function ProfileSettings() {
           );
           Cookies.set("password", event.target.value);
           setNewPassword(event.target.value);
+          setAlertMessage("Passwort erfolgreich geändert.");
+          setAlertType("success");
         }
         handleSave();
       } catch (error) {
@@ -146,8 +150,9 @@ export default function ProfileSettings() {
         <button onClick={() => setShowDeleteModal(true)}>
           <div>
             <FaRegTrashAlt style={{ color: "#f04" }} />
-            <p>Profil löschen</p>
           </div>
+
+          <p>Profil löschen</p>
         </button>
       </div>
 
