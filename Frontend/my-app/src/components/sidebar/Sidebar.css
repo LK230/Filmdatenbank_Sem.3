@@ -30,7 +30,7 @@
 }
 
 .Sidebar .items-container {
-  height: 90vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -100,13 +100,13 @@
 
 .Sidebar.open .open-close-btn {
   position: absolute;
-  top: 89vh;
-  left: 246px;
+  top: 94vh;
+  left: 237px;
 }
 
 .Sidebar.close .open-close-btn {
   position: absolute;
-  top: 88vh;
+  top: 93vh;
   left: 64px;
 }
 

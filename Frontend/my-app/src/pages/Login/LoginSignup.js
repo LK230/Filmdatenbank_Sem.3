@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./LoginSignup.css";
 import InputField from "../../components/inputfield/InputField";
 import ButtonComponent from "../../components/buttonComponent/ButtonComponent";
 import { UserService } from "../../assets/service/user_service";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Alert from "../../components/alert/Alert";
 
@@ -14,10 +14,25 @@ const LoginSignup = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
   const userService = new UserService();
   const navigate = useNavigate();
   const [alertMessage, setAlertMessage] = useState("");
   const [alertType, setAlertType] = useState("");
+
+  useEffect(() => {
+    if (isLogin) {
+      setIsFormValid(email !== "" && password !== "");
+    } else {
+      setIsFormValid(
+        email !== "" &&
+          password !== "" &&
+          username !== "" &&
+          name !== "" &&
+          surname !== ""
+      );
+    }
+  }, [email, password, username, name, surname, isLogin]);
 
   const handleSubmit = async () => {
     try {
@@ -46,6 +61,7 @@ const LoginSignup = () => {
         const signup = await userService.createUser(newUser);
         if (signup === "User was created successfully!") {
           Cookies.set("email", email, { expires: 7 });
+          Cookies.set("password", password, { expires: 7 });
           setAlertMessage("Registrierung erfolgreich!");
           setAlertType("success");
           setTimeout(() => {
@@ -118,7 +134,12 @@ const LoginSignup = () => {
                 </div>
               </div>
               <div className="form-button">
-                <ButtonComponent label="Anmelden" onClick={handleSubmit} />
+                <Link to="/">Ohne Anmeldung erkunden</Link>
+                <ButtonComponent
+                  label="Anmelden"
+                  onClick={handleSubmit}
+                  disabled={!isFormValid}
+                />
               </div>
             </div>
           ) : (
@@ -164,7 +185,12 @@ const LoginSignup = () => {
               </div>
 
               <div className="form-button">
-                <ButtonComponent label="Abschicken" onClick={handleSubmit} />
+                <Link to="/">Ohne Anmeldung erkunden</Link>
+                <ButtonComponent
+                  label="Abschicken"
+                  onClick={handleSubmit}
+                  disabled={!isFormValid}
+                />
               </div>
             </div>
           )}

@@ -3,6 +3,8 @@
   color: #fff;
   display: flex;
   flex-direction: column;
+  height: 92vh;
+  justify-content: space-between;
 }
 
 .profile-settings h2 {
@@ -14,14 +16,18 @@
   line-height: normal;
 }
 
-.profileField {
+.profile-settings .profileField {
   margin-bottom: 20px;
   border-radius: 11px;
   display: flex;
   flex-direction: column;
 }
 
-.profileField label {
+.profile-settings .profile-settings-container {
+  flex: 1 0 0;
+}
+
+.profile-settings .profileField label {
   display: block;
   margin-bottom: 5px;
   color: #fff;
@@ -32,7 +38,7 @@
   line-height: normal;
 }
 
-.profileField div {
+.profile-settings .profileField div {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +47,7 @@
   flex-shrink: 0;
 }
 
-.profileField input {
+.profile-settings .profileField input {
   font-family: Inter, Arial, Helvetica, sans-serif;
   font-size: 16px;
   padding: 10px;
@@ -54,7 +60,7 @@
   flex-shrink: 0;
 }
 
-.profileField button {
+.profile-settings .profileField button {
   margin-top: 5px;
   align-self: flex-end;
   width: 90px;
@@ -67,4 +73,24 @@
   font-weight: 300;
   line-height: normal;
   cursor: pointer;
+}
+
+.profile-settings .delete-profile-container button {
+  background: none;
+  border: none;
+  display: flex;
+
+  color: #f04;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.profile-settings .delete-profile-container p {
+  margin: 0 10px;
 }

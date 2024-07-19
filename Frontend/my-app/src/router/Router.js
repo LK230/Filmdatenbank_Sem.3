@@ -9,8 +9,11 @@ import ProfileSettings from "../pages/ProfileSettings/ProfileSettings";
 import FavoritePage from "../pages/FavoritePage/FavoritePage";
 import { GenreView } from "../pages/Genres/GenreView";
 import Header from "../components/header/Header";
+import checkBackend from "../assets/service/backendCheck";
+import BackendErrorPage from "../pages/BackendErrorPage/BackendErrorPage";
 
 export default function Router() {
+  const [backendAvailable, setBackendAvailable] = useState(true);
   const shouldBeOpen = () => window.innerWidth > 1100;
   const [showSmallSidebar, setShowSmallSidebar] = useState(shouldBeOpen);
   const [showSidebar, setShowSidebar] = useState(window.innerWidth > 900);
@@ -23,6 +26,15 @@ export default function Router() {
     borderRadius: "30px",
     paddingTop: showHeader ? "50px" : "0",
   };
+
+  useEffect(() => {
+    const verifyBackend = async () => {
+      const isAvailable = await checkBackend();
+      setBackendAvailable(isAvailable);
+    };
+
+    verifyBackend();
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
@@ -39,6 +51,10 @@ export default function Router() {
   }, []);
 
   const isLoginPage = path.pathname === "/login";
+
+  if (!backendAvailable) {
+    return <BackendErrorPage />;
+  }
 
   return (
     <div>

@@ -3,7 +3,10 @@ import "./ProfileSettings.css";
 import InputField from "../../components/inputfield/InputField";
 import { UserService } from "../../assets/service/user_service";
 import Cookies from "js-cookie";
-import Alert from "../../components/alert/Alert"; // Ensure you have this component
+import Alert from "../../components/alert/Alert";
+import { FaRegTrashAlt } from "react-icons/fa";
+import ConfirmDeleteModal from "../../components/confirmDeleteModal/ConfirmDeleteModal";
+import { useNavigate } from "react-router-dom";
 
 export default function ProfileSettings() {
   const [name, setName] = useState("");
@@ -12,6 +15,8 @@ export default function ProfileSettings() {
   const [isEditing, setIsEditing] = useState(null);
   const [alertMessage, setAlertMessage] = useState("");
   const [alertType, setAlertType] = useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const navigate = useNavigate();
 
   const userService = new UserService();
   const myEmail = Cookies.get("email");
@@ -51,6 +56,8 @@ export default function ProfileSettings() {
           );
           Cookies.set("email", event.target.value);
           setNewEmail(event.target.value);
+          setAlertMessage("Email erfolgreich geändert.");
+          setAlertType("success");
         } else if (field === "password") {
           await userService.userPatchUpdatePassword(
             email,
@@ -59,6 +66,8 @@ export default function ProfileSettings() {
           );
           Cookies.set("password", event.target.value);
           setNewPassword(event.target.value);
+          setAlertMessage("Passwort erfolgreich geändert.");
+          setAlertType("success");
         }
         handleSave();
       } catch (error) {
@@ -73,46 +82,86 @@ export default function ProfileSettings() {
     }
   };
 
+  const handleDeleteProfile = async () => {
+    setAlertMessage("Du hast dein Profil erfolgreich gelöscht.");
+    setAlertType("success");
+
+    setTimeout(async () => {
+      try {
+        await userService.deleteUserProfile(email, password);
+        Cookies.remove("email");
+        Cookies.remove("password");
+
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      } catch (error) {
+        setAlertMessage(error.message || "Fehler beim Löschen des Profils.");
+        setAlertType("error");
+      }
+    }, 500);
+  };
+
   return (
     <div className="profile-settings">
-      <h2>Profil Einstellungen</h2>
-      <div className="profileField">
-        <label>Dein Name</label>
-        <div>
-          <InputField label={name} disabled={true} />
+      <div>
+        <h2>Profil Einstellungen</h2>
+      </div>
+      <div className="profile-settings-container">
+        <div className="profileField">
+          <label>Dein Name</label>
+          <div>
+            <InputField label={name} disabled={true} />
+          </div>
+        </div>
+        <div className="profileField">
+          <label>Email Adresse</label>
+          {isEditing === "email" ? (
+            <InputField
+              type="text"
+              value={newEmail || email}
+              onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, "email")}
+            />
+          ) : (
+            <div>
+              <InputField label={email} disabled={true} />
+              <button onClick={() => handleEdit("email")}>ändern</button>
+            </div>
+          )}
+        </div>
+        <div className="profileField">
+          <label>Passwort</label>
+          {isEditing === "password" ? (
+            <InputField
+              value={newPassword || password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => handleKeyDown(e, "password")}
+            />
+          ) : (
+            <div>
+              <InputField type="password" value={myPassword} disabled={true} />
+              <button onClick={() => handleEdit("password")}>ändern</button>
+            </div>
+          )}
         </div>
       </div>
-      <div className="profileField">
-        <label>Email Adresse</label>
-        {isEditing === "email" ? (
-          <InputField
-            type="text"
-            value={newEmail || email}
-            onChange={(e) => setEmail(e.target.value)}
-            onKeyDown={(e) => handleKeyDown(e, "email")}
-          />
-        ) : (
+      <div className="delete-profile-container">
+        <button onClick={() => setShowDeleteModal(true)}>
           <div>
-            <InputField label={email} disabled={true} />
-            <button onClick={() => handleEdit("email")}>ändern</button>
+            <FaRegTrashAlt style={{ color: "#f04" }} />
           </div>
-        )}
+
+          <p>Profil löschen</p>
+        </button>
       </div>
-      <div className="profileField">
-        <label>Passwort</label>
-        {isEditing === "password" ? (
-          <InputField
-            value={newPassword || password}
-            onChange={(e) => setPassword(e.target.value)}
-            onKeyDown={(e) => handleKeyDown(e, "password")}
-          />
-        ) : (
-          <div>
-            <InputField type="password" value={myPassword} disabled={true} />
-            <button onClick={() => handleEdit("password")}>ändern</button>
-          </div>
-        )}
-      </div>
+
+      <ConfirmDeleteModal
+        show={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+        onConfirm={handleDeleteProfile}
+      />
+
       <Alert message={alertMessage} type={alertType} />
     </div>
   );

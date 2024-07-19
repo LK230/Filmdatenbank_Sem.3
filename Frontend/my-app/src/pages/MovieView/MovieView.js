@@ -28,6 +28,7 @@ export default function MovieView() {
   const [isFavored, setIsFavored] = useState(false);
   const email = Cookies.get("email");
   const password = Cookies.get("password");
+  const loggedIn = !!email && !!password;
   const [alertMessage, setAlertMessage] = useState("");
   const [alertType, setAlertType] = useState("");
 
@@ -60,19 +61,21 @@ export default function MovieView() {
 
   useEffect(() => {
     const fetchUserFavorites = async () => {
-      try {
-        const userMe = await new UserService().getUserMe(email, password);
-        if (
-          userMe &&
-          userMe.profile.favorites &&
-          userMe.profile.favorites.some((obj) => obj.imdbId === imdbId)
-        ) {
-          setIsFavored(true);
-        } else {
-          setIsFavored(false);
+      if (email && password && imdbId) {
+        try {
+          const userMe = await new UserService().getUserMe(email, password);
+          if (
+            userMe &&
+            userMe.profile.favorites &&
+            userMe.profile.favorites.some((obj) => obj.imdbId === imdbId)
+          ) {
+            setIsFavored(true);
+          } else {
+            setIsFavored(false);
+          }
+        } catch (error) {
+          console.error("Error fetching user favorites:", error);
         }
-      } catch (error) {
-        console.error("Error fetching user favorites:", error);
       }
     };
     fetchUserFavorites();
@@ -279,14 +282,15 @@ export default function MovieView() {
         <div className="ReviewsContainer">
           <h2>Bewertungen von anderen Usern</h2>
           {movie.reviewIds?.length > 0 ? (
-            movie.reviewIds?.map((obj) => {
+            movie.reviewIds?.map((obj, index) => {
               return (
                 <RatingView
-                  key={obj.id} // Add a unique key here
+                  key={index}
                   user={obj.createdBy}
                   comment={obj.body}
                   rating={obj.rating}
                   onClick={() => handleDeleteReview(obj.createdBy, obj.imdbId)}
+                  loggedIn={loggedIn}
                 />
               );
             })

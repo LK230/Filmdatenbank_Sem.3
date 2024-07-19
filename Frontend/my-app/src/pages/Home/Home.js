@@ -14,6 +14,7 @@ import {
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
+  const [bestRatedMovies, setBestRatedMovies] = useState([]);
   const [genre, setGenre] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
@@ -39,6 +40,15 @@ export default function Home() {
       }
     };
 
+    const fetchBestRatedMovies = async () => {
+      try {
+        const movieData = await new MovieService().getBestRatedMovie();
+        setBestRatedMovies(movieData);
+      } catch (error) {
+        console.error("Error fetching movie data:", error);
+      }
+    };
+    fetchBestRatedMovies();
     fetchMovies();
     fetchGenres();
   }, []);
@@ -129,8 +139,8 @@ export default function Home() {
           <div
             className="backdrop-container"
             ref={(el) => (scrollRef.current["movies"] = el)}>
-            {movies.length > 0
-              ? movies.map((obj) => (
+            {bestRatedMovies.length > 0
+              ? bestRatedMovies.map((obj) => (
                   <Card
                     key={obj.imdbId}
                     id={obj.imdbId}
